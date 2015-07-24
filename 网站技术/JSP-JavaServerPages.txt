@@ -1,0 +1,26 @@
+JSP（全称JavaServer Pages）是由Sun Microsystems公司倡导和许多公司参与共同创建的一种使软件开发者可以
+响应客户端请求，而动态生成HTML、XML或其他格式文档的Web网页的技术标准。
+JSP技术是以Java语言作为脚本语言的，
+JSP网页为整个服务器端的Java库单元提供了一个接口来服务于HTTP的应用程序。
+
+JSP使Java代码和特定的预定义动作可以嵌入到静态页面中。
+JSP句法增加了被称为JSP动作的XML标签，它们用来调用内建功能。
+另外，可以创建JSP标签库，然后像使用标准HTML或XML标签一样使用它们。
+标签库提供了一种和平台无关的扩展服务器性能的方法。
+
+JSP被JSP编译器编译成Java Servlets。
+一个JSP编译器可以把JSP编译成JAVA代码写的servlet然后再由JAVA编译器来编译成机器码，也可以直接编译成二进制码。
+
+从架构上说，JSP可以被看作是从Servlets高级提炼而作为JAVA Servlet 2.1 API的扩展而应用。
+Servlets和JSP最早都是由Sun Microsystems（太阳公司）开发的。
+
+从JSP1.2版本以来，JSP处于Java Community Process（有人译为：JAVA社区组织）开发模式下。
+JSR-53   规定了JSP 1.2和Servlet 2.4的规范，
+JSR-152  规定了JSP 2.0的规范。
+JSR-245  2006年5月，JSP 2.1的规范作为Java EE 5的一部分，在JSR-245中发布。
+
+
+
+静态数据在输入文件中的内容和输出给HTTP响应的内容完全一致。
+此时，该JSP输入文件会是一个没有内嵌JAVA或动作的HTML页面。
+而且，客户端每次请求都会得到相同的响应内容。

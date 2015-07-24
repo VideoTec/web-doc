@@ -1,0 +1,36 @@
+
+int recv(
+  _In_   SOCKET s,
+  _Out_  char *buf,
+  _In_   int len,
+  _In_   int flags
+);
+
+int send(
+  _In_  SOCKET s,
+  _In_  const char *buf,
+  _In_  int len,
+  _In_  int flags
+);
+
+#define MSG_OOB         0x1             /* process out-of-band data */
+#define MSG_PEEK        0x2             /* peek at incoming message */
+#define MSG_DONTROUTE   0x4             /* send without using routing tables */
+
+#if(_WIN32_WINNT >= 0x0502)
+#define MSG_WAITALL     0x8             /* do not complete until packet is completely filled */
+#endif //(_WIN32_WINNT >= 0x0502)
+
+#if(_WIN32_WINNT >= 0x0603)
+#define MSG_PUSH_IMMEDIATE 0x20         /* Do not delay receive request completion if data is available */
+#endif //(_WIN32_WINNT >= 0x0603)
+
+#define MSG_PARTIAL     0x8000          /* partial send or recv for message xport */
+
+/*
+ * WinSock 2 extension -- new flags for WSASend(), WSASendTo(), WSARecv() and
+ *                          WSARecvFrom()
+ */
+#define MSG_INTERRUPT   0x10            /* send/recv in the interrupt context */
+
+#define MSG_MAXIOVLEN   16

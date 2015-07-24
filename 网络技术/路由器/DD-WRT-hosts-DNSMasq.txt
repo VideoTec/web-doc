@@ -1,0 +1,67 @@
+服务 -> DNSMasq 
+
+https://wiki.archlinux.org/index.php/Dnsmasq_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29
+Dnsmasq 提供 DNS 缓存和 DHCP 服务功能。
+作为域名解析服务器(DNS)，dnsmasq可以通过缓存 DNS 请求来提高对访问过的网址的连接速度。
+作为DHCP 服务器，dnsmasq 可以用于为局域网电脑分配内网ip地址和提供路由
+
+Dnsmasq是一个开源的轻量级DNS转发和DHCP、TFTP服务器，使用C语言编写。
+Dnsmasq针对家庭局域网等小型局域网设计，资源占用低，易于配置。
+支持的平台包括Debian、Fedora、 Smoothwall、IP-Cop、floppyfw、Firebox、LEAF、Freesco, fli4l、CoyoteLinux及 Android等，并且在dd-wrt、 openwrt路由器系统中也有使用
+
+在路由器上配DNSMasq——就是把hosts改改格式
+
+保存下面的配置，重启路由器，就启不来了
+通过恢复出厂设置，恢复了
+0:23 2015/6/5
+发现不是启动不了，是保存不了配置
+
+https://smarthosts.googlecode.com/svn/trunk/dnsmasq.conf
+
+1. address=/.phobos.apple.com/202.175.5.114 会自动匹配
+
+address=/.c.android.clients.google.com/139.175.107.221
+address=/.ggpht.com/139.175.107.221
+address=/.googleusercontent.com/139.175.107.221
+address=/.google.com/139.175.107.221
+
+下面都不写了
+
+#google cn
+#Web -> Google ditu
+address=/.google.cn/139.175.107.221
+address=/google.cn/139.175.107.221
+address=/g.cn/139.175.107.221
+
+#google static
+#Web -> google images search
+address=/.gstatic.com/139.175.107.221
+
+#Web https -> google images search
+address=/encrypted-tbn1.google.com/139.175.107.221
+
+#Web ->Google Play
+address=/play.google.com/139.175.107.221
+address=/apis.google.com/139.175.107.221
+
+#Web ->Gmail
+address=/clients2.google.com/139.175.107.221
+
+#Web
+address=/google.com/139.175.107.221
+address=/www.google.com/139.175.107.221
+address=/www.google.com.hk/139.175.107.221
+address=/accounts.google.com/139.175.107.221
+address=/mail.google.com/139.175.107.221
+address=/code.google.com/139.175.107.221
+address=/translate.google.com/139.175.107.221
+address=/translate.google.com.hk/139.175.107.221
+address=/docs.google.com/139.175.107.221
+address=/profiles.google.com/139.175.107.221
+address=/plus.google.com/139.175.107.221
+address=/picasaweb.google.com/139.175.107.221
+address=/news.google.com/139.175.107.221
+address=/ditu.google.com/139.175.107.221
+
+#apple app store
+address=/.phobos.apple.com/202.175.5.114

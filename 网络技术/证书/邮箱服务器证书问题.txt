@@ -1,0 +1,75 @@
+从QQ客户端登录邮箱时，出现下面问题
+
+----------------------------------
+chrome 提示的错误
+----------------------------------
+
+您的连接不是私密连接
+
+攻击者可能会试图从ssl.ptlogin2.mail.qq.com窃取您的信息（例如：密码、通讯内容或信用卡信息）
+
+此服务器无法证明它是ssl.ptlogin2.mail.qq.com；您计算机的操作系统不信任其安全证书。出现此问题的原因可能是配置有误或您的连接被拦截了
+
+Subject 使用者: ssl.ui.ptlogin2.qq.com
+Issuer 发行者: VeriSign Class 1 Extended Validation CA
+Expires on: 2015年11月22日
+Current date: 2015年3月2日
+
+----------------------------------
+VeriSign Class 1 Extended Validation CA 从客户端跳转
+VeriSign Class 3 Extended Validation CA 直接从浏览器里输入 mail.qq.com
+这个证书发行者没有包含在受信任的发行者列表里
+----------------------------------
+http://en.wikipedia.org/wiki/Extended_Validation_Certificate
+
+Extended Validation SSL Certificate
+简称为： EV SSL 证书
+遵循全球统一的严格身份验证标准颁发的 SSL 证书
+
+EV SSL 证书是一种新型的需要对申请单位进行非常严格身份验证的SSL证书。
+如果您的网站部署了EV SSL证书，则用户访问时浏览器的地址栏会变成绿色, 并在地址栏后面显示一个安全锁标志和轮流显示此网站的单位名称和此证书的颁发机构，明确指出此网站的身份已经此证书颁发机构严格验证。
+目前 EV SSL证书加密强度有两种：最低128位和最高256位（这里指的是SSL会话时生成加密密钥的长度，密钥越长越不容易破解）证书。
+但即便是128位的加密强度，使用强行攻击的办法破译密码，也需要1019年。
+目前国内金融机构如中信银行、招商银行等网站上亦可以看到经VeriSign中国服务机构天威诚信颁发的EVSSL，绿色地址栏已在国内出具规模
+
+https://www.verisign.com 证书是正常的，可验证
+VeriSign Class 3 Extended Validation SSL SGC CA
+
+用公司的网络，访问就出这个问题，
+别的网络，没这个问题，证书颁发者为：GeoTrust SSL CA - G2
+
+----------------------------------
+firefox提示的错误
+----------------------------------
+使用 Firefox 安全连接至 ssl.ptlogin2.mail.qq.com，但是我们无法确认此连接是否安全
+如果您过去曾连接到此网站且没有遇到该问题，那么此错误表示可能有人试图冒充该网站，因此您应该停止浏览
+
+ssl.ptlogin2.mail.qq.com 使用了无效的安全证书
+该证书因为未提供证书颁发链而不被信任。
+错误码： sec_error_unknown_issuer
+
+----------------------------------
+原因是什么？
+----------------------------------
+https://productforums.google.com/forum/#!topic/chrome/SE3sKXg0iFQ
+
+I've had the same issue on MAC for a while on sites like dashboard.stripe.com, facebook.com, github.com.
+They all use the same root certificate authority[əˈθɔ:rəti]权威: DigiCert High Assurance EV Root CA 
+Chrome was reporting that this root certificate had expired on July 2014, which I knew was incorrect. (Not sure why Chrome doesn't grab the latest cert)
+
+My system time was correct (this is usually the first 'solution' people will give you).
+
+I fixed the issue by taking the following steps:
+Manually deleted my local copy of DigiCert High Assurance EV Root CA
+(open Keychain Access, select keychains:login, select category: certificates, search for DigiCert, right click, delete)
+Downloaded the real cert(s) from https://www.digicert.com/digicert-root-certificates.htm 
+Root Certificate Authority that the sites use:
+DigiCert High Assurance EV Root CA 
+Intermediate Certificate Authorities that the sites use:
+DigiCert SHA2 Extended Validation Server CA 
+DigiCert High Assurance CA-3
+Added these certs to Keychain Access simply by double clicking them
+If that doesn't work you can manually import via File > Import
+
+At first the issue still occurred, but about 10 minutes later the issue no longer occurs. Perhaps chrome was refreshing its certificate cache?
+It behaved as if Chrome was using an out-dated cert until I manually replaced it.

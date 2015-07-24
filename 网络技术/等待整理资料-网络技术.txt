@@ -1,0 +1,21 @@
+1. 怎么连接到IPV6网络？
+    注意：一般连接的网络是IPV4网络，很少直接连接到IPV6网络的。
+    使用Teredo tunneling技术，从IPV4网络连接到IPV6网络。
+    Teredo Server地址：
+公共Teredo服务器地址列表
+* teredo.remlab.net / teredo-debian.remlab.net (法国) (Miredo 默认设置)
+* teredo.autotrans.consulintel.com (西班牙)
+* teredo.ipv6.microsoft.com (美国 雷蒙德) (Windows XP/2003/Vista/7/2008 系统默认设置)
+* teredo.ngix.ne.kr (韩国)
+* teredo.managemydedi.com (美国 芝加哥)
+
+2. 命令
+    netsh interface ipv6 show teredo  显示teredo配置情况
+    netsh interface teredo set state server=teredo.remlab.net 
+
+   netsh int ter set state client
+    netsh int ter set state enterpriseclient
+	
+	
+	HOSTS
+	记得改完Hosts记得刷新下你的DNS，运行ipconfig /flushdns命令清除本机DNS缓存。最好再重启下浏览器

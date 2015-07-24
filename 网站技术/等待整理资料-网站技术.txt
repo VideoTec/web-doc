@@ -1,0 +1,130 @@
+tomcat 安装
+tomcat  需要JRE？
+
+tomcat6.0以上可以不再依赖JDK运行，直接使用JRE即可
+但tomcat5.5以下，是必须安装JDK的。 
+补充：这主要是由于，tomcat5.5及以下版本主要是依赖JDK去编译JSP文件生成class的。但Tomcat6.0使用了Eclipse的JDT技术，因此不再依赖JDK运行
+
+Tomcat与Jre绿色环境配置（生产环境）
+http://gqsunrise.iteye.com/blog/1995409
+
+tomcat 与 java版本之间的关系
+http://tomcat.apache.org/whichversion.html
+
+Tomcat 7 + JDK 6
+http://www.oracle.com/technetwork/java/javase/downloads/jre6downloads-1902815.html
+apcache-tomcat-version-java-version.png
+
+
+
+在JSP 页面中，引入<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>时
+http://my.oschina.net/u/990629/blog/156036
+org.apache.jasper.JasperException:
+
+       This absolute uri http://java.sun.com/jsp/jstl/core) cannot be resolved in either web.xml or the jar files deployed with this application
+
+解决办法：
+
+1 查看JSTL的当前版本，是JSTL1.0 还是JSTL1.1 。
+
+2 下载JSTL1.1   URL: http://jakarta.apache.org/taglibs/index.html
+
+3 解压 jakarta-taglibs-standard-current.zip
+
+4 将standard.jar and jstl.jar 放入项目的WEB-INFO的lib目录下
+
+5 将tlb文件夹放入项目的WEB-INFO的目录下
+
+6 修改web.xml文件
+
+01
+<span></span><jsp-config>
+02
+    <taglib>
+03
+        <taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+04
+        <taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
+05
+    </taglib>
+06
+    <taglib>
+07
+        <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+08
+        <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+09
+    </taglib>
+10
+    <taglib>
+11
+        <taglib-uri>http://java.sun.com/jstl/sql</taglib-uri>
+12
+        <taglib-location>/WEB-INF/tld/sql.tld</taglib-location>
+13
+    </taglib>
+14
+    <taglib>
+15
+        <taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
+16
+        <taglib-location>/WEB-INF/tld/x.tld</taglib-location>
+17
+    </taglib>
+18
+  </jsp-config><span></span>
+ 
+
+ 7 在JSP页面中插入：
+
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
+	
+	
+JSTL（JSP Standard Tag Library ，JSP标准标签库)
+JSTL（JSP Standard Tag Library ，JSP标准标签库)是一个不断完善的开放源代码的JSP标签库，是由apache的jakarta小组来维护的。JSTL只能运行在支持JSP1.2和Servlet2.3规范的容器上，如tomcat 4.x。在JSP 2.0中也是作为标准支持的
+
+Tomcat 7 and JSTL
+
+Tomcat has never included JSTL.
+
+You should put the jstl and standard jars in WEB-INF/lib (you've done that), and make sure you have the permissions to read them (chmod)
+
+Your URI is correct and it should work (works here)
+
+
+
+CDN服务介绍
+CDN全称Content Delivery Network，即内容分发网络。
+腾讯提供的CDN服务与一般意义上的CDN服务是一样的，旨在将网站的静态内容发布到最接近用户的网络的边缘，使用户可以就近取得所需的内容，提高用户访问网站的响应速度
+
+内容分发网络（Content delivery network或Content distribution network，常简写成CDN）是指一种通过互联网互相连接的计算机网络系统，提供高性能、可扩展性、及低成本的网络将内容传递给用户
+
+Google PageSpeed Service是Google提供的一项免费CDN加速服务，Page Speed Service会从网站的服务器抓取内容，重写网页，再通过Google的服务器呈现给用户浏览，利用谷歌强大的服务器处理能力与反应速度，提升网页的加载速度。
+
+Google PageSpeed Service会自动对你的网站进行CSS、图片、JS、Html压缩优化，对内容、DNS缓存等开启并优化，而且PageSpeed Service配备了强大的自定义设置与访问统计功能，还可以控制某一IP或者用户对网站的访问权。
+
+Google PageSpeed Service的在2011年就已经推出了，到现在一直免费着，要试用Google PageSpeed Service先要提交申请，Google一般给在两个小时内给你答复。成功获得PageSpeed Service的使用权后，最多可以添加50个域名进行加速
+
+http://www.citydog.me/3040.html
+用上PageSpeed Service！
+
+
+
+
+
+wxstat -> B2AVI 修改成数据库的形式
+B2AVI  文件及文件夹 -》修改成数据库的形式 
+
+
+
+
+
+
+
+
+godaddy注册完域名后，需要验证，邮箱才会激活到，管理，域名的面板，点“Pending Whois Verification”，发送验证邮件。
+cPanel 
+38107863
+
+username: wangxiang / Y

@@ -1,0 +1,6 @@
+Chrome 应用的开发
+Chrome 应用可以单独做为一个进程启动
+Chrome插件与应用的区别？
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
+它的代理及账号怎么关联的？
+img/chrome-plug-startup.png

@@ -1,0 +1,9 @@
+主动模式   PORT <SP> <host-port> <CRLF>     客户端随机开放一个端口（1024以上）
+被动模式   PASV <CRLF>                      服务器随机开放一个端口（1024以上），然后把开放的端口告诉客户端
+
+PORT 命令
+PORT 114,248,231,231,18,113
+200 PORT command successful.
+
+PASV 响应
+227 Entering Passive Mode (h1,h2,h3,h4,p1,p2).

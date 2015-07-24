@@ -1,0 +1,42 @@
+Google App Engine
+w..x
+
+d20140327
+
+Application Identifier:
+d20140327
+Use this identifier in the application's app.yaml or appengine-web.xml.
+
+Service Account Name:
+d20140327@appspot.gserviceaccount.com
+Use this name when interacting with external services on behalf of your application.
+
+Application Default Version URL:
+No version of application is deployed yet.
+
+Authentication Type:
+The Google Accounts API includes all Google Accounts. Learn more
+
+Application Identifier Alias:
+d20140327.appspot.com
+Between 6 and 30 characters. Provides an alternative URL to access your application through appspot.com. It can be used to enable Channel, XMPP, Email, and SSL access for your application.
+http://d20140327.appspot.com
+
+Datastore Replication Options:
+High Replication
+Uses a highly replicated Datastore that synchronously replicates data across multiple locations simultaneously.
+
+Google APIs Console Project Number:
+493920833163
+The Google APIs Console allows you to configure other Google APIs, like Translate or Cloud Storage.
+
+GoogleAppEngine入门.pdf
+
+上传：appcfg.py
+
+现在国内还有方法用GAE吗？有什么方法上appspot的域名吗？
+可以试试CDN大法。 
+GFW封锁了GAE的服务器，但是没有封锁部分国外的CDN服务器。 
+有很多CDN服务商提供免费的CDN服务，比如Incapsula，CloudFlare 等。 
+在你的应用设置里绑定你的域名，然后设置一下域名的解析记录到CDN服务商那里。就可以成功访问了。 
+附上一个我的一个测试链接：http://orz.bigemon.com/

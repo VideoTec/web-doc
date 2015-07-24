@@ -1,0 +1,266 @@
+客户端
+connect
+临时端口又称短暂端口，是TCP，UDP，或SCTP协议通过TCP/IP底层软件从预设范围内自动获取的端口，一般提供给客户服务器通讯中的客户端。这种端口是临时的，并且仅在应用程序使用协议建立通讯联系的周期中有效
+IANA建议49152至65535作为“动态或私有端口”
+许多Linux内核使用32768至61000范围。配置文件/proc/sys/net/ipv4/ip_local_port_range有当前系统设定
+
+服务器端
+bind listen accept
+
+Accept() 为每个连接创立新的套接字并从监听队列中移除这个连接
+返回新的套接字描述符，出错返回-1。进一步的通信必须通过这个套接字。
+
+数据传输
+send()和recv(),或者write()和read(),或者recvfrom()和sendto()
+
+句柄：
+socket() 创建一个新的确定类型的套接字，类型用一个整型数值标识（文件描述符），并为它分配系统资源
+socket() 为通讯创建一个端点，为套接字返回一个文件描述符。
+socket() 只赋予其所使用的协议，并未分配地址
+
+
+TCP客户端示例：
+int SocketFD = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+connect(SocketFD, (const struct sockaddr *)&stSockAddr, sizeof(struct sockaddr_in));
+
+shutdown(SocketFD, SHUT_RDWR);
+close(SocketFD);
+
+TCP服务器端示例：
+int SocketFD = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+bind(SocketFD,(const struct sockaddr *)&stSockAddr, sizeof(struct sockaddr_in));
+listen(SocketFD, 10);
+
+int ConnectFD = accept(SocketFD, NULL, NULL);
+shutdown(ConnectFD, SHUT_RDWR);
+close(ConnectFD);
+
+close(SocketFD);
+
+UDP客户端
+sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
+sendto(sock, buffer, buffer_length, 0,(struct sockaddr*)&sa, sizeof (struct sockaddr_in));
+
+UDP服务器端
+int sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
+bind(sock,(struct sockaddr *)&sa, sizeof(struct sockaddr));
+recvfrom(sock, (void *)buffer, 1024, 0, (struct sockaddr *)&sa, &fromlen);  循环读取数据
+
+################################################
+#####
+#####《地址，整数等等网络字节序转换》
+#####
+################################################
+htons 等等
+ntohs 等等
+
+inet_addr("127.0.0.1");
+inet_ntoa(struct in_addr a);
+The string returned is guaranteed to be valid only until the next Windows Sockets function call is made within the same thread. Therefore, the data should be copied before another Windows Sockets call is made
+
+################################################
+#####
+#####《Window Socket2》
+#####
+################################################
+#include <winsock2.h>  Ws2_32.lib
+
+地址结构体： in - inet; s - socket; a - address
+struct sockaddr_in
+struct sockaddr_in {
+        short   sin_family;          //Address family
+        u_short sin_port;
+        struct  in_addr sin_addr;
+        char    sin_zero[8];
+};
+struct sockaddr
+struct sockaddr {
+        ushort  sa_family;          //Address family
+        char    sa_data[14];
+};
+此数据结构用做bind、connect、recvfrom、sendto等函数的参数，指明地址信息
+一般编程中并不直接针对此数据结构sockaddr操作，而是使用另一等价的数据结构sockaddr_in
+
+address family
+AF_INET    The Internet Protocol version 4 (IPv4) address family.
+AF_INET6   The Internet Protocol version 6 (IPv6) address family.
+
+The type specification for the socket
+SOCK_STREAM
+SOCK_DGRAM
+还有三个其它的套接字类型
+
+The protocol to be used.
+IPPROTO_TCP
+IPPROTO_UDP
+
+IPPROTO_ICMP
+IPPROTO_ICMPV6
+IPPROTO_IGMP
+BTHPROTO_RFCOMM
+IPPROTO_RM
+
+socket 函数用法：(closesocket用法)
+socket(AF_INET, SOCK_STREAM, 0);
+返回值：INVALID_SOCKET
+#define INVALID_SOCKET  (SOCKET)(~0)
+If no error occurs, socket returns a descriptor referencing the new socket. Otherwise, a value of INVALID_SOCKET is returned
+注意调用关闭套接字函数：
+Close the socket to release the resources associated
+When a session has been completed, a closesocket must be performed.
+
+closesocket用法
+Normally an application calls shutdown() before closesocket to  disables sends or receives on a socket first
+
+shutdown 用法： shutdown(ftp_socket, SD_BOTH);
+Call shutdown with how=SD_SEND.
+Call recv or WSARecv until the function completes with success and indicates zero bytes were received. 
+If SOCKET_ERROR is returned, then the graceful disconnect is not possible.
+Call closesocket.
+
+Call WSAEventSelect to register for FD_CLOSE notification.
+Call shutdown with how=SD_SEND.
+When FD_CLOSE received, call the recv or WSARecv until the function completes with success and indicates that zero bytes were received. 
+If SOCKET_ERROR is returned, then the graceful disconnect is not possible.
+Call closesocket.
+
+send 函数用法: 
+返回值： SOCKET_ERROR，失败，调用 WSAGetLastError 获取失败代码
+返回值： 发送的字节数
+send( ConnectSocket, sendbuf, (int)strlen(sendbuf), 0 );
+
+flags [in] Most often is zero, but see MSDN for other options（一般赋值0）
+A set of flags that specify the way in which the call is made.
+This parameter is constructed by using the bitwise OR operator with any of the following values.
+
+MSG_DONTROUTE
+#define MSG_DONTROUTE   0x4             /* send without using routing tables */
+Specifies that the data should not be subject to routing. 
+A Windows Sockets service provider can choose to ignore this flag.
+
+MSG_OOB
+#define MSG_OOB         0x1             /* process out-of-band data */
+Sends OOB data (stream-style socket such as SOCK_STREAM only.
+
+recv 函数用法：一个缓存，循环读取，直到，读不到数据，或者，出错为止
+recv(ConnectSocket, recvbuf, recvbuflen, 0);
+The flags parameter can be used to influence the behavior of the function invocation beyond the options specified for the associated socket
+MSG_PEEK
+#define MSG_PEEK        0x2             /* peek at incoming message */
+
+MSG_OOB
+#define MSG_OOB         0x1             /* process out-of-band data */
+
+MSG_WAITALL
+#define MSG_WAITALL     0x8             /* do not complete until packet is completely filled */
+
+getsockname 用法：receives the address (name) of the socket.
+struct sockaddr_in addr;//定义socket结构 
+int tmp = sizeof(addr);   
+getsockname(iSockFtpCmd,(struct sockaddr *)&addr,&tmp);  
+This call is especially useful when a connect call has been made without doing a bind first; 
+the getsockname function provides the only way to determine the local association that has been set by the system
+这个函数返回的网络地址中端口号的字节序是？big-enddian
+
+bind 函数用法：可以分配端口号
+The bind function associates a local address with a socket.
+bind(listeningSocket, (LPSOCKADDR)&serverInfo, sizeof(struct sockaddr));
+For TCP/IP, if the port is specified as zero, the service provider assigns a unique port to the application from the dynamic client port range. 
+
+listen函数用法：The listen function places a socket in a state in which it is listening for an incoming connection.
+
+listen(iSockFtpData,1);
+
+iSockFtpData : A descriptor identifying a bound, unconnected socket.
+
+backlog [in]
+The maximum length of the queue of pending connections. 
+If set to SOMAXCONN, the underlying service provider responsible for socket s will set the backlog to a maximum reasonable value. 
+There is no standard provision to obtain the actual backlog value.
+
+accept 函数用法：
+SOCKET accept(
+  _In_     SOCKET s,
+  _Out_    struct sockaddr *addr,
+  _Inout_  int *addrlen
+);
+tmp = sizeof(addr); 
+iSockAccept = accept(iSockFtpData,(struct sockaddr *)&addr,&tmp);
+接收FTP Server端点的地址信息。
+
+《Berkeley套接字API库》
+socket() 创建一个新的确定类型的套接字，类型用一个整型数值标识（文件描述符），并为它分配系统资源。
+bind() 一般用于服务器端，将一个套接字与一个套接字地址结构相关联，比如，一个指定的本地端口和IP地址。
+listen() 用于服务器端，使一个绑定的TCP套接字进入监听状态。
+connect() 用于客户端，为一个套接字分配一个自由的本地端口号。 如果是TCP套接字的话，它会试图获得一个新的TCP连接。
+accept() 用于服务器端。 它接受一个从远端客户端发出的创建一个新的TCP连接的接入请求，创建一个新的套接字，与该连接相应的套接字地址相关联。
+send()和recv(),或者write()和read(),或者recvfrom()和sendto(), 用于往/从远程套接字发送和接受数据。
+close() 用于系统释放分配给一个套接字的资源。 如果是TCP，连接会被中断。
+gethostbyname()和gethostbyaddr() 用于解析主机名和地址。
+select() 用于修整有如下情况的套接字列表： 准备读，准备写或者是有错误。
+poll() 用于检查套接字的状态。 套接字可以被测试，看是否可以写入、读取或是有错误。
+getsockopt() 用于查询指定的套接字一个特定的套接字选项的当前值。
+setsockopt() 用于为指定的套接字设定一个特定的套接字选项。
+
+《linux socket 编程环境》
+#include <netinet/in.h> 定义一些结构体：sockaddr_in
+/* Internet address.  */
+typedef uint32_t in_addr_t;
+struct in_addr
+  {
+    in_addr_t s_addr;
+  };
+  
+/* Structure describing an Internet socket address.  */
+struct sockaddr_in
+  {
+    __SOCKADDR_COMMON (sin_);
+    in_port_t sin_port;			/* Port number.  */
+    struct in_addr sin_addr;		/* Internet address.  */
+
+    /* Pad to size of `struct sockaddr'.  */
+    unsigned char sin_zero[sizeof (struct sockaddr) -
+			   __SOCKADDR_COMMON_SIZE -
+			   sizeof (in_port_t) -
+			   sizeof (struct in_addr)];
+  };
+  
+warning: implicit declaration of function ‘inet_addr’
+#include <arpa/inet.h>
+/* Convert Internet host address from numbers-and-dots notation in CP
+   into binary data in network byte order.  */
+extern in_addr_t inet_addr (__const char *__cp) __THROW;
+
+#include <sys/socket.h>
+/* Create a new socket of type TYPE in domain DOMAIN, using
+   protocol PROTOCOL.  If PROTOCOL is zero, one is chosen automatically.
+   Returns a file descriptor for the new socket, or -1 for errors.  */
+extern int socket (int __domain, int __type, int __protocol) __THROW;
+
+下面这个警告是怎么回事？意思是sockaddr_in未定义
+int connect_addr(const struct sockaddr_in *addr);
+15: warning: ‘struct sockaddr_in’ declared inside parameter list
+15: warning: its scope is only this definition or declaration, which is probably not what you want
+
+/* Open a connection on socket FD to peer at ADDR (which LEN bytes long).
+   For connectionless socket types, just set the default address to send to
+   and the only address from which to accept transmissions.
+   Return 0 on success, -1 for errors.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */
+extern int connect (int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len);
+
+Linux关闭套接字的方法
+在Linux socket关闭连接的方法有两种分别是shutdown和close，
+/* Shut down all or part of the connection open on socket FD.
+   HOW determines what to shut down:
+     SHUT_RD   = No more receptions;
+     SHUT_WR   = No more transmissions;
+     SHUT_RDWR = No more receptions or transmissions.
+   Returns 0 on success, -1 for errors.  */
+extern int shutdown (int __fd, int __how) __THROW;
+
+#include<unistd.h>
+int close(int fd);
+

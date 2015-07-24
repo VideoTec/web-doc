@@ -1,0 +1,7 @@
+http://superuser.com/questions/337763/is-there-a-good-dns-server-i-can-install-on-windows-7-for-a-lan
+Consider placing DD-WRT on your router, it uses dnsmasq with a hosts file.
+This way, you won't lose energy costs on having to run that computer solely for DNS.
+
+
+当前软件版本：	3.9.3 Build 090803 Rel.52647n
+当前硬件版本：	WR841N v5 00000000

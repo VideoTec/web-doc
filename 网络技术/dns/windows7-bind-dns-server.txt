@@ -1,0 +1,38 @@
+http://www.cnblogs.com/h2appy/archive/2008/11/25/1340544.html
+http://369369.blog.51cto.com/319630/811179 - 安装图解
+http://drupalmotion.com/article/dev-environment-install-and-configure-bind-dns-server-windows-7 
+
+下载地址
+http://ftp.isc.org/isc/bind9/9.4.3/BIND9.4.3.zip
+https://www.isc.org/downloads/ - 最新版本下载
+
+运行 BINDInstall.exe -> 设置用户名 named / y
+
+我们在规划windows系统时，都会把C盘格式化为NTFS，根据第二步安装步骤，
+bind安装程序新建了一个named帐号，这个帐号是控制bind相关进程与配置文件的，它不隶属于任何部门，
+为安全性考虑，大家也不要把它加放到administrators组。
+我们刚把bind安装在默认的c:\windows\system32\dns目录中，所以我们必须给这个目录赋权给named帐号读写权限
+
+安装完后，发现没有目录 c:\windows\system32\dns - 使用最新的版本就没这个问题了。
+
+-----------------------------
+bind 配置
+-----------------------------
+Search for the DOS prompt cmd.exe and important!, right click and "Start as administrator". 
+Now browse to:
+
+C:\Program Files\ISC BIND 9
+
+运行
+rndc-confgen -a   This will create a file rndc.key
+
+创建文档： named.conf
+
+启动 ISC BIND 服务，出错
+错误 1067: 进程意外终止  -  应该是用户的问题
+
+最后从，控制台运行  named -f
+
+127.0.0.1 port 953
+
+http://www.go4pro.org/article/85  配置自定义 IP

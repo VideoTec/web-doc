@@ -1,0 +1,23 @@
+http://superuser.com/questions/337763/is-there-a-good-dns-server-i-can-install-on-windows-7-for-a-lan
+
+check out these DNS servers for Windows:
+
+The most widely used DNS server, BIND, has a ntbind variant.
+
+Microsoft DNS is included with Windows Server, if you can run that, perhaps virtualized.
+
+Simple DNS Server really follows the KISS principle; Keep It Stupidly Simple. It's trial though...
+
+PowerDNS, a Dutch DNS server that fits home DNS hosting.
+
+MaraDNS only has partial support (according to Wikipedia), but is a security-aware DNS server.
+
+Posadis is GPL licensed, compatible with BIND files.
+
+Unbound is BSD licensed, uses modular components.
+
+Cisco Network Registrar is proprietary, fits a larger company if you want support.
+
+If you have the money, Simple DNS Server looks really nice. Or perhaps Microsoft DNS...
+
+Else try an open source DNS server like BIND, PowerDNS, MaraDNS, Posadis or Unbound.

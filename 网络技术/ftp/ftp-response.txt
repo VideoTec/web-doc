@@ -1,0 +1,12 @@
+http://tools.ietf.org/html/rfc959
+FTP REPLIES
+
+《怎么判断是一个FTP的响应结束了，及其返回码？》
+
+Every command must generate at least one reply, although there may be more than one
+A reply is defined to contain the 3-digit code, followed by Space
+如果响应有多行文本的格式：
+123-First line    第一行：-表示后面还有其它行
+Second line
+ 234 A line beginning with numbers  中间某行开头带数字，前面要加空格，以区别最后一行。
+123 The last line 最后一行：代码与第一行一样。

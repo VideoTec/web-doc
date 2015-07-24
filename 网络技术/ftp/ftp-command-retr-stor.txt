@@ -1,0 +1,12 @@
+RETR <SP> <pathname> <CRLF>      向服务器请求文件（FTP下载）
+150 Opening data channel for file download from server of "/1.mp4
+226 Successfully transferred "/1.mp4"
+问题：
+客户端怎么判断，结束了？数据socket读不到新数据，就算结束了。
+
+STOR <SP> <pathname> <CRLF>      向服务器发送文件（FTP上传）
+550 Permission denied 简单原因：用户没有写权限，如果服务器上有重名文件还需要删除权限
+或者
+150 Opening data channel for file upload to server of "/12324.mp4"
+问题：
+服务器怎么判断，客户端传输完了？

@@ -1,0 +1,39 @@
+FTP 协议：服务器和客户端是通过命令行进行对话的。
+
+http://tools.ietf.org/html/rfc959
+The following are the FTP commands:
+
+            USER <SP> <username> <CRLF>
+            PASS <SP> <password> <CRLF>
+            ACCT <SP> <account-information> <CRLF>
+            CWD  <SP> <pathname> <CRLF>
+            CDUP <CRLF>
+            SMNT <SP> <pathname> <CRLF>
+            QUIT <CRLF>
+            REIN <CRLF>
+            PORT <SP> <host-port> <CRLF>     客户端随机开放一个端口（1024以上）
+            PASV <CRLF>                      服务器随机开放一个端口（1024以上），然后把开放的端口告诉客户端
+            TYPE <SP> <type-code> <CRLF>
+            STRU <SP> <structure-code> <CRLF>
+            MODE <SP> <mode-code> <CRLF>
+            RETR <SP> <pathname> <CRLF>      向服务器请求文件（FTP下载）
+            STOR <SP> <pathname> <CRLF>      向服务器发送文件（FTP上传）
+            STOU <CRLF>
+            APPE <SP> <pathname> <CRLF>
+            ALLO <SP> <decimal-integer>
+                [<SP> R <SP> <decimal-integer>] <CRLF>
+            REST <SP> <marker> <CRLF>
+            RNFR <SP> <pathname> <CRLF>
+            RNTO <SP> <pathname> <CRLF>
+            ABOR <CRLF>
+            DELE <SP> <pathname> <CRLF>
+            RMD  <SP> <pathname> <CRLF>
+            MKD  <SP> <pathname> <CRLF>
+            PWD  <CRLF>
+            LIST [<SP> <pathname>] <CRLF>
+            NLST [<SP> <pathname>] <CRLF>
+            SITE <SP> <string> <CRLF>
+            SYST <CRLF>
+            STAT [<SP> <pathname>] <CRLF>
+            HELP [<SP> <string>] <CRLF>
+            NOOP <CRLF>

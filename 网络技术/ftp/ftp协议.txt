@@ -1,0 +1,194 @@
+FTP服务一般运行在20和21两个端口。端口20用于在客户端和服务器之间传输数据流，而端口21用于传输控制流，并且是命令通向ftp服务器的进口
+
+http://tools.ietf.org/html/rfc959 协议文档，主要两部分：
+命令：
+响应：
+
+重要问题？ftp命令行响应，接收代码，怎么判断，响应的数据的结束符？
+
+主动模式的FTP连接创建要遵循以下步骤：
+
+客户端打开一个随机的端口（端口号大于1024，在这里，我们称它为x），同时一个FTP进程连接至服务器的21号命令端口。此时，该tcp连接的来源地端口为客户端指定的随机端口x，目的地端口（远程端口）为服务器上的21号端口。
+客户端开始监听端口（x+1），同时向服务器发送一个端口命令（通过服务器的21号命令端口），此命令告诉服务器客户端正在监听的端口号并且已准备好从此端口接收数据。这个端口就是我们所知的数据端口。
+服务器打开20号源端口并且创建和客户端数据端口的连接。此时，来源地的端口为20，远程数据(目的地)端口为（x+1）。
+客户端通过本地的数据端口创建一个和服务器20号端口的连接，然后向服务器发送一个应答，告诉服务器它已经创建好了一个连接
+
+ftp协议的正常工作需要两个TCP连接：命令端口、数据端口。 
+命令端口: 用来传输纯文本的命令交互，此连接在整个FTP会话周期中不中断； 
+数据端口: 用来传输二进制、文本等数据信息，只是在需要传输数据时，才会建立此连接，传输数据完毕就关闭，属于临时会话的性质
+
+C open port x         and connect S:21
+FTP客户端连接到FTP服务器的21端口，发送用户名和密码登录
+
+C listen port x+1     and tell    S:21 the port x+1【数据端口】
+客户端随机开放一个端口（1024以上），发送 PORT命令到FTP服务器，告诉服务器客户端采用主动模式并开放端口
+
+FTP服务器收到PORT主动模式命令和端口号后，通过服务器的20端口和客户端开放的端口连接，发送数据
+下面这个是怎么回事？两个连接，一个连接？通知服务器那个端口已经连接上了？
+S open port 20        and connect C:x+1
+C use port x+1        and connect S:20 and tell s connect is ok
+
+
+被动模式 PASV
+FTP客户端连接到FTP服务器的21端口，发送用户名和密码登录
+客户端发送PASV命令到FTP服务器
+服务器在本地随机开放一个端口（1024以上），然后把开放的端口告诉客户端
+客户端再连接到服务器开放的端口进行数据传输
+
+主动模式传送数据时是“服务器”连接到“客户端”的端口；客户端开放随机端口，供服务器连接，客户端的防火墙需要打开指定端口
+被动模式传送数据是“客户端”连接到“服务器”的端口  : 服务器开放随机端口，供客户端连接。服务器的防火墙需要
+
+PORT命令
+PASV命令
+
+用SOCKET发送FTP命令示例：注意，每条命令行，都要加行结束符。
+    const char *user_string {"USER test\r\n"};
+    const char *pass_string {"PASS 123456\r\n"};
+    ret = send(ftp_socket, user_string, strlen(user_string), 0); //发送完用户名后，如果间隔时间太长，服务器：返回421 Login time exceeded，并关闭“控制连接”
+    ret = send(ftp_socket, pass_string, strlen(pass_string), 0);
+	
+发送用户名返回：
+331 Password required for test
+.48 beta
+220-written by Tim Kosse (tim.kosse@filezilla-project.org)
+220 Please visit https://filezilla-project.org/
+
+发送密码后返回：
+230 Logged on
+quired for test
+.48 beta
+220-written by Tim Kosse (tim.kosse@filezilla-project.org)
+220 Please visit https://filezilla-project.org/
+
+连接成功后的返回
+220-FileZilla Server version 0.9.48 beta
+220-written by Tim Kosse (tim.kosse@filezilla-project.org)
+220 Please visit https://filezilla-project.org/
+
+《怎么分析FTP服务器控制流的返加?什么时候认为经书结束？》
+
+FTP 命令列表：
+http://en.wikipedia.org/wiki/List_of_FTP_server_return_codes
+http://zh.wikipedia.org/wiki/FTP%E5%91%BD%E4%BB%A4%E5%88%97%E8%A1%A8
+PASV		进入被动模式
+PORT		指定服务器要连接的地址和端口
+
+filezilla配置主动模式时
+1. 需要设置外网地址。
+2. 需要客户端本地，防火墙开发，监听端口。
+中国的ip地址资源太少，很多情况下ftp回话两端要经过层层NAT、网关、防火墙。
+导致PORT PASV中的ip 信息不一定都是正确的。
+比如client的ip是192.168.0.107，其实它是通过NAT连接上网的，该NAT对外的internet地址是218.2.135.1，
+那么client 发送的PORT指令中携带的192,168,0,107,xx,yy 对于server是没有意义的。 
+所幸现在的NAT、防火墙一般都有FTP应用层感知能力，它能够截获ftp会话中的PORT PASSIVE， 
+自动将private的ip翻译成对外的正确的ip，并实时的在NAT上开放临时端口转发 
+
+极少数的NAT网关也支持PORT方式。这些NAT网关连数据包里面的内容都扫描，扫描到 PORT指令后会替换PORT方式的IP和端口
+NAT映射
+
+USER		认证用户名   特殊的用户ID：anonymous
+PASS		认证密码
+
+TYPE		设定传输模式（ASCII/二进制).
+ The following codes are assigned for type:
+
+                         \    /
+               A - ASCII |    | N - Non-print
+                         |-><-| T - Telnet format effectors
+               E - EBCDIC|    | C - Carriage Control (ASA)
+                         /    \
+               I - Image
+               
+RETR		传输文件副本
+RETR tt.mp4\r\n
+RETR /Products/Windows/Windows95/CDRomExtras/Multimedia/jungle.exe\r\n
+
+STOR		接收数据并且在服务器站点保存为文件
+
+PORT命令：
+Syntax: PORT a1,a2,a3,a4,p1,p2
+Specifies the host and port to which the server should connect for the next file transfer.
+This is interpreted as IP address a1.a2.a3.a4, port p1*256+p2.
+注意，是“十进制” 字符串表示：
+c = (unsigned char *)&addr.sin_addr;     
+p = (unsigned char *)&addr.sin_port;   
+FtpCmd(iSockFtpCmd,"PORT %d,%d,%d,%d,%d,%d", c[0],c[1],c[2],c[3],p[0],p[1]);
+命令:	PORT 114,248,231,231,18,113
+响应:	200 PORT command successful.
+
+命令:	PASV
+响应:	227 Entering Passive Mode (134,170,188,232,30,200).
+227 Entering Passive Mode (h1,h2,h3,h4,p1,p2).
+
+PASV 和下载 RETR
+(000011)2014/11/12 12:48:49 - test (127.0.0.1)> PASV
+(000011)2014/11/12 12:48:49 - test (127.0.0.1)> 227 Entering Passive Mode (127,0,0,1,58,197)
+(000011)2014/11/12 12:48:52 - test (127.0.0.1)> RETR tt.mp4
+(000011)2014/11/12 12:48:52 - test (127.0.0.1)> 150 Opening data channel for file download from server of "/tt.mp4"
+
+150 File status okay; about to open data connection.
+125 Data connection already open; Transfer starting.
+
+连接：ftp.microsoft.com 站点时，返回：
+220 Microsoft FTP Service
+
+331 Anonymous access allowed, send identity (e-mail name) as password.
+
+230 User logged in.
+CROSOFT.COM. Also visit http://www.microsoft.com/downloads.
+
+200 Type set to I.
+
+CROSOFT.COM. Also visit http://www.microsoft.com/downloads.
+
+指定用户名和密码，ftp://user:password@hostname
+ftp://sjkd:sjkd123sjkd@110.84.128.69:7788
+
+http://tools.ietf.org/html/rfc959
+The following are the FTP commands:
+
+            USER <SP> <username> <CRLF>
+            PASS <SP> <password> <CRLF>
+            ACCT <SP> <account-information> <CRLF>
+            CWD  <SP> <pathname> <CRLF>
+            CDUP <CRLF>
+            SMNT <SP> <pathname> <CRLF>
+            QUIT <CRLF>
+            REIN <CRLF>
+            PORT <SP> <host-port> <CRLF>
+            PASV <CRLF>
+            TYPE <SP> <type-code> <CRLF>
+            STRU <SP> <structure-code> <CRLF>
+            MODE <SP> <mode-code> <CRLF>
+            RETR <SP> <pathname> <CRLF>
+            STOR <SP> <pathname> <CRLF>
+            STOU <CRLF>
+            APPE <SP> <pathname> <CRLF>
+            ALLO <SP> <decimal-integer>
+                [<SP> R <SP> <decimal-integer>] <CRLF>
+            REST <SP> <marker> <CRLF>
+            RNFR <SP> <pathname> <CRLF>
+            RNTO <SP> <pathname> <CRLF>
+            ABOR <CRLF>
+            DELE <SP> <pathname> <CRLF>
+            RMD  <SP> <pathname> <CRLF>
+            MKD  <SP> <pathname> <CRLF>
+            PWD  <CRLF>
+            LIST [<SP> <pathname>] <CRLF>
+            NLST [<SP> <pathname>] <CRLF>
+            SITE <SP> <string> <CRLF>
+            SYST <CRLF>
+            STAT [<SP> <pathname>] <CRLF>
+            HELP [<SP> <string>] <CRLF>
+            NOOP <CRLF>
+            
+http://tools.ietf.org/html/rfc959
+FTP REPLIES
+
+      Every command must generate at least one reply, although there may be more than one
+      A reply is defined to contain the 3-digit code, followed by Space
+      如果响应有多行文本的格式：
+123-First line    第一行：-表示后面还有其它行
+Second line
+ 234 A line beginning with numbers  中间某行开头带数字，前面要加空格，以区别最后一行。
+123 The last line 最后一行：代码与第一行一样。

@@ -1,0 +1,77 @@
+OpenWrt是适合于嵌入式设备的一个Linux发行版
+
+DD-WRT是一个基于Linux的无线路由固件，以GNU通用公共许可证（GPL）V2授权发布 linux核心部分基于OpenWrt核心
+
+DD-WRT的系统源代码起源于Linksys WRT54G的系统，
+由于在2002年有人发现Linksys WRT54G的系统是基于Linux开发，
+而Linux又是使用GPL授权，
+所以要求Linksys依照GPL授权要求公开Linksys WRT54G的系统源代码，
+最终在2003年3月思科迫于压力按照授权释放系统源代码，
+然后该套代码被适用于基于Linksys WRT54G/GS/GL 或其他基于Broadcom参考设计的802.11g无线路由器，
+其中一个分支为OpenWrt，而OpenWrt又派生出DD-WRT。
+
+
+WR841N v5 - DD-WRT
+
+固件下载
+http://www.dd-wrt.com/site/support/router-database
+如果是从原厂固件第一次刷DD-WRT，需要选择factory-to-ddwrt.bin这个固件，如果是升级DD-WRT，选另一个即可
+
+http://www.dd-wrt.com/wiki/index.php/%E5%88%B7%E6%9C%BA
+通常情况下，安装 DD-WRT 至路由器几乎和在电脑上安装软件一样简单。
+在路由器上安装软件，也就是常说的固件(firmware)，是通过所谓的刷新(flashing)固件方法实现的。
+本文指导将您，确定针对您所拥有的本固件支持的路由器适用的安装过程，
+并提供路由器选择建议及各型号路由器刷新固件的相关信息
+
+第一步，恢复出厂设置
+第二步，
+如果你是从原厂固件刷DD-WRT的话必须先刷factory-to-ddwrt.bin这个包，
+也就是说如果你之前是使用的TP的固件，没有刷过DDWRT的话就必须先刷这个包
+
+然后在刷tl-wr841nd-webflash.bin，顺序千万别弄错了？
+刷完DDWRT的原厂固件后然后在刷tl-wr841nd-webflash.bin，单击 Administration-Fireware Upgrade，在After Flashing，reset to选择框中选择 Reset to Default settings，也就是刷玩之后恢复出厂设置，然后在下面单击“浏览”，选择tl-wr841nd-webflash.bin这个包，单击Upgrade，这个时间比之前刷的原厂包时间要长一点儿，稍微等一下
+
+------------------------------------------------------------------------------------
+22:59 2015/6/4 刷固件后，无法，保存配置，重启后，所有的保存设置都丢失了
+------------------------------------------------------------------------------------
+set dd-wrt back to default values
+clear out the NVRAM
+硬复位(又名 30/30/30 复位大法) 应在每次升级固件 前 和 后 都做一次
+30/30/30 硬复位【即插电稳定后,按复位键不松开30秒 不松开断电30秒 不松开再插电30秒】
+
+或者使用 telnet
+Telnet (or SSH) into 192.168.1.1
+
+erase nvram
+reboot
+
+或者
+
+mtd -r erase nvram
+
+After resetting DD-WRT, you need to login with the user name "root" and password "admin".
+
+30/30/30 (硬复位)【即插电30秒 断电30秒 再插电30秒】
+
+按住路由器后部的复位按钮30秒，保持按住的状态拔掉电源30秒，然后同样保持按住的状态重新插上路由器。此操作将重置 nvram，确保您在纯净的环境下载入固件。"恢复出厂默认设置" 功能并不总是清理整个 nvram 区段。
+
+替代方法:
+
+telnet 登录至路由器，执行以下命令：
+
+erase nvram
+
+reboot
+
+------------------------------------------------------------------------------------
+DD-WRT 配置
+------------------------------------------------------------------------------------
+1. 设置， wlan ,本地网络
+2. 无线网络安装
+   wpa2 personal    个人版  只需要设置一个密码
+   wpa2 enterprise  企业版  设置更复杂 
+   
+kip和aes都是算法，aes也叫CCMP，是增强型算法，其加密等级要比TKIP高。
+而TKIP是基于WEP框架改进，虽然在加密等级上有所提升，但是其框架决定了安全性还是不足
+
+你不用管具体的差别了，反正你要不想别人轻易蹭你网，最好选择wpa2-aes加密方式

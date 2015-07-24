@@ -1,0 +1,17 @@
+GOOGLE+ 寻找加过的帖子
+
+
+Gmail
+#section_query  显示100条记录
+
+https://mail.google.com/mail/u/0/#section_query/label%3Aunread
+
+https://mail.google.com/mail/u/0/#search/label%3Aunread
+
+
+
+
+
+
+
+IRC（Internet Relay Chat的缩写，“因特网中继聊天”）是一种通过网络的即时聊天方式
