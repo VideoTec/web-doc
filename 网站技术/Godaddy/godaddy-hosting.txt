@@ -2,7 +2,7 @@
 
 购买了 economy hosting。购买后，需要 setup
 1. 指定域名
-2. 设置 cPannel 账号
+2. 设置 cPannel 账号 （wangxiang83 Y!） 这个账号默认成为，FTP账号
    设置用户名时，总是在检测，不出结果 - 应该是在检测是否与已经存在的用户名冲突
 3. Setting up your cPanel account... - 这个需要一段时间
 4. 设置完成后，登录了很多次，才登录成功。
@@ -11,6 +11,8 @@
 5. 设置ssh访问。 sftp 是怎么回事？ 正确的称呼是： ftp over tls
    FTPS是一种以扩展常用的文件传输协议（FTP）的添加了对传输层安全性（TLS）和安全套接字层（SSL）的加密协议的支持
    FTPS不应与基于SSH基础的SSH文件传输协议，或是Secure FTP这些不同的文件传输协议所混淆
+   
+   godadday 支持显示FTPS
    
    有两种使用模式被开发出来，显式或隐式。
    显式是兼顾相容的作法。隐式则必需在用户端与服务器端都开启设定
