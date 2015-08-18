@@ -1,0 +1,10 @@
+http://nius.me/how-to-use-josso/
+
+互联网app多了，老要登录注册是个大麻烦，
+各大SNS都提供自己的profile来支持第三方的身份认证，免去注册和登录，是一个不错的方案。
+
+一个品牌旗下的多个网站，也可以一个账号多处登录，
+典型的是taobao.com和tmall.com，跨域登录大约是通过专门的session管理服务实现。
+
+前一阵子flacro开始研究JOSSO，Java Open Single Sign-On，
+一个开源的跨域登录解决方案

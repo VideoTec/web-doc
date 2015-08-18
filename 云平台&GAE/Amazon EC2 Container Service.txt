@@ -1,0 +1,31 @@
+https://aws.amazon.com/cn/ecs/
+
+Amazon EC2 Container Service (ECS) 是一个高度可扩展，高性能的软件容器管理服务，
+它支持 Docker 软件容器，
+并允许您轻松地在 Amazon EC2 实例的管理集群上运行应用程序。
+
+使用 Amazon ECS，您将不再需要安装、运维、扩展自己的集群管理基础设施。
+只需进行简单的 API 调用，
+您便可以启动和停止支持 Dcocker 应用程序，
+查询集群的完整状态，
+使用各种熟悉的功能，
+包括安全组、Elastic Load Balancing、EBS卷和IAM角色。
+
+您可以使用 Amazon ECS 根据您的资源需求和可用性要求在您的集群中安排容器的置放。
+您还可以集成自己的计划程序或第三方计划程序，
+以满足业务或应用程序的特定要求
+
+http://www.blogjava.net/yongboy/archive/2013/12/12/407498.html
+Docker学习笔记之一，搭建一个JAVA Tomcat运行环境
+Docker旨在提供一种应用程序的自动化部署解决方案，
+在 Linux 系统上迅速创建一个容器（轻量级虚拟机）并部署和运行应用程序，
+并通过配置文件可以轻松实现应用程序的自动化安装、部署和升级，非常方便
+
+http://dockerpool.com/static/books/docker_practice/introduction/what.html
+Docker 是一个开源项目，诞生于 2013 年初，
+最初是 dotCloud 公司内部的一个业余项目。
+它基于 Google 公司推出的 Go 语言实现。 
+项目后来加入了 Linux 基金会，遵从了 Apache 2.0 协议，项目代码在 GitHub 上进行维护。
+
+Docker 项目的目标是实现轻量级的操作系统虚拟化解决方案。 
+Docker 的基础是 Linux 容器（LXC）等技术。

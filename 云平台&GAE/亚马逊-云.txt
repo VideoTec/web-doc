@@ -1,2 +1,33 @@
 ×ÊÔ´
 http://www.infoq.com/cn/minibooks/aws-minibook-201408
+
+AWS ?????
+https://aws.amazon.com/cn/training/?nc2=h_ql_summits
+?????
+https://aws.amazon.com/cn/training/course-descriptions/
+Developing on AWS(2015?8?19-21?,??)????:4800?(?????)
+https://jinshuju.net/f/8TtCSf
+
+AWS ????
+http://aws.amazon.com/cn/documentation/gettingstarted/
+
+AWS ????
+https://aws.amazon.com/cn/products/?nc2=h_ql
+
+????????
+https://aws.amazon.com/cn/training/intro_series/
+
+Amazon Web Services ???? wangxiangc@gmail.com cary
+https://us-west-2.console.aws.amazon.com/console/home?region=us-west-2
+
+2015 AWS?????? 8?25?????
+http://awsvirtualsummit.wm-it.com/agenda.aspx
+
+AWS ??
+https://aws.amazon.com/cn/certification/
+https://aws.amazon.com/cn/certification/certification-prep/ ??
+https://www.webassessor.com/wa.do?page=publicHome&branding=AMAZON ??
+AWS Certified Developer – Associate
+https://aws.amazon.com/cn/certification/certified-developer-associate/ 
+AWS Certified DevOps Engineer – Professional
+https://aws.amazon.com/cn/certification/certified-devops-engineer-professional/

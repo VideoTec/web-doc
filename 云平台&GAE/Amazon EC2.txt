@@ -1,0 +1,13 @@
+Amazon EC2 提供可调整的云计算能力。
+该服务旨在降低开发人员和系统管理员进行网络规模计算时的难度
+
+elastic[英][ɪˈlæstɪk] [美][ɪˈlæstɪk]
+adj.有弹力的；可伸缩的；灵活的
+
+https://aws.amazon.com/cn/ec2/
+Amazon Elastic Compute Cloud (Amazon EC2) 
+是一种 Web 服务，可在云中提供大小可调的计算容量。
+该服务旨在降低开发人员进行网络规模级云计算的难度。
+
+Amazon EC2 定价
+https://aws.amazon.com/cn/ec2/pricing/
