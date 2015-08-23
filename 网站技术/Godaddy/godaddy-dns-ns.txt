@@ -1,0 +1,8 @@
+参见：
+H:\doc\web\云平台&GAE\Amazon Route 53 使用方法.txt
+
+NS  记录 - 只需要把这个记录，复制到，godadday，域名的 ns 记录中。生效时间很长。
+ns-632.awsdns-15.net.
+ns-137.awsdns-17.com.
+ns-1865.awsdns-41.co.uk.
+ns-1476.awsdns-56.org.
