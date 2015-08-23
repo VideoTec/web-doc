@@ -1,0 +1,21 @@
+https://aws.amazon.com/cn/route53/
+
+Amazon Route 53
+Amazon Route 53 是一种可用性高、可扩展性强的云域名系统 (DNS) Web 服务。
+它的目的是为开发人员和企业提供一种非常可靠且经济高效的方式，
+把名称（如 www.example.com）转换为计算机用于互相连接的数字 IP 地址（如 192.0.2.1），
+从而将最终用户路由到 Internet 应用程序。
+
+Amazon Route 53 高效地将用户请求连接到 AWS 中运行的基础设施，
+例如 Amazon EC2 实例、Elastic Load Balancing 负载均衡器或 Amazon S3 存储桶，
+还可以将用户路由到 AWS 外部的基础设施。
+
+您可以使用 Amazon Route 53 配置 DNS 运行状况检查以将流量路由到正常的终端节点，
+或者独立监控应用程序及其终端节点的运行状况。
+
+Amazon Route 53 让您可以通过多种路由类型（包括基于延迟的路由、Geo DNS 和加权轮询）来管理全球流量，
+所有的路由类型都可以与 DNS 故障转移进行组合，以实现各种低延迟容错架构。
+
+Amazon Route 53 还提供域名注册功能 – 
+您可以购买和管理域名（例如 example.com），
+Amazon Route 53 将自动为您的域配置 DNS 设置。

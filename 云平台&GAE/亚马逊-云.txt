@@ -1,33 +1,33 @@
-��Դ
+资源
 http://www.infoq.com/cn/minibooks/aws-minibook-201408
 
-AWS ?????
+AWS 培训和认证
 https://aws.amazon.com/cn/training/?nc2=h_ql_summits
-?????
+培训和课程
 https://aws.amazon.com/cn/training/course-descriptions/
-Developing on AWS(2015?8?19-21?,??)????:4800?(?????)
+Developing on AWS（2015年8月19-21日，北京）
 https://jinshuju.net/f/8TtCSf
 
-AWS ????
+AWS 文档入门
 http://aws.amazon.com/cn/documentation/gettingstarted/
 
-AWS ????
+AWS 产品列表
 https://aws.amazon.com/cn/products/?nc2=h_ql
 
-????????
+教学视频和实验室
 https://aws.amazon.com/cn/training/intro_series/
 
-Amazon Web Services ???? wangxiangc@gmail.com cary
+Amazon Web Services 控制面板 wangxiangc@gmail.com cary
 https://us-west-2.console.aws.amazon.com/console/home?region=us-west-2
 
-2015 AWS?????? 8?25?????
+2015 AWS在线技术峰会 8月25日盛开在际
 http://awsvirtualsummit.wm-it.com/agenda.aspx
 
-AWS ??
+AWS 认证
 https://aws.amazon.com/cn/certification/
-https://aws.amazon.com/cn/certification/certification-prep/ ??
-https://www.webassessor.com/wa.do?page=publicHome&branding=AMAZON ??
-AWS Certified Developer � Associate
+https://aws.amazon.com/cn/certification/certification-prep/ 准备 AWS 认证
+https://www.webassessor.com/wa.do?page=publicHome&branding=AMAZON 考试报名网站
+AWS Certified Developer – Associate
 https://aws.amazon.com/cn/certification/certified-developer-associate/ 
-AWS Certified DevOps Engineer � Professional
+AWS Certified DevOps Engineer – Professional
 https://aws.amazon.com/cn/certification/certified-devops-engineer-professional/
