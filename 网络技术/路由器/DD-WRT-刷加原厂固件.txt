@@ -1,1 +1,9 @@
 http://www.openwrt.org.cn/bbs/thread-12877-1-1.html
+
+wget http://192.168.1.2/wr841n.bin
+mtd -r write wr841n.bin linux
+
+原厂固件下载地址
+http://service.tp-link.com.cn/search_download.html?level1=0&level2=0&prodcut=0&kw=wr841n
+
+http://bbs.zol.com.cn/nbbbs/d160_148407.html
