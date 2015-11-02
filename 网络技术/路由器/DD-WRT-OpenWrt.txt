@@ -57,7 +57,7 @@ After resetting DD-WRT, you need to login with the user name "root" and password
 
 替代方法:
 
-telnet 登录至路由器，执行以下命令：
+telnet 登录至路由器，执行以下命令： (账号密码：root/admin)
 
 erase nvram
 
