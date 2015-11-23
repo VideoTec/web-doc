@@ -1,0 +1,16 @@
+打开 certmgr.msc
+
+测试方法：
+https://www.cnnic.cn/
+
+1. 从受信息的根证书颁发机构中
+   剪切 CNNIC 的证书
+2. 在不信任的证书 里 复制
+   CNNIC 的证书
+
+chrome 清楚浏览器历史记录时： 内容许可？
+
+cnnic 证书的危害：
+http://blog.csdn.net/program_think/article/details/5307020 CNNIC干过的那些破事
+http://finance.gucheng.com/201504/2989783.shtml cnnic证书吊销 网友：CNNIC滥发证书太可怕了
+http://www.williamlong.info/archives/4125.html CNNIC证书的清除方法
