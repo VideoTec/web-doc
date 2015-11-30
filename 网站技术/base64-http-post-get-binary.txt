@@ -1,0 +1,23 @@
+把二进制数据转换成 字符串 用于 HTTP-POST/GET 传输。
+base64 编码。
+
+http://davidbcalhoun.com/2011/when-to-base64-encode-images-and-when-not-to/
+Data URIs (see this, this, and this) and Base64 encoding goes hand-in-hand. 
+This method allows you to embed images right in your HTML, CSS, or JavaScript.
+
+http://stackoverflow.com/questions/8196124/sending-binary-data-over-http
+
+Will simply sending base64 encoded data work?
+There is no need to use base 64 encoding - this will simply increase the number of bytes you must transfer. Mobile operators normally limit mangling of responses to content types that they understand - i.e. images, stylesheets, etc.
+
+How are the HTTP sessions handled?
+HTTP sessions are normally handled either via a URL query parameter or via a cookie value. However, from what you have said it doesn't sound like sessions are necessary.
+
+Arbitrary sockets can be kept alive for a long time, but HTTP verbs are usually short lived. Does this mean I will need to create a new connection for each packet of data?
+HTTP requests can last for an arbitrarily long period of time, just as for raw TCP sockets. A GET request can last for hours if necessary. You need not create a new connection for each request — take a look at the Connection: Keep-Alive HTTP header.
+
+Or is there a way to send server responses in chunks, over a single connection?
+If you don't know the length of the response you can either omit a Content-Length header or, preferably, use the Transfer-Encoding: chunked HTTP header.
+
+In what ways can an ISP proxy mess with the data, or the headers? For example, a proxy can sometimes keep a connection alive, even if the server closes it.
+ISPs don't tend to reveal the changes they make to HTTP responses. If you are concerned about this a simple solution would be to encrypt the data and specify a Content-Encoding HTTP header. This would require you to control both the HTTP client and server

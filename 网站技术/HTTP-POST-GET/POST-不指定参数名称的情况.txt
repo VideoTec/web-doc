@@ -1,0 +1,3 @@
+没有参数名，
+request里getReader().getline就能拿到，
+传参方式是ios那边定的，你看看他们那边怎么传的吧

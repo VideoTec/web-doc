@@ -1,0 +1,5 @@
+http://davidbcalhoun.com/2011/when-to-base64-encode-images-and-when-not-to/
+
+Data URIs and Base64 encoding
+Data URIs (see this, this, and this) and Base64 encoding goes hand-in-hand. 
+This method allows you to embed images right in your HTML, CSS, or JavaScript.
