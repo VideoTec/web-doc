@@ -1,0 +1,10 @@
+http://baike.baidu.com/view/9323078.htm?fromtitle=LTE&fromid=6439078&type=syn
+
+LTE 并非真正的4G
+LTE尽管被宣传为4G无线标准,
+但它其实并未被3GPP认可为国际电信联盟所描述的下一代无线通讯标准IMT-Advanced,
+因此在严格意义上其还未达到4G的标准。
+只有升级版的LTE Advanced才满足国际电信联盟对4G的要求。
+
+LTE Advanced是LTE的下一代网络(真正4G网络)，
+该标准于2011年3月定稿并有希望于2013年开始推出提供服务。

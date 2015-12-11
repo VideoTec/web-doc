@@ -1,0 +1,17 @@
+http://baike.baidu.com/link?url=GD2MVTcvoWi84yHq-hVsG94rLFWdTBrBSWEnM4IEVjMdqzBt9S_Mu1aiKy95Drjv_tp_ygoXaRHIr5tIjkWYzK
+
+通用分组无线服务技术（General Packet Radio Service)的简称，
+它是GSM移动电话用户可用的一种移动数据业务。
+GPRS 可说是GSM的延续。
+GPRS 和以往连续在频道传输的方式不同，
+是以封包（Packet）式来传输，
+因此使用者所负担的费用是以其传输资料单位计算，
+并非使用其整个频道，理论上较为便宜。
+GPRS 的传输速率可提升至56甚至114Kbps。
+
+GPRS经常被描述成“2.5G”，
+也就是说这项技术位于第二代（2G）和第三代（3G）移动通讯技术之间
+
+在GSM移动通信的发展路标中，
+GPRS是移动业务和分组业务相结合的第一步，
+也是采用GSM技术体制的第二代移动通信技术向第三代移动通信技术发展的重要里程碑

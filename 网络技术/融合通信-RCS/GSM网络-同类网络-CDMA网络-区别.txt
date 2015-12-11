@@ -1,0 +1,15 @@
+http://www.pcmag.com/article2/0,2817,2407896,00.asp
+The Technology Behind CDMA vs. GSM
+CDMA and GSM are both multiple access technologies. They're ways for people to cram multiple phone calls or Internet connections into one radio channel.
+
+GSM came first. It's a "time division" system. Calls take turns. Your voice is transformed into digital data, which is given a channel and a time slot, so three calls on one channel look like this: 123123123123. On the other end, the receiver listens only to the assigned time slot and pieces the call back together.
+
+The pulsing of the time division signal created the notorious "GSM buzz," a buzzing sound whenever you put a GSM phone near a speaker. That's mostly gone now, because 3G GSM (as I explain later) isn't a time division technology.
+
+CDMA required a bit more processing power. It's a "code division" system. Every call's data is encoded with a unique key, then the calls are all transmitted at once; if you have calls 1, 2, and 3 in a channel, the channel would just say 66666666. The receivers each have the unique key to "divide" the combined signal into its individual calls.
+
+Code division turned out to be a more powerful and flexible technology, so "3G GSM" is actually a CDMA technology, called WCDMA (wideband CDMA) or UMTS (Universal Mobile Telephone System). WCDMA requires wider channels than older CDMA systems, as the name implies, but it has more data capacity.
+
+Since its inception, GSM has evolved faster than CDMA. As I mentioned above, WCDMA is considered the 3G version of GSM technology. To further speed things up, the 3GPP (the GSM governing body) released extensions called HSPA, which have sped GSM networks up to as fast as 42Mbps, at least in theory.
+
+Our CDMA networks, meanwhile, are stuck at 3.6Mbps. While faster CDMA technologies exist, U.S. carriers chose not to install them and have instead turned to 4G LTE to be more compatible with global standards.

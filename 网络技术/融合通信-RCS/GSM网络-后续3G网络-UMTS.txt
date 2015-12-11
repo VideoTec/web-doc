@@ -1,0 +1,29 @@
+https://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E7%A7%BB%E5%8A%A8%E9%80%9A%E8%AE%AF%E7%B3%BB%E7%BB%9F
+
+通用移动通讯系统（Universal Mobile Telecommunications System，缩写：UMTS）
+是当前最广泛采用的一种第三代（3G）移动电话技术。
+它的无线接口使用WCDMA技术，
+由3GPP定型，代表欧洲对ITU IMT-2000关于3G蜂窝无线系统需求的回应。
+
+UMTS有时也叫3GSM，强调结合了3G技术而且是GSM标准的后续标准。
+UMTS分组交换系统是由GPRS系统所演进而来，
+故系统的架构颇为相像。
+
+2009年，
+中国联通于10月1日在国内285个城市正式提供UMTS服务，
+中国联通的网络将直接支持HSUPA。
+
+----------------------------------------
+除UMTS还有其他的3G标准，
+----------------------------------------
+例如
+1）CDMA2000和专有系统包括
+2）Arraycom的iBurst， 
+3）Flarion and 
+4）WCDMA-TDD（无线IP）。
+
+ITU认可的IMT-20003G标准族成员
+1）CDMA2000，
+2）WCDMA，
+3）EDGEWiMAX和
+4）中国自有3G标准TD-SCDMA

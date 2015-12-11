@@ -1,0 +1,10 @@
+http://tech.sina.com.cn/mobile/n/2014-08-10/09229545319.shtml
+
+VoLTE才是4G时代和LTE上网匹配的语音通话技术，
+随着 LTE 网络技术的日益成熟，
+VoLTE 是 LTE语音发展的必然趋势，
+但 是受限于 VoLTE 终端产品及网络设备不够成熟及现阶段网络的实际情况，
+现有的4G手机要支持和VoLTE还需要进行系统上的升级，
+比如在 Windows Phoen 8.1 Update1中就增加了对VoLTE的支持，
+但是这个技术到什么时候能够完美支持还需要漫长的等待
+

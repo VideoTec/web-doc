@@ -1,0 +1,29 @@
+
+http://www.pcmag.com/article2/0,2817,2407896,00.asp
+
+The global spread of GSM came about because in 1987, 
+Europe mandated the technology by law, 
+and because GSM comes from an industry consortium. 
+What we call CDMA, by and large, is owned by chipmaker Qualcomm. 
+This made it less expensive for third parties to build GSM equipment.
+
+http://baike.baidu.com/view/172645.htm?fromtitle=qualcomm&fromid=2485194&type=syn
+
+高通（Qualcomm）是一家美国的无线电通信技术研发公司，
+成立于1985年7月，
+在以技术创新推动无线通讯向前发展方面扮演着重要的角色，
+以在CDMA技术方面处于领先地位而闻名，
+而LTE技术已成为世界上发展最快的无线技术。
+
+美国高通公司拥有所有3000多项CDMA及其它技术的专利及专利申请。
+高通已经向全球125家以上电信设备制造商发放了CDMA专利许可
+
+中国第二大无线通信运营商，中国联通率先于 2002年初启动了其全国CDMA网络
+2012年，全球CDMA2000用户已超过2.56亿，
+遍布70个国家的 156家运营商已经商用3G CDMA业务
+
+由于高通公司对CDMA的绝对技术垄断，
+高通公司提供给手机厂商的CDMA网络同配置芯片价格
+比UTMS网络(WCDMA/GSM系统双制式或TD-SCDMA/GSM双制式)芯片普遍贵5美元左右。
+从2014年12月开始，高通芯片价格将下降超过4美元，
+与同等价位其他制式手机的芯片价格降至同一水平

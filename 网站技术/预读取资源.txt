@@ -1,0 +1,12 @@
+http://www.cnblogs.com/shinnychen/p/3754272.html
+
+HTML5提供了一个明确的方式（prefetch Link relation）允许浏览器预读取资源。
+IE9以上（注：chrome、firefox也都支持）
+支持通过link来进行DNS-prefetching（DNS预读取）；
+这些资源并不会被下载
+
+通过IMG标签来预读取图片当然是没有问题的......
+只要你不是在HTTPS页面上请求HTTP域的图片。
+这样做的话（在HTTPS页面上请求HTTP的图片）
+会引起内容错乱的问题（ Mixed-Content problem），
+而且你页面的锁定icon将会消失

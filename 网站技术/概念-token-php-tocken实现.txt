@@ -1,0 +1,28 @@
+http://flourishlib.com/docs/fRequest#PreventingCSRFSecurity
+
+动态网页： 每次请求的 token
+http://flourishlib.com/api/fRequest#generateCSRFToken
+
+-----------------------------------------
+客户端：请求时带上 token
+-----------------------------------------
+<form action="" method="post">
+    <p>
+        <input type="submit" value="Yes, delete my messages!" />
+        <input type="hidden" name="request_token" value="<?php echo fRequest::generateCSRFToken() ?>" />
+    </p>
+</form>
+
+-----------------------------------------
+服务器端： 处理时验证 token
+-----------------------------------------
+if (fRequest::isPost()) {
+    try {
+        fRequest::validateCSRFToken(fRequest::get('request_token'));
+
+        // Delete all of the users messages
+        
+    } catch (fExpectedException $e) {
+        $e->printMessage();
+    }
+}

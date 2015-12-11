@@ -1,0 +1,50 @@
+CDMA和GSM是2G通信的主流制式，
+从技术上来说，
+它们之间的区别就在于无线发送接收的制式不同，
+调制解调的方法不同
+
+CDMA800，这是CDMA的工作频率。联通的CDMA是工作在800MHz下的。
+
+CDMA2000 是目前2G CDMA的升级，是一种3G的标准。
+与目前的2G CDMA相比，CDMA2000更是能够提供几兆bps以上的数据速度
+
+-------------------------------------------------
+CDMA 1x是现在联通CDMA网络所采取的技术。
+-------------------------------------------------
+它指的是CDMA2000 1x，也就是CDMA2000 1x的缩写。
+与真正的CDMA2000相比，CDMA 1x就像我刚才说的，
+只能支持到153.6kbps的数据速度，
+因此被称为是2.5G的技术，还不是真正3G的技术
+
+http://www.pcmag.com/article2/0,2817,2407896,00.asp
+CDMA vs. GSM: What's the Difference?
+
+Two basic technologies in mobile phones, CDMA and GSM 
+represent a gap you can't cross. 
+They're the reason you can't use many 
+AT&T phones on Verizon's network and vice versa. 
+
+But what does CDMA vs. GSM really mean for you? 
+
+CDMA (Code Division Multiple Access) and GSM (Global System for Mobiles) 
+are shorthand for the two major radio systems used in cell phones. 
+Both acronyms tend to group together a bunch of technologies run by the same entities. 
+In this story, 
+I'll try to explain who uses which technology and what the real differences are.
+
+Which Carriers are CDMA? Which are GSM?
+
+In the U.S., Sprint, Verizon and U.S. Cellular use CDMA. 
+AT&T and T-Mobile use GSM.
+
+Most of the rest of the world uses GSM. 
+The global spread of GSM came about because in 1987, 
+Europe mandated the technology by law, 
+and because GSM comes from an industry consortium. 
+What we call CDMA, by and large, is owned by chipmaker Qualcomm. 
+This made it less expensive for third parties to build GSM equipment.
+
+There are several variants and options carriers can choose, 
+like toppings on their technological ice cream. 
+In this story we'll focus on U.S. networks.
+

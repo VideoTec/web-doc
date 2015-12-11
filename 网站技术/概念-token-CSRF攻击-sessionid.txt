@@ -1,0 +1,46 @@
+https://www.v2ex.com/t/80003
+
+我对token的概念其实是很模糊的，
+大概知道为了防止CSRF的攻击，
+服务器创建session时会随机生成一个token值，存入session中，
+然后网页前端请求的时候会附带token信息，服务器会做匹配，
+但是不清楚，这
+1）和sessionid的匹配有何区别？另外
+2）网页前端如何获取token呢？
+
+哪有这么复杂，连AJAX都出来了。
+服务器在生成表单的时候同时生成一个CSRF token，
+插入到表单的一个hidden field里面，
+并且把这个token记录在服务器端，通常是用户的Session数据里面。
+客户端啥都不用干，照常提交表单。
+当表单被提交的时候，
+服务端检查一个表单里面的token跟自己之前记录下来的是否匹配，匹配才继续处理。
+
+<form action="" method="post">
+    <p>
+        <input type="submit" value="Yes, delete my messages!" />
+        <input type="hidden" name="request_token" value="<?php echo fRequest::generateCSRFToken() ?>" />
+    </p>
+</form>
+
+表单中的hidden字段是针对html的from表单提交来搞的.
+对于js和移动客户端来说,这种验证很麻烦,会导致进行操作之前还要先读一次html,
+所以API请求一般会直接在参数里面搞个token值来做验证,
+这就可能和session完全无关了
+
+--------------------------------
+token session 概念
+--------------------------------
+首先是第一个问题，HTTP请求是无状态的，我怎么知道谁是谁？ 
+解：让用户每次访问的时候告诉你它叫什么，怎么告诉？
+url，form/post body，cookie 
+
+然后是第二个问题，用户访问的时候说他自己是张三，他骗你怎么办？ 
+解：在服务器端保存张三的信息，给他一个id，让他下次用id访问。
+id保存在url，form/post body，cookie中。这叫做session 
+
+现在是第三个问题，用户提交了一笔订单，
+你怎么保证他是在你的订单页面提交的？（referer可能是一个办法） 
+解：在你订单页面中放入一个加密的信息，
+只有真正打开了订单页才能知道，
+提交的时候将这个信息返回回来。这个东西，可以被叫做token

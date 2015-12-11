@@ -1,0 +1,23 @@
+CDMA2000 是目前2G CDMA的升级，是一种3G的标准
+
+https://zh.wikipedia.org/wiki/CDMA2000
+
+CDMA2000是一个3G移动通讯标准，
+国际电信联盟ITU的IMT-2000标准认可的无线电接口，
+也是2G cdmaOne标准的延伸，
+不需要新的频段分配，可以稳定运行在现有PCS频段。
+根本的信令标准是IS-2000。
+CDMA2000与另一个3G标准W-CDMA不兼容。
+
+由于超行动宽带（UMB）的研发被取消，
+CDMA2000标准延伸演进的4G标准是LTE。
+
+截止2008年年末，全球已经有102个国家和地区的276家电信运营商部署了CDMA2000网络。
+
+中国大陆：中国电信（China Telecom）
+香港：电讯盈科移动通信[1]
+澳门：2006年由中国联通投得牌照[2]，2008年中国电讯业重组后改由中国电信经营[3]
+日本：KDDI
+台湾：亚太电信
+韩国：SK电讯、KTF、LG电信
+美国：Verizon Wireless、Sprint Nextell、US Cellular等。

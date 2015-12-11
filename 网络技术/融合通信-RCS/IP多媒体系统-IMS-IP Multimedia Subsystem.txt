@@ -1,0 +1,24 @@
+https://zh.wikipedia.org/wiki/IP%E5%A4%9A%E5%AA%92%E4%BD%93%E5%AD%90%E7%B3%BB%E7%BB%9F
+
+IP多媒体子系统（IP Multimedia Subsystem，IMS）
+是一个基于IP网提供话音及多媒体业务的网络体系架构。
+它最初是由无线标准化组织 3GPP设计的，
+作为其GSM之后的未来移动网络远景目标的一部分。
+
+IMS的最初的版本（3GPP R5）主要是给出了一种基于GPRS来实现IP多媒体业务的方法。
+在这个版本的基础上，3GPP, 3GPP2 以及 TISPAN进行了进一步的更新，以支持GPRS之外的，
+诸如 WLAN, CDMA2000 和固定等其他接入网络。
+从目前来看，IMS是独立于接入网技术的，虽然IMS与底层传输功能有着很多联系。
+
+从另外一个角度看，
+IMS实际上是IP网上的一个应用系统。
+
+关于IP网的相关技术标准主要由IETF制定，
+包括应用层（比如Email（POP3、SMTP）、文件传输（FTP）、网页浏览（HTTP）等）的相关协议标准。
+IETF负责制定了实时应用（Real-time Applications）相关的协议标准，
+包括SIP、RTP等。
+
+IMS基本使用了IETF的相关协议标准(SIP、Diameter等），
+同时在其基础上有着详细的描述和增强，
+以便于提供一种完整的、健壮的多媒体系统。
+这些增强和操作性描述为运营商控制、分责任、计费和安全提供了支持

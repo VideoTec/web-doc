@@ -1,0 +1,20 @@
+2008年美国高通（Qualcomm）
+宣布放弃EVDO的平滑升级版本超行动宽带（Ultra Mobile Broadband，UMB），
+使得拥有CDMA网络的运营商如
+1）美国Verizon Wireless（于2010年铺设完成美国第一张大面积覆盖的LTE网络）和
+2）日本au电信也已经
+宣布将迁移至LTE网络. 
+
+http://baike.baidu.com/view/9323078.htm?fromtitle=LTE&fromid=6439078&type=syn
+
+CDMA运营商本计划升级网络到CDMA的演进版本UMB，
+但由于高通放弃UMB系统的研发，
+使得全球主要的CDMA运营商
+
+1）美国的Verizon无线、SprintNextel和MetroPCS，
+2）加拿大的Bell 移动和Telus移动，
+3）日本的au电信，
+4）韩国的SK电讯，
+5）中国的中国电信
+
+均宣布将升级至LTE网络，或是升级至WiMAX（俄罗斯与韩国）。

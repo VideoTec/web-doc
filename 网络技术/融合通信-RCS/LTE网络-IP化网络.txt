@@ -1,0 +1,10 @@
+http://baike.baidu.com/view/9323078.htm?fromtitle=LTE&fromid=6439078&type=syn
+
+IP化网络
+
+LTE的远期目标是简化和重新设计网络体系结构，
+使其成为IP化网络，
+这样不会出现3G网络存在的在转换中的所产生的不良因素。
+
+因为LTE的接口与2G和3G网络互不兼容，
+所以LTE需同原有网络分频段运营。

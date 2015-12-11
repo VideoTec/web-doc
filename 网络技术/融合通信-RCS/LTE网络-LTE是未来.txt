@@ -1,0 +1,41 @@
+http://www.pcmag.com/article2/0,2817,2407896,00.asp
+
+The Future is LTE
+The CDMA vs. GSM gap will close eventually as everyone moves to 4G LTE, 
+but that doesn't mean everyone's phones will be compatible. 
+LTE, or "Long Term Evolution," 
+is the new globally accepted 4G wireless standard. 
+All of the U.S. carriers are turning it on. 
+For more, see 3G vs. 4G: What's the Difference?
+[http://www.pcmag.com/article2/0,2817,2399984,00.asp]
+
+The problem is, 
+they're turning it on in different frequency bands, 
+with different 3G backup systems, and even, 
+in the case of the new Sprint Spark network, 
+using an LTE variant (TD-LTE) 
+that doesn't work with any other U.S. carrier's phones. 
+There are very few phones that support all of the carriers' LTE bands.
+
+Verizon has said it aims to start selling LTE-only phones in 2015, 
+but for now, those will require special Verizon software to make voice calls, 
+so that move won't make it any easier to switch carriers with your phone. 
+Even without CDMA, 
+the CDMA philosophy of carrier control of your phone will remain intact.
+
+A growing number of phones support all of these standards, 
+but it can be hard to tell which ones. 
+The iPhone 6, the iPhone 6 Plus and the Google Nexus 6 
+are the most flexible. 
+
+iPhone 6 and 6 Plus units from AT&T, T-Mobile, and Verizon 
+can all be used on all three carriers, 
+but they lack Sprint's special LTE bands. 
+Sprint iPhones have all the bands, 
+but Sprint has strict unlocking policies. 
+
+Nexus 6 phones will technically work on all four carriers, but Sprint only allows phones purchased from Google or Sprint on its network.
+
+HTC One (M8) and Samsung Galaxy S5 phones from Verizon will work somewhat on AT&T's and T-Mobile's networks, albeit with limited coverage because while they have CDMA, GSM and LTE, they don't have all the frequency bands AT&T and T-Mobile use. Variants of those same models sold by AT&T and T-Mobile won't work on Verizon at all, because they lack the CDMA radio needed for Verizon. It's a mess.
+
+So what does all of this mean for you? If you want to switch phones often, use your phone in Europe, or use imported phones, just go with GSM. Otherwise, pick your carrier based on coverage and call quality in your area and assume you'll probably need a new phone if you switch carriers. Our Readers' Choice and Fastest Mobile Networks awards are a great place to start.

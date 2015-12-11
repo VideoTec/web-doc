@@ -1,0 +1,4 @@
+http://www.zhihu.com/question/22365275
+
+IMS标准制订时LTE标准还没出来，
+所以3GPP R5的IPRAN都是基于3G描述的, IMS理论上支持Vo3G

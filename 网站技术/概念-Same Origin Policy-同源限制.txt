@@ -1,0 +1,21 @@
+http://blogs.msdn.com/b/ieinternals/archive/2009/08/28/explaining-same-origin-policy-part-1-deny-read.aspx
+
+despite[英][dɪˈspaɪt] [美][dɪˈspaɪt]
+prep.不管；尽管（自己）不愿意；不在乎；虽有
+
+misconceptions[英][mɪskən'sepʃnz] [美][mɪskən'sepʃnz]
+n.误解；错觉；误解，错误想法，错误印象( misconception的名词复数 )
+
+origin[英][ˈɒrɪdʒɪn] [美][ˈɔ:rɪdʒɪn]
+n.起源，根源；出身；[数]原点，起点；[解]（筋，神经的）起端
+
+Despite its role as the cornerstone of web application security, 
+it’s clear that many (most?) 
+web professionals do not understand Same Origin Policy (SOP), 
+or hold one or more misconceptions about what SOP requires.
+
+It’s a big topic, and 
+I don’t plan to address it all on this quiet Friday morning. 
+This post will be the first in a multi-part series 
+1）about SOP and 
+2）what it means for the web platform.
