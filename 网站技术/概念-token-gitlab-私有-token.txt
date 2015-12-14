@@ -1,0 +1,4 @@
+Your private token is used to access application resources 
+without authentication. 
+
+It can be used for atom feeds or the API. Keep it secret!

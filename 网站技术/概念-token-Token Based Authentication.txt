@@ -1,0 +1,195 @@
+http://www.w3.org/2001/sw/Europe/events/foaf-galway/papers/fp/token_based_authentication/
+
+Token Based Authentication -- Implementation Demonstration
+
+Information stored on websites varies widely 
+in the amount of information 
+which is available either publicly or privately.
+ 
+On some sites, 
+a full-fledged database of personal information may be available -- 
+from addresses and phone numbers to email and cha t contacts. 
+
+On other sites, 
+users may list only an email address and a website URL. 
+More than that, sites may offer 
+varying privacy levels for various sets of information. 
+
+FOAF ，即Friend-of-a-Friend，简称 FOAF。
+FOAF 是一种 XML/RDF 词汇表，
+它以计算机可读的形式描述您通常可能放在主 Web 页面上的个人信息之类的信息
+
+在因特网上，社区的数量正在不断激增，
+包括各种社区，从专业机构到社会团体。
+Dan Brickley 和 Libby Miller 发明的 FOAF 词汇表
+为社区成员提供了一种基本表达：
+描述人及其基本特性，如姓名、电子邮件地址等等
+
+On Orkut,
+for example, users can set the level users 
+must be in order to see each piece of information. 
+This presents many issues when users of these sites 
+want to start using FOAF for outside sources
+ -- distributed data for profile information, or other similar means. 
+Typical web-authentication is cookie-based, and 
+offering a similar a uthentication to spiders or 
+crawlers requires providing login information 
+that most people would be reluctant to provide. 
+(
+I certainly wouldn't want to give my password out to every website 
+on the internet that asks for it.
+) 
+There are solutions to this pa rticular problem, 
+and in general, they aren't all that difficult to use. 
+By adding authentication in a way 
+that protects both the privacy of the user and their login information, 
+you can increase the use of FOAF in remote applications.
+
+No application wants to give out permanent access to user information. 
+That type of access is more than most remote sites will ever need, 
+in terms of both length of time and of the level of access. 
+However, most sites are not designed to offer temporary viewing of resources. 
+Thus, when users want to share resources - such as a FOAF file - between sites, 
+they are forced to either save the information locally or 
+deal without the information which the tool in question can not see. 
+When taking advantage of a tool's security levels, 
+hostging a file locally completely defeats 
+the purpose of the security levels in the first place. 
+The solution to these problems is to 
+offer temporary authentication via a non-password scheme. 
+There are a number of possibilities as to how to perform this authentication technically. 
+However, in order to perform distributed authentication 
+while protecting both users privacy and passwords, 
+the only way to authorize such authentication is via a token based authentication system.
+
+The general concept 
+behind a token-based authentication system is simple. 
+Allow users to enter their username and password in order to 
+obtain a token 
+which allows them to fetch a specific resource
+ - without using their username and password. 
+
+Once their token has been obtained, 
+the user can offer the token - 
+which offers access to a specific resource for a time period - to the remote site. 
+
+Using some form of authentication: 
+a header, GET or POST request, or 
+a cookie of some kind, the site can then determine 
+what level of access the request in question should be afforded.
+
+The type of changes this type of authentication requires 
+is obviously dependent on the current implementation of your site. 
+
+Example code I might be able to 
+write in Perl or PHP would not only be language and 
+implementation specific, 
+it would also be application specific. 
+However, some general principles should be considered in both 
+the creation of a process to obtain tokens and 
+the process of using them. 
+Simplicity for users, 
+robustness for interoperability, and 
+protection of user data are all importantf or your application, 
+and each can fall by the wayside in attempting to 
+design a system which fits user expectations.
+
+A typical process for token based authentication 
+would work as a communication between two sites: 
+a remote site R and a base site, where the data is already stored, B. 
+A user wishes to provide temporary authorization to site R to read his FOAF file at site B.
+
+1）
+User selects "Import FOAF" or similar option
+
+2）
+Site opens "Import FOAF" page, 
+allowing user to select from a drop down selection of sites from which to import
+
+3）
+User selects "Site B" from the list, and as a result, 
+a box appears which allows the user to enter an authentication token. 
+The site may optionally provide a link to the token creation page 
+at this step to ease the task for the user.
+
+4）
+User visits Site B Token Generation page.
+Once there, the user is asked for a username and password, 
+as well as a resource to which site R should have access.
+ 
+5）
+User receives authentication token from Site B, 
+and copies token to form box on Site R.
+
+6）
+Site R fetches the requested resource, 
+using the authentication token in question. 
+The token, 
+rather than a typical cookie based authentication session, 
+identifies the access level at which the site can obtain information.
+
+There are a number of implementations 
+which can be used to determine the access level, 
+depending on the type of information 
+which should be made available and what is currently available. 
+The system I have the most knowledge in is LiveJournal, and as such , 
+I will use that as an example of 
+how to add token-based authentication to a resource.
+
+LiveJournal has a number of security levels throughout the site. 
+You can protect your entries to be readable to only you, 
+only your friends, or up to 30 subgroups of your friends using unioned filters. 
+However, this same level of protection and choice is not available to you 
+when you are storing your profile information. 
+Unlike Orkut, LiveJournal makes minimal options available 
+for selecting the security of your profile information. 
+Fortunately, for this example, this adds a level of simplicity not availa ble in most cases.
+
+When a request is recieved, 
+LiveJournal passes the request to the FOAF creation instance,
+which then fetches the information unconditionally. 
+Once the information has been retrieved, 
+LiveJournal parses through the data manually and 
+builds up a FOAF file based on the security options that are set. 
+In order to add token based authentication to the system, 
+we must add a check into the FOAF creation routine 
+that allows us to override the "public" security available 
+to most agents with a valid authenticatio n key. 
+In LiveJournal's case, to provide access to contact information at owner level, 
+we need add only about 15 lines of code and 
+a small MySQL table to store valid authentication keys. 
+(
+A way to allow users to request such keys is not included in thi s code.
+) 
+The attached diff file contains an example of how this works. 
+As most of you will be able to understand, 
+we are checking the offered authentication token against the tokens stored 
+in the database within the past 24 hours. 
+Although this is a relat ively minimal example
+ - LiveJournal has few security levels for profile data, 
+ and this change did not interfere in any way with existing APIs or functianality
+ - it is obvious that in many cases, 
+ creating an authentication token backend is as simple as an extra if clause.
+
+The frontend for using such an authentication system 
+must be simple if users are to understand and use it. 
+
+By providing the standard login template
+ - such as http://www.livejournal.com/login.bml - 
+with a slightly modified interface to provide more info rmation and 
+documentation about authentication tokens, 
+as well as the option to choose a resource specific resource, 
+such as the one at http://goathack.livejournal.org:8023/token.bml , 
+users can feel that they are in a similar environment
+ - entering login data for the purpose of obtaining 
+more specific information about themselves on the site in question. 
+Once the information is verified, 
+the user can then be offered a token 
+which they can copy paste into another application, 
+or perhaps the ability to have the token sent to a specific email address. 
+Keep in mind, however, 
+that these tokens offer, for 
+a limited amount of time, 
+a level of authentication, and 
+in most cases, you will want to afford the same level of protection over these tokens: 
+whether it be SSL encryption, or some other method - as you would over login information.
