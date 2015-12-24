@@ -1,0 +1,4 @@
+http://blog.csdn.net/sureyonder/article/details/5633647
+套接字是基于TCP/IP实现的，它是用来提供一个访问TCP的服务接口，或者说
+套接字socket是TCP的应用编程接口API，
+通过它应用层就可以访问TCP提供的服务

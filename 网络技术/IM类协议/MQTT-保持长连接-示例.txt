@@ -1,0 +1,6 @@
+https://github.com/tokudu/AndroidPushNotificationsDemo
+
+A example of an android app that receives push notifications using MQTT. http://tokudu.com/2010/how-to-implement-push-notifications-for-android
+
+Push Notifications Demo for Android
+More details at http://tokudu.com/2010/how-to-implement-push-notifications-for-android

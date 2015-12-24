@@ -1,0 +1,14 @@
+http://examples.javacodegeeks.com/core-java/net/sockettimeoutexception/java-net-sockettimeoutexception-how-to-solve-sockettimeoutexception/
+
+If either the accept() or read() method, blocks for more than 5 seconds, 
+a SocketTimeoutException is thrown, 
+designating that a timeout has occurred. 
+It is important to note that after this exception is thrown. 
+the socket remains valid, 
+so you can retry the blocking call or do whatever you want with the valid socket.
+
+I’ve specified the timeout to be of 7 seconds 
+using this method : serverSocket.setSoTimeout(7000);
+
+serverSocket = new ServerSocket(3333);
+serverSocket.setSoTimeout(7000);

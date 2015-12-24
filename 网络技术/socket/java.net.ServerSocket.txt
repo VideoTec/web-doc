@@ -1,0 +1,15 @@
+
+import java.net.Socket;
+import java.net.ServerSocket; 只用来接收连接请求
+
+int port = 9054;
+ServerSocket server = new ServerSocket(port);
+Socket socket = server.accept(); 
+
+http://blog.csdn.net/sureyonder/article/details/5633647
+
+JAVA有两个基于数据流的套接字类：
+ServerSocket，服务器用它“侦听”进入的连接；
+Socket，客户端用它初始一次连接。
+
+侦听套接字只能接收新的连接请求，不能接收实际的数据包。

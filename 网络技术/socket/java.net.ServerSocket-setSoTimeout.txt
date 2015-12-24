@@ -1,0 +1,29 @@
+http://cuisuqiang.iteye.com/blog/1725348
+
+做网络编程的人对setSoTimeout方法一定很熟悉，
+都知道是设置连接的超时时间！
+
+但是我在网上找资料时发现很多人把这个超时时间理解成了链路的超时时间！
+我看了一下JDK 关于这个方法的说明，
+其实根本不是链路的超时时间！
+
+setSoTimeout
+public void setSoTimeout(int timeout)
+	throws SocketException启用/禁用带有指定超时值的 SO_TIMEOUT，以毫秒为单位。将此选项设为非零的超时值时，
+    在与此 Socket 关联的 InputStream 上调用 read() 将只阻塞此时间长度。
+	如果超过超时值，将引发 java.net.SocketTimeoutException，
+    虽然 Socket 仍旧有效。选项必须在进入阻塞操作前被启用才能生效。
+	超时值必须是 > 0 的数。超时值为 0 被解释为无穷大超时值。
+    
+参数：
+timeout - 指定的以毫秒为单位的超时值。 
+抛出： 
+SocketException - 如果底层协议出现错误，例如 TCP 错误。
+从以下版本开始： 
+JDK 1.1 
+另请参见：
+getSoTimeout()
+
+http://stackoverflow.com/questions/12128361/what-is-the-default-time-out-value-of-java-net-socket-in-android
+The default socket read timeout is infinity, as it says in the Javadoc. 
+If you want a finite value, call Socket.setSoTimeout().

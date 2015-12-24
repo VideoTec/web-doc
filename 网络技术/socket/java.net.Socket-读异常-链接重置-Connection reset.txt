@@ -1,0 +1,100 @@
+13:36 2015/12/24 Connection reset from TCP socket in an android service
+测试方法：
+PC - 作为 SERVER
+android - 客户端
+
+使用：
+import java.net.Socket;
+import java.net.ServerSocket; 只用来接收连接请求
+
+android 进入 sleep 模式后，
+会停止向链接发送数据，造成服务端读超时，
+超时后，从该连接的 socket 中读取数据时，会报异常：
+Connection reset
+
+https://groups.google.com/forum/#!topic/android-developers/imEbKuqk1iA
+suspicious[英][səˈspɪʃəs] [美][səˈspɪʃəs] 
+可疑的；猜疑的，怀疑的；多疑的，不信任的；多心
+
+Suspicious TCP RST packets while device is sleeping
+1. 服务器为什么会发送这个 RST 包？
+2. android 端接收不到这个 RST 包
+
+Keeping a wake-lock on device to prevent sleeping, 
+and watching TCPdump on both sides shows the server receiving a RST packet, 
+but no RST packet is sent to the client.  
+The client sits there, assuming the connection is still active, indefinitely. 
+ 
+The second it tries to do something 
+(user-prompted, or via a "ping" timer), 
+it sends a PSH packet to the server, 
+and the server responds with a RST 
+(it closed the connection when it got the RST from the NAT).
+
+http://developer.51cto.com/art/201003/189724.htm
+
+第4个异常是java.net.SocketException: 
+（Connection reset或者Connect reset by peer:Socket write error）。
+
+该异常在客户端和服务器端均有可能发生，
+引起该异常的原因有两个，
+
+1）
+第一个就是如果一端的Socket被关闭（或主动关闭或者因为异常退出而引起的关闭），
+另一端仍发送数据，发送的第一个数据包引发该异常(Connect reset by peer)。
+
+2）
+另一个是一端退出，但退出时并未关闭该连接，
+另一端如果在从连接中读数据则抛出该异常（Connection reset）。
+简单的说就是在连接断开后的读和写操作引起的。
+
+http://www.seotcs.com/blog/796.html
+最近纠结致死的一个java报错
+java.net.SocketException: Connection reset 终于得到解决
+
+为此，我找遍了中英文的一些网站，搜遍了能找的每个角落，
+发现了出现这种状况的原理，该java异常在客户端和服务器端都有可能发生，
+引起该异常的原因有两个：
+
+1，如果一端的Socket被关闭
+（或主动关闭，或因为异常退出而 引起的关闭），
+另一端仍发送数据，发送的第一个数据包引发该异常(Connect reset by peer)。
+
+2，一端退出，但退出时并未关闭该连接，
+另一端如果在从连接中读数据则抛出该异常（Connection reset）。
+
+简单的说就是在连接断开后的读和写操作引起的。
+于是我简单的认为通过设置一些socket的timeout时间，就能解决：
+但是设置以后情况依然是那样。
+
+这个问题困扰了好几天，
+每天都在思考和对比测试中，
+以求发现造成这个原因代码的地方，我不禁思考，
+同样数量的关键词数量前提下，为什么之前批量查询排名数据没有出错，
+而最近会频繁报错，这到底是为什么？
+是被请求的接口网站屏蔽掉了我们的服务器ip？
+这个理由也不是很充分，肯定是程序中某个地方没有合理释放掉connection的连接导致！
+
+在这个思路的指引下，通过几天连续的奋战和实践，
+今天终于发现了问题的本质，那就是那个timer的方法导致的！
+情况是这样的，
+这几天，我在手动触发一些批量任务，发现在过滤排名值为100的情况下，
+java的java.net.SocketException: Connection reset 这个错会一直抛出，
+而且刷屏特别厉害，在仔细对照了timer的这段代码
+
+一个函数值，它返回的值，是一个临界值，
+但是我这个timer的方法中，判断了返回的值如果是临界值的话，
+会迫使它在10秒内继续执行那个方法，
+而这个方法是要去获取一个页面中源代码的一个特定数据，
+每次这个方法执行会消耗掉几十毫秒的时间，
+即相当于在这个时间内，是建立了一个socket连接，
+但是由于它一直返回的是那个临界值，
+所以这个方法会在10秒内不停的建立socket连接以获取数据，
+如果这个方法每次执行时间大概是80ms（
+经过测试，每个这样的方法执行时间为80毫秒左右），
+在10秒时间内，会建立10*1000/80 = 125次socket连接，
+即每秒会建立起12.5个socket连接，
+再加上由于这个是过滤的程序，多个临界值的情况会连续出现在一起，
+所以，在短暂的几秒钟内，
+对同一个网站页面的socket连接数会飙升的很高，
+达到几百甚至上千，导致等待处理的请求连接数太高

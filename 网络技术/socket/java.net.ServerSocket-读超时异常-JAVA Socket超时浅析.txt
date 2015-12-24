@@ -1,0 +1,14 @@
+http://blog.csdn.net/sureyonder/article/details/5633647
+
+在JAVA中，我们用ServerSocket、Socket类创建一个套接字连接，
+从套接字得到的结果是一个InputStream以及OutputStream对象，
+以便将连接作为一个IO流对象对待。
+
+通过IO流可以从流中读取数据或者写数据到流中，
+读写IO流会有异常IOException产生。
+
+套接字底层是基于TCP的，
+所以socket的超时和TCP超时是相同的
+
+1）JAVA Socket连接建立超时
+2）socket读超时

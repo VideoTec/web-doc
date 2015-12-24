@@ -1,0 +1,16 @@
+13:36 2015/12/24
+测试方法：
+PC - 作为 SERVER
+android - 客户端
+
+使用：
+import java.net.Socket;
+import java.net.ServerSocket; 只用来接收连接请求
+
+android 进入 sleep 模式后，
+会停止向链接发送数据，造成服务端读超时，
+超时后，从该连接的 socket 中读取数据时，会报异常：
+Connection reset
+
+参考：
+E:\doc\web\网络技术\socket\java.net.Socket-读异常-链接重置-Connection reset.txt
