@@ -1,0 +1,29 @@
+broker[英][ˈbrəʊkə(r)] [美][ˈbroʊkə(r)]
+n.（股票、外币等）经纪人；中间人，代理人；旧货商人；〈口〉婚姻介绍人
+
+http://www.oschina.net/question/1050447_144089
+broker 帮你把消息从发送端传送到接收端
+
+消息协商器（Message Broker）,
+在一个连接中，客户端声明了一个通道，
+通过单一连接到协商器的并发控制需要建立一个可靠的模型，
+这里可以使用通道池和串行访问或者例如线程本地通道这样的线程并发模型
+
+
+http://blog.csdn.net/freud_zhihua/article/details/30290859
+MessageBroker的教程大纲
+
+http://blog.csdn.net/topurce/article/details/7791162
+MB的先决条件是安装正确的MQ
+
+http://blog.csdn.net/topurce/article/details/7791267
+创建Broker
+
+http://www.ibm.com/developerworks/cn/websphere/library/techarticles/1211_eswarachary/1211_eswarachary.html
+Apache ActiveMQ（以下简称 ActiveMQ）
+是最流行、最强大的开源消息代理和消息服务器。
+它支持 JMS 1.1 和 J2EE 1.4。
+因为许多企业正在将开源技术集成到其消息基础架构中，
+所以本文将使用一个示例消息来展示如何配置 
+IBM® WebSphere® Message Broker（以下简称 Message Broker），
+使它能够以 JMS 提供程序的身份与 Apache ActiveMQ 集成。

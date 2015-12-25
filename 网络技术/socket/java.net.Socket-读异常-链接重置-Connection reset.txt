@@ -10,7 +10,16 @@ import java.net.ServerSocket; 只用来接收连接请求
 android 进入 sleep 模式后，
 会停止向链接发送数据，造成服务端读超时，
 超时后，从该连接的 socket 中读取数据时，会报异常：
+(可以确定这个是个误会，没有进入 SLEEP)
+为什么服务器端读取时，会报链接被重置的异常？
 Connection reset
+
+网络环境：是使用了笔记建立的热点组成的无线网络
+服务器地址： 192.168.137.1 9054
+客户端（Android）地址： 192.168.137.241
+
+有可能是 WIFI 网络把这个连接给重置了，为什么？
+the server receiving a RST packet 有这种情况吗？
 
 https://groups.google.com/forum/#!topic/android-developers/imEbKuqk1iA
 suspicious[英][səˈspɪʃəs] [美][səˈspɪʃəs] 

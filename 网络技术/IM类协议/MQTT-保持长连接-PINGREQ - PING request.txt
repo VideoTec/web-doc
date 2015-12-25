@@ -1,0 +1,13 @@
+http://public.dhe.ibm.com/software/dw/webservices/ws-mqtt/mqtt-v3r1.html#pingreq
+3.12. PINGREQ - PING request
+
+The PINGREQ message is an "are you alive?" 
+message that is sent from a connected client to the server.
+
+See Keep Alive timer for more details.
+
+http://dalelane.co.uk/blog/?p=1599#code
+The MQTTClient object kicks off a background thread 
+that is responsible for 
+sending a ping message to the server frequently enough 
+to keep the connection alive.
