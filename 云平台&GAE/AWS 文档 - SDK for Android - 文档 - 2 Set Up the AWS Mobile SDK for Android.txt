@@ -1,0 +1,127 @@
+http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/setup.html
+
+Set Up the AWS Mobile SDK for Android
+
+To get started with the AWS Mobile SDK for Android, you can set up the SDK and start building a new project, or you can integrate the SDK with an existing project. You can also clone and run the samples to get a sense of how the SDK works.
+
+--------------------------------------------
+Prerequisites
+--------------------------------------------
+
+Before you can use the AWS Mobile SDK for Android, you will need the following:
+
+An AWS Account
+Android 2.3.3 (API Level 10) or higher (for more information about the Android platform, see Android Developers)
+Android Studio or Android Development Tools for Eclipse
+After completing the prerequisites, you will need to do the following to get started:
+
+Get the AWS Mobile SDK for Android.
+Set permissions in your AndroidManifest.xml file.
+Obtain AWS credentials using Amazon Cognito.
+
+--------------------------------------------
+Step 1: Get the AWS Mobile SDK for Android
+--------------------------------------------
+
+Using Gradle with Android Studio
+
+dependencies {
+    compile 'com.amazonaws:aws-android-sdk-core:2.+'
+    compile 'com.amazonaws:aws-android-sdk-cognito:2.+'
+    compile 'com.amazonaws:aws-android-sdk-s3:2.+'
+    compile 'com.amazonaws:aws-android-sdk-ddb:2.+'
+}
+
+A full list of dependencies are listed below.
+
+Dependency               Build.gradle Value
+AWS Mobile SDK core      com.amazonaws:aws-android-sdk-core:2.+
+Auto Scaling             com.amazonaws:aws-android-sdk-autoscaling:2.+
+Amazon Cloud Watch       com.amazonaws:aws-android-sdk-cloudwatch:2.+
+Amazon Cognito Sync      com.amazonaws:aws-android-sdk-cognito:2.+
+Amazon DynamoDB          com.amazonaws:aws-android-sdk-ddb:2.+
+Amazon DynamoDB Object Mapper    com.amazonaws:aws-android-sdk-ddb-mapper:2.+
+Amazon EC2               com.amazonaws:aws-android-sdk-ec2:2.+
+Elastic Load Balancing   com.amazonaws:aws-android-sdk-elb:2.+
+Amazon Kinesis           com.amazonaws:aws-android-sdk-kinesis:2.+
+Amazon Machine Learning  com.amazonaws:aws-android-sdk-machinelearning:2.+
+Amazon Mobile Analytics  com.amazonaws:aws-android-sdk-mobileanalytics:2.+
+Amazon S3                com.amazonaws:aws-android-sdk-s3:2.+
+Amazon Simple DB         com.amazonaws:aws-android-sdk-sdb:2.+
+Amazon SES    com.amazonaws:aws-android-sdk-ses:2.+
+Amazon SNS    com.amazonaws:aws-android-sdk-sns:2.+
+Amazon SQS    com.amazonaws:aws-android-sdk-sqs:2.+
+
+--------------------------------------------
+Step 2: Set Permissions in Your Manifest
+--------------------------------------------
+Add the following permission to your AndroidManifest.xml:
+
+<uses-permission android:name="android.permission.INTERNET" />
+
+--------------------------------------------
+Step 3: Get AWS Credentials
+--------------------------------------------
+创建一个ID池
+To create an identity pool for your application:
+
+1）Log in to the Amazon Cognito Console and click Create new identity pool.
+
+2）
+Enter a name for your Identity Pool and 
+check the checkbox to enable access to unauthenticated identities. 
+Click Create Pool to create your identity pool.
+
+3）
+Click Allow to create the two default roles associated with your identity pool–one 
+for unauthenticated users and one 
+for authenticated users. 
+These default roles provide your identity pool 
+access to Cognito Sync and Mobile Analytics.
+
+示例代码：获取 AWS Credentials
+// Initialize the Amazon Cognito credentials provider
+CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+    getApplicationContext(),
+    "ap-northeast-1:90c2c9b2-0d58-485f-9061-2a3a44e8c616", // Identity Pool ID
+    Regions.AP_NORTHEAST_1 // Region
+);
+
+示例代码：保存用户数据
+// Initialize the Cognito Sync client
+CognitoSyncManager syncClient = new CognitoSyncManager(
+   getApplicationContext(),
+   Regions.AP_NORTHEAST_1, // Region
+   credentialsProvider);
+
+// Create a record in a dataset and synchronize with the server
+Dataset dataset = syncClient.openOrCreateDataset("myDataset");
+dataset.put("myKey", "myValue");
+dataset.synchronize(new DefaultSyncCallback() {
+    @Override
+    public void onSuccess(Dataset dataset, List newRecords) {
+        //Your handler code here
+    }
+});
+
+------------------------------------------什么是 Cognito 服务？ AWS Credentials 认证
+
+To use AWS services in your mobile application, 
+you must obtain AWS Credentials using Amazon Cognito Identity as your credential provider. 
+
+Using a credentials provider allows your app to access AWS services 
+without having to embed your private credentials in your application. 
+
+This also allows you to set permissions to 
+control which AWS services your users have access to.
+
+------------------------------------------ID 池，Amazon Cognito，IAM 角色
+
+To get started with Amazon Cognito, 
+you must create an identity pool. 
+An identity pool is a store of user identity data specific to your account. 
+
+Every identity pool has configurable IAM roles 
+that allow you to specify which AWS services your application’s users can access. 
+
+Typically, a developer will use one identity pool per application. 

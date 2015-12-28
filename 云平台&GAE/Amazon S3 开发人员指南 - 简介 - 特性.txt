@@ -1,0 +1,6 @@
+Reduced Redundancy Storage
+Bucket Policies
+AWS Identity and Access Management
+Access Control Lists
+Versioning
+Operations

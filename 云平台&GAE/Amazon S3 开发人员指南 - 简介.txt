@@ -1,0 +1,16 @@
+http://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html
+
+This introduction to Amazon Simple Storage Service is 
+intended to give you a detailed summary of this web service. 
+After reading this section, 
+you should have a good idea of what it offers and how it can fit in with your business.
+
+Topics
+
+Overview of Amazon S3 and This Guide
+Advantages to Amazon S3
+Amazon S3 Concepts
+Features
+Amazon S3 Application Programming Interfaces (API)
+Paying for Amazon S3
+Related Services

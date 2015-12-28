@@ -1,0 +1,79 @@
+http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/Welcome.html
+
+--------------------------------------------------------------------
+是一个开源工程
+--------------------------------------------------------------------
+The AWS SDK for Android is an open-source software development kit, 
+distributed under an Apache Open Source license. 
+
+The SDK for Android provides libraries, code samples, and documentation 
+to help developers build connected mobile applications using AWS. 
+
+Supported AWS services currently include:
+
+Amazon Cognito Identity
+Amazon Cognito Sync
+Amazon Mobile Analytics
+Amazon S3
+Amazon DynamoDB
+Amazon Kinesis
+AWS Lambda
+
+--------------------------------------------------------------------
+Compatability
+--------------------------------------------------------------------
+
+The AWS Mobile SDK for Android is compatible with Android 2.3.3 (API Level 10) or higher. 
+For more information about the Android platform, see Android Developers.
+
+--------------------------------------------------------------------
+Download the AWS Mobile SDK for Android
+--------------------------------------------------------------------
+
+Download AWS Mobile SDK for Android (zip file)
+Source on Github
+https://github.com/aws/aws-sdk-android
+
+--------------------------------------------------------------------
+What’s included in the AWS Mobile SDK for Android?
+--------------------------------------------------------------------
+
+The AWS SDK for Android includes the following:
+
+Class libraries - 
+Classes that hide much of the lower-level plumbing of the web service interface, 
+including authentication, request retries, and error handling. 
+Each service has its own library, 
+so you can include class libraries for only the services 
+you need and keep your application as small as possible.
+
+Code samples - 
+Practical examples of using the class libraries to build applications.
+
+Documentation - 
+Reference documentation for the AWS SDK for Android.
+
+The SDK is distributed as a .zip file containing the following assets:
+
+1）License.txt
+2）Notice.txt
+3）Readme.txt
+
+4）lib/—
+Contains Java archive files (.jar) that include AWS class libraries. 
+To manage the size of your application, 
+you can include only the files that you need for the services your application is using.
+
+5）documentation/—
+Includes Javadoc files and other documentation for using the AWS SDK for Android.
+
+6）samples/—
+Contains an HTML document with links to samples on GitHub. 
+Samples are named based on the services they demonstrate.
+
+7）src/—
+Contains an HTML document with links to source on GitHub.
+ Contains the original source files for the class libraries.
+ 
+8）third-party/—
+Contains third-party libraries that the SDK depends on.

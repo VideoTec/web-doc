@@ -1,0 +1,23 @@
+Related Services
+
+Once you load your data into Amazon S3, you can use it with other services that we provide. 
+The following services are the ones you might use most frequently:
+
+1）Amazon Elastic Compute Cloud – 
+This web service provides virtual compute resources in the cloud. 
+For more information, go to the Amazon EC2 product details page.
+http://aws.amazon.com/ec2/
+
+2）Amazon Elastic MapReduce – 
+This web service enables businesses, researchers, data analysts, 
+and developers to easily and cost-effectively process vast amounts of data. 
+It utilizes a hosted Hadoop framework running on the web-scale infrastructure of Amazon EC2 and Amazon S3. 
+For more information, go to the 1）Amazon Elastic MapReduce product details page.
+http://aws.amazon.com/elasticmapreduce/
+
+3）AWS Import/Export – 
+AWS Import/Export enables you to mail a storage device, 
+such as a RAID drive, 
+to Amazon so that we can upload your (terabytes) of data into Amazon S3. 
+For more information, go to the AWS Import/Export Developer Guide.
+http://docs.aws.amazon.com/AWSImportExport/latest/DG/

@@ -1,0 +1,18 @@
+http://docs.aws.amazon.com/machine-learning/latest/dg/what-is-amazon-machine-learning.html
+
+What is Amazon Machine Learning?
+
+Welcome to the Amazon Machine Learning Developer Guide. Amazon Machine Learning (Amazon ML) is a robust, cloud-based service that makes it easy for developers of all skill levels to use machine learning technology. Amazon ML provides visualization tools and wizards that guide you through the process of creating machine learning (ML) models without having to learn complex ML algorithms and technology. Once your models are ready, Amazon ML makes it easy to obtain predictions for your application using simple APIs, without having to implement custom prediction generation code, or manage any infrastructure.
+
+This section introduces the key concepts and terms that will help you understand what you need to do to create powerful machine learning models with Amazon ML.
+
+Note
+
+If you are new to machine learning, we recommend that you read Machine Learning Concepts before you continue. If you are already familiar with machine learning, continue reading this section.
+
+Topics
+
+Amazon Machine Learning Key Concepts
+Accessing Amazon Machine Learning
+Regions and Endpoints
+Pricing for Amazon ML

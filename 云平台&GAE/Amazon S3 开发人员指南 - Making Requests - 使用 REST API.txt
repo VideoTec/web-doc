@@ -1,0 +1,51 @@
+http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAPI.htmlMaking Requests Using the REST API
+
+Topics
+
+1）Virtual Hosting of Buckets
+2）Request Redirection and the REST API
+
+This section contains information specific to the Amazon S3 REST API. 
+The examples in this guide use the newer, 
+virtual hosted–style method for accessing buckets instead of the path-style method. 
+For more information, see Working with Amazon S3 Buckets
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html
+
+Following is an example of a virtual hosted–style request to 
+delete the puppy.jpg file from the mybucket bucket.
+
+DELETE /puppy.jpg HTTP/1.1
+User-Agent: dotnet
+Host: mybucket.s3.amazonaws.com
+Date: Tue, 15 Jan 2008 21:20:27 +0000
+x-amz-date: Tue, 15 Jan 2008 21:20:27 +0000
+Authorization: AWS AKIAIOSFODNN7EXAMPLE:k3nL7gH3+PadhTEVn5EXAMPLE
+Following is an example of a path-style version of the same request.
+
+DELETE /mybucket/puppy.jpg HTTP/1.1
+User-Agent: dotnet
+Host: s3.amazonaws.com
+Date: Tue, 15 Jan 2008 21:20:27 +0000
+x-amz-date: Tue, 15 Jan 2008 21:20:27 +0000
+Authorization: AWS AKIAIOSFODNN7EXAMPLE:k3nL7gH3+PadhTEVn5EXAMPLE
+
+Amazon S3 supports virtual hosted-style and path-style access in all regions. 
+The path-style syntax, however, requires that 
+you use the region-specific endpoint when attempting to access a bucket. 
+
+For example, 
+if you have a bucket called mybucket that resides in the EU, 
+you want to use path-style syntax, and the object is named puppy.jpg, 
+the correct URI is http://s3-eu-west-1.amazonaws.com/mybucket/puppy.jpg. 
+You will receive a "PermanentRedirect" error, 
+an HTTP response code 301, 
+and a message indicating what the correct URI is for your resource 
+if you try to access a bucket outside the US East (N. Virginia) region 
+with path-style syntax that uses either of the following:
+
+1）http://s3.amazonaws.com
+2）
+An endpoint for a region different from the one where the bucket resides, 
+for example, 
+http://s3-eu-west-1.amazonaws.com for a bucket 
+that was created in the US West (Northern California) region

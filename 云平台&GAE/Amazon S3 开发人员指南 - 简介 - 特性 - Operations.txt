@@ -1,0 +1,22 @@
+Common Operations
+
+1）Create a Bucket – 
+Create and name your own bucket in which to store your objects.
+
+2）Write an Object – 
+Store data by creating or overwriting an object. 
+When you write an object, you specify a unique key in the namespace of your bucket. 
+This is also a good time to specify any access control you want on the object.
+
+3）Read an Object – 
+Read data back. 
+You can download the data via HTTP or BitTorrent.
+
+4）Deleting an Object – 
+Delete some of your data.
+
+5）Listing Keys – 
+List the keys contained in one of your buckets. 
+You can filter the key list based on a prefix.
+
+Details on this and all other functionality are described in detail later in this guide.

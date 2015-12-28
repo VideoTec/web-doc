@@ -1,0 +1,28 @@
+http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/getting-started-android.html
+
+Getting Started with the AWS Mobile SDK for Android
+
+The AWS SDK for Android provides the libraries, samples and, documentation 
+needed to call AWS services from Android apps. 
+This guide will walk you through the following:
+
+Store and Retrieve Files with Amazon S3 Transfer Utility
+http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/getting-started-store-retrieve-s3-transferutility.html
+
+Sync User Data with Cognito Sync
+http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/getting-started-sync-data.html
+
+Store and Query App Data in DynamoDB
+http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/getting-started-store-query-app-data.html
+
+Tracking App Usage Data with Amazon Mobile Analytics
+http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/getting-started-analytics.html
+
+Writing App Data to a Kinesis Stream
+http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/getting-started-kinesis.html
+
+Mobile Backend Using AWS Lambda
+http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/getting-started-lambda.html
+
+Amazon Machine Learning
+http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/getting-started-machine-learning.html

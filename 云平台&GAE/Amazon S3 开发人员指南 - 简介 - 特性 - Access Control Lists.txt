@@ -1,0 +1,4 @@
+Access Control Lists
+
+For more information, see Managing Access with ACLs
+http://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html

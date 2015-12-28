@@ -1,0 +1,27 @@
+https://aws.amazon.com/cn/s3/?nc2=h_l3_sc
+
+Amazon S3
+Amazon Simple Storage Service (Amazon S3) 
+为开发人员和 IT 团队提供安全、耐久且扩展性高的对象存储。
+Amazon S3 易于使用，具有简单的 Web 服务接口，
+用于在 Web 上的任何位置存储和检索任意数量的数据。
+使用 Amazon S3，您只需按您实际使用的存储量付费。
+没有最低费用和准备成本。
+
+Amazon S3 提供一系列的存储类别，可用于不同的用例，
+包括
+1）用于频繁访问数据的通用存储的 Amazon S3 Standard、
+2）用于长期但非频繁访问数据的 Amazon S3 – Infrequent Access（Standard - IA），以及
+3）用于长期档案的 Amazon Glacier。
+
+Amazon S3 还提供可配置生命周期政策，
+以便在您数据的生命周期内对其进行管理。
+一旦设置了政策，您的数据便会自动迁移到最合适的存储类别，
+而您的应用程序无需任何更改。
+
+Amazon S3 可单独使用，或与 
+Amazon Elastic Compute Cloud (Amazon EC2) 和 
+AWS Identity and Access Management (IAM) 等 AWS 服务以及第三方存储库和网关结合使用。
+
+Amazon S3 为各种各样的使用案例提供低本高效的对象存储服务，
+其中包括云应用程序、内容分发、备份和归档、灾难恢复以及大数据分析。

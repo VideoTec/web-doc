@@ -1,0 +1,17 @@
+AWS Identity and Access Management
+
+For example, 
+you can use IAM with Amazon S3 to control the type of 
+access a user or group of users has to specific parts of 
+an Amazon S3 bucket your AWS account owns.
+
+For more information about IAM, see the following:
+
+1）Identity and Access Management (IAM)
+http://aws.amazon.com/iam
+
+2）IAM Getting Started Guide
+http://docs.aws.amazon.com/IAM/latest/GettingStartedGuide/
+
+3）IAM User Guide
+http://docs.aws.amazon.com/IAM/latest/UserGuide/

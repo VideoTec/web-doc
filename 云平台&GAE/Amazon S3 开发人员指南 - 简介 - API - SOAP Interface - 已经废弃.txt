@@ -1,0 +1,15 @@
+The SOAP Interface
+
+Note
+
+SOAP support over HTTP is deprecated, 
+but it is still available over HTTPS. 
+
+New Amazon S3 features will not be supported for SOAP. 
+We recommend that you use either the REST API or the AWS SDKs.
+
+The SOAP API provides a SOAP 1.1 interface using document literal encoding. 
+The most common way to use SOAP is to download the WSDL 
+(go to http://doc.s3.amazonaws.com/2006-03-01/AmazonS3.wsdl), 
+use a SOAP toolkit such as Apache Axis or Microsoft .NET to create bindings, 
+and then write code that uses the bindings to call Amazon S3.

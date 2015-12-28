@@ -1,0 +1,20 @@
+Objects
+
+fundamental[英][ˌfʌndəˈmentl] [美][ˌfʌndəˈmɛntl]
+adj.基础的，基本的，根本的，重要的，原始的，主要的，十分重大的；[物]基频的，基谐波的；[乐]基音的
+n.原理，原则，基本，根本，基础；[乐]基音；[物]基频，基谐波
+
+consist[英][kənˈsɪst] [美][kənˈsɪst]
+vi.由…组成；在于；符合
+
+Objects are the fundamental entities stored in Amazon S3. 
+Objects consist of object data and metadata. 
+The data portion is opaque to Amazon S3. 
+The metadata is a set of name-value pairs that describe the object. 
+These include some default metadata, 
+such as the date last modified, and standard HTTP metadata, 
+such as Content-Type. 
+You can also specify custom metadata at the time the object is stored.
+
+An object is uniquely identified within a bucket by a key (name) and a version ID. 
+For more information, see Keys and Versioning.

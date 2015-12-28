@@ -1,0 +1,13 @@
+http://aws.amazon.com/cn/documentation/sdk-for-android/
+
+AWS Mobile SDK for Android Documentation
+The AWS Mobile SDK for Android provides libraries, code samples, 
+and documentation for developers to build connected mobile applications using AWS.
+
+Developer Guide
+Walks through the steps for setting up the Android SDK and 
+integrating Amazon Cognito and other services.
+
+API Reference
+Describes all the API operations for the Android SDK in detail. 
+Also provides sample requests, responses, and errors for the supported web services protocols.

@@ -1,0 +1,25 @@
+http://docs.aws.amazon.com/AmazonS3/latest/dev/MakingAuthenticatedRequests.html
+
+signature[英][ˈsɪgnətʃə(r)] [美][ˈsɪɡnətʃɚ]
+n.签名；署名；识别标志，鲜明特征；[医]药的用法说明
+
+Making Requests Using the AWS SDKs
+
+Topics
+
+Making Requests Using AWS Account or IAM User Credentials
+Making Requests Using IAM User Temporary Credentials
+Making Requests Using Federated User Temporary Credentials
+
+You can send authenticated requests to Amazon S3 using either 
+the AWS SDK or by making 
+the REST API calls directly in your application. 
+
+The AWS SDK API uses the credentials 
+that you provide to compute the signature for authentication.
+ 
+If you use the REST API directly in your applications, 
+you must write the necessary code to compute the signature for authenticating your request. 
+
+For a list of available AWS SDKs go to, Sample Code and Libraries.
+http://aws.amazon.com/code/

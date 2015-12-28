@@ -1,0 +1,27 @@
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html
+
+Working with Amazon S3 Buckets
+
+Amazon S3 is cloud storage for the Internet. 
+To upload your data (photos, videos, documents etc.), 
+you first create a bucket in one of the AWS regions. 
+You can then upload any number of objects to the bucket.
+
+In terms of implementation, buckets and objects are resources, 
+and Amazon S3 provides APIs for you to manage them. 
+For example, 
+you can create a bucket and upload objects using the Amazon S3 API. 
+You can also use the Amazon S3 console to perform these operations. 
+The console internally uses the Amazon S3 APIs to send requests to Amazon S3.
+
+In this section, 
+we explain working with buckets. 
+For information about working with objects, 
+see Working with Amazon S3 Objects.
+
+Amazon S3 bucket names are globally unique, regardless of the AWS region in which you create the bucket. You specify the name at the time you create the bucket. For bucket naming guidelines, see Bucket Restrictions and Limitations.
+
+Amazon S3 creates bucket in a region you specify. You can choose any AWS region that is geographically close to you to optimize latency, minimize costs, or address regulatory requirements. For example, if you reside in Europe, you might find it advantageous to create buckets in the EU (Ireland) or EU (Frankfurt) regions. For a list of AWS Amazon S3 regions, go to Regions and Endpoints in the AWS General Reference.
+
+Note
+Objects belonging to a bucket that you create in a specific AWS region never leave that region, unless you explicitly transfer them to another region. For example, objects stored in the EU (Ireland) region never leave it.

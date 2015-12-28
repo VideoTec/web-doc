@@ -1,0 +1,18 @@
+Amazon S3 Application Programming Interfaces (API)
+
+The Amazon S3 architecture is designed 
+to be programming language-neutral, 
+using our supported interfaces to store and retrieve objects.
+
+Amazon S3 provides a REST and a SOAP interface. 
+They are similar, but there are some differences. 
+
+For example, in the REST interface, metadata is returned in HTTP headers. 
+Because we only support HTTP requests of up to 4 KB (not including the body), 
+the amount of metadata you can supply is restricted.
+
+Note
+
+SOAP support over HTTP is deprecated, but it is still available over HTTPS. 
+New Amazon S3 features will not be supported for SOAP. 
+We recommend that you use either the REST API or the AWS SDKs.

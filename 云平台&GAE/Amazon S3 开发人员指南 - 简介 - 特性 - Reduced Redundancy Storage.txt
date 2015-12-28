@@ -1,0 +1,28 @@
+redundancy[英][rɪˈdʌndənsi] [美][rɪˈdʌndənsi]
+n.过多，过剩；冗长；裁员；（机器的）多余度
+
+Reduced Redundancy Storage
+
+Customers can store their data using 
+the Amazon S3 Reduced Redundancy Storage (RRS) option. 
+
+RRS enables customers to reduce their costs by storing non-critical, 
+reproducible data at lower levels of redundancy than Amazon S3 standard storage. 
+
+RRS provides a cost-effective, 
+highly available solution for distributing or sharing content that is durably stored elsewhere, 
+or for storing thumbnails, transcoded media, 
+or other processed data that can be easily reproduced. 
+
+The RRS option stores objects on multiple devices across multiple facilities, 
+providing 400 times the durability of a typical disk drive, 
+but does not replicate objects as many times as standard Amazon S3 storage, 
+and thus is even more cost effective.
+
+RRS provides 99.99% durability of objects over a given year. 
+This durability level corresponds to an average expected loss of 0.01% of objects annually.
+
+AWS charges less for using RRS than for standard Amazon S3 storage. 
+For pricing information, see Amazon S3 Pricing.
+
+For more information, see Storage Classes.

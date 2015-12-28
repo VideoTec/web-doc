@@ -1,0 +1,7 @@
+https://aws.amazon.com/cn/s3/?nc2=h_l3_sc
+AWS 免费套餐包括由 Amazon S3 提供的 
+1）5GB 存储空间、
+2）20 000 个 Get 请求和 
+3）2 000 个 Put 请求
+
+https://aws.amazon.com/cn/free/

@@ -1,0 +1,40 @@
+consistency[英][kənˈsɪstənsi] [美][kənˈsɪstənsi]
+n.连贯；符合；前后一致；浓度
+
+eventual[英][ɪˈventʃuəl] [美][ɪˈvɛntʃuəl
+adj.（事件）最终发生的，结果的；可能的；终于的
+
+geographical[英][ˌdʒi:ə'ɡræfɪkl] [美][ˌdʒi:ə'ɡræfɪkl]
+adj.地理学的，地理的
+
+Regions
+
+You can choose the geographical region 
+where Amazon S3 will store the buckets you create. 
+You might choose a region to optimize latency, minimize costs, or address regulatory requirements. 
+Amazon S3 currently supports the following regions:
+
+1）US East (N. Virginia) region Uses Amazon S3 servers in Northern Virginia
+2）US West (Oregon) region Uses Amazon S3 servers in Oregon
+3）US West (N. California) region Uses Amazon S3 servers in Northern California
+4）EU (Ireland) region Uses Amazon S3 servers in Ireland
+5）EU (Frankfurt) region Uses Amazon S3 servers in Frankfurt
+6）Asia Pacific (Singapore) region Uses Amazon S3 servers in Singapore
+7）Asia Pacific (Tokyo) region Uses Amazon S3 servers in Tokyo
+8）Asia Pacific (Sydney) region Uses Amazon S3 servers in Sydney
+9）South America (Sao Paulo) region Uses Amazon S3 servers in Sao Paulo
+
+Objects stored in a region never leave the region 
+unless you explicitly transfer them to another region. 
+
+For example, 
+objects stored in the EU (Ireland) region never leave it. 
+
+For more information about Amazon S3 regions and endpoints, 
+go to Regions and Endpoints in the AWS General Reference.
+
+Amazon S3 provides read-after-write consistency 
+for PUTS of new objects in your S3 bucket and 
+eventual consistency for overwrite PUTS and DELETES in all regions.
+ 
+The next section provides more information about the Amazon S3 data consistency model.

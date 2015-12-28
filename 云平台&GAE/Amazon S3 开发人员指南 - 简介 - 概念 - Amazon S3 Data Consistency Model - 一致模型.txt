@@ -1,0 +1,71 @@
+consistency[英][kənˈsɪstənsi] [美][kənˈsɪstənsi]
+n.连贯；符合；前后一致；浓度
+
+eventual[英][ɪˈventʃuəl] [美][ɪˈvɛntʃuəl
+adj.（事件）最终发生的，结果的；可能的；终于的
+
+corrupted[英][kə'rʌptɪd] [美][kə'rʌptɪd]
+v.（使）败坏( corrupt的过去式和过去分词 )；（使）腐化；引起（计算机文件等的）错误；破坏
+
+partial[英][ˈpɑ:ʃl] [美][ˈpɑ:rʃl]
+adj.部分的；偏爱的；偏袒的；钟爱的
+n.[数学]偏微商
+
+subsequent[英][ˈsʌbsɪkwənt] [美][ˈsʌbsɪˌkwɛnt, -kwənt]
+adj.后来的；随后的；作为结果而发生的；附随的
+
+Amazon S3 Data Consistency Model
+
+Updates to a single key are atomic. 
+For example, 
+if you PUT to an existing key, 
+a subsequent read might return the old data or the updated data, 
+but it will never write corrupted or partial data.
+
+Amazon S3 achieves high availability by replicating data 
+across multiple servers within Amazon's data centers. 
+If a PUT request is successful, your data is safely stored. 
+However, information about the changes must replicate across Amazon S3, 
+which can take some time, and so you might observe the following behaviors:
+
+1） 创建对象
+A process writes a new object to Amazon S3 and 
+immediately lists keys within its bucket. 
+Until the change is fully propagated, the object might not appear in the list.
+
+2） 修改对象
+A process replaces an existing object and immediately attempts to read it. 
+Until the change is fully propagated, 
+Amazon S3 might return the prior data.
+
+3） 删除对象
+A process deletes an existing object and immediately attempts to read it. 
+Until the deletion is fully propagated, 
+Amazon S3 might return the deleted data.
+
+4） 删除对象
+A process deletes an existing object and immediately lists keys within its bucket. 
+Until the deletion is fully propagated, 
+Amazon S3 might list the deleted object.
+
+Note
+
+Amazon S3 does not currently support object locking. 
+If two PUT requests are simultaneously made to the same key, 
+the request with the latest time stamp wins. 
+If this is an issue, 
+you will need to build an object-locking mechanism into your application.
+
+Updates are key-based; 
+there is no way to make atomic updates across keys. 
+
+For example, 
+you cannot make the update of one key dependent on the update of another key 
+unless you design this functionality into your application
+
+The following table describes the characteristics of eventually consistent read and consistent read.
+
+Eventually Consistent Read        Consistent Read
+Stale reads possible              No stale reads
+Lowest read latency               Potential higher read latency
+Highest read throughput           Potential lower read throughput

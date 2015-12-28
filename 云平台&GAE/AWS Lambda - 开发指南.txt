@@ -1,0 +1,22 @@
+https://docs.aws.amazon.com/zh_cn/lambda/latest/dg/welcome.html
+
+什么是 AWS Lambda？
+
+AWS Lambda 是一项可用来将代码上传到 AWS Lambda 的计算服务，该服务可使用 AWS 基础设施代表您运行代码。在您上传代码并创建我们所称的 Lambda 函数 后，AWS Lambda 将负责配置和管理您用来运行代码的服务器。您可以按照如下方式使用 AWS Lambda：
+
+作为一项事件驱动型计算服务，其中 AWS Lambda 运行您的代码以响应事件（如对 Amazon S3 存储桶或 Amazon DynamoDB 表中的数据的更改）。
+作为一项计算服务，以便响应使用 Amazon API Gateway 的 HTTP 请求或响应使用 AWS 软件开发工具包进行的 API 调用。
+AWS Lambda 在可用性高的计算基础设施上运行您的代码，执行计算资源的所有管理工作，其中包括服务器和操作系统维护、容量预配置和自动扩展、代码监控和记录。您只需要以 AWS Lambda 支持的一种语言（目前为 Node.js、Java 和 Python）提供您的代码。有关 AWS Lambda 执行环境的更多信息，请参阅 Lambda 执行环境和可用库。有关 AWS Lambda 如何确定执行您的代码所需的计算资源的信息，请参阅您的 Lambda 函数的资源。
+
+AWS Lambda 只在需要时执行您的代码并自动缩放，从每天几个请求到每秒数千个请求。借助这些功能，您可以使用 Lambda 轻松地为 Amazon S3 和 Amazon DynamoDB 等 AWS 服务构建数据处理触发程序，处理 Amazon Kinesis 中存储的流数据，或创建您自己的按 AWS 规模、性能和安全性运行的后端。
+
+应在何时使用 AWS Lambda？
+
+AWS Lambda 是很多应用程序场景的理想计算平台，只要您可以用 AWS Lambda 支持的语言（即，Java、Node.js 和 Python）编写应用程序代码并在 AWS Lambda 标准运行时环境和 Lambda 提供的资源中运行。
+
+在使用 AWS Lambda 时，您只需负责自己的代码。AWS Lambda 管理提供内存、CPU、网络和其他资源均衡的计算机群。这是以灵活性为代价的，这意味着您不能登录计算实例，或自定义操作系统或语言运行时。通过这些约束，AWS Lambda 可以代表您执行操作和管理活动，包括配置容量、监控机群运行状况、应用安全补丁、部署您的代码、运行 Web 服务前端以及监控和记录您的 Lambda 函数日志。
+
+如果您需要管理自己的计算资源，Amazon Web Services 还提供了其他计算服务以满足您的需求。
+
+Amazon Elastic Compute Cloud (Amazon EC2) Web 服务提供灵活性和各种 EC2 实例类型供您选择。它允许您选择自定义操作系统、网络和安全性设置以及整个软件堆栈，但您负责配置容量、监控机群运行状况和性能以及使用可用区来实现容错。
+Elastic Beanstalk 提供易用的服务，您可将应用程序部署和扩展到 Amazon EC2 上，在其中您保留对底层 EC2 实例的所有权和完整控制权。

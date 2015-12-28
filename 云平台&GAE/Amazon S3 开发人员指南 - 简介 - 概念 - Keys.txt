@@ -1,0 +1,15 @@
+Keys
+
+A key is the unique identifier for an object within a bucket. 
+
+Every object in a bucket has exactly one key. 
+Because the combination of a bucket, key, and version ID uniquely identify each object, 
+Amazon S3 can be thought of as a basic data map 
+between "bucket + key + version" and the object itself. 
+
+Every object in Amazon S3 can be uniquely addressed 
+through the combination of the web service endpoint, bucket name, key, and optionally, a version. 
+
+For example, 
+in the URL http://doc.s3.amazonaws.com/2006-03-01/AmazonS3.wsdl, 
+"doc" is the name of the bucket and "2006-03-01/AmazonS3.wsdl" is the key.
