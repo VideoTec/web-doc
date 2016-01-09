@@ -1,0 +1,3 @@
+http://www.blogjava.net/daniel-tu/archive/2008/12/29/248883.html
+
+三大WEB服务器对比分析（apache ,lighttpd,nginx）
