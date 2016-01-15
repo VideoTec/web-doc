@@ -1,0 +1,44 @@
+https://en.wikipedia.org/wiki/Real-time_Transport_Protocol#Profiles_and_payload_formats
+
+One of the design considerations of RTP was to 
+carry a range of multimedia formats and 
+allow new formats to be added without revising the RTP standard. 
+The design of RTP is based on the architectural principle known as 
+application level framing (ALF). 
+The information required by a specific application's needs 
+is not included in the generic RTP header, 
+but is instead provided through RTP profiles and payload formats.
+For each class of application (e.g., audio, video), 
+RTP defines a profile and one or more associated payload formats.
+A complete specification of RTP for a particular application usage 
+will require a profile and payload format specification(s).
+
+The profile defines the codecs used to encode the payload data and 
+their mapping to payload format codes 
+in the Payload Type (PT) field of the RTP header (see below). 
+Each profile is accompanied by several payload format specifications, 
+each of which describes the transport of a particular encoded data.
+The audio payload formats include 
+G.711, G.723, G.726, G.729, GSM, QCELP, MP3, and DTMF, and 
+the video payload formats include 
+H.261, H.263, H.264, and MPEG-4.
+
+Examples of RTP Profiles include:
+
+1) RFC 3551
+The RTP profile for Audio and video conferences with minimal control (RFC 3551) 
+defines 
+a set of static payload type assignments, and 
+a mechanism for mapping between a payload format, and 
+a payload type identifier (in header) using Session Description Protocol (SDP).
+
+2) RFC 3711
+The Secure Real-time Transport Protocol (SRTP) (RFC 3711) 
+defines a profile of RTP that 
+provides cryptographic services for the transfer of payload data.[18]
+
+3)
+The experimental Control Data Profile for RTP (RTP/CDP[19]) 
+for machine-to-machine communications.
+注：
+Breese, Finley (2010). Serial Communication over RTP/CDP. BoD - Books on Demand. pp

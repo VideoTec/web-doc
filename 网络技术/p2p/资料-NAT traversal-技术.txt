@@ -1,0 +1,33 @@
+symmetric[英][sɪ'metrɪk] [美][sɪ'metrɪk]
+adj.相称性的，均衡的
+
+https://en.wikipedia.org/wiki/NAT_traversal#Techniques
+
+The following NAT traversal techniques are available:
+
+1）Socket Secure (SOCKS) is a technology created in the early 1990s that uses proxy servers to relay traffic between networks or systems.
+2）UPnP IGD is supported by many small NAT gateways in home or small office settings.
+3）Interactive Connectivity Establishment (ICE) is a technique used in VoIP, peer-to-peer communications, video, instant messaging, and other interactive media applications. It uses Session Traversal Utilities for NAT (STUN).
+4）Application-level gateway (ALG) is a component of a firewall or NAT that allows for configuring NAT traversal filters.[2]
+5）NAT hole punching is a technique that exploits how NATs handle some protocols (for example, UDP, TCP, or ICMP) to allow previously blocked packets through the NAT.
+
+Symmetric NAT
+
+The recent proliferation of symmetric NATs has 
+reduced NAT traversal success rates in many practical situations 
+like mobile and public WiFi internet connections. 
+
+Hole punching techniques like STUN and ICE 
+are unable to traverse symmetric NATs without the help of a relay server (e.g. TURN). 
+Techniques that traverse symmetric NATs 
+by attempting to predict the next port 
+that will be opened by each NAT device were discovered in 2003 
+by Yutaka Takeda at Panasonic Communications Research Laboratory and in 2008
+by researchers at Waseda University.
+
+Port prediction techniques are only effective with NAT devices
+which use known deterministic algorithms for port selection. 
+This predictable yet non-static port allocation scheme 
+is uncommon in large scale NATs such as those used in 4G LTE networks and 
+thus the Waseda University technique is largely ineffective 
+on those mobile broadband networks.

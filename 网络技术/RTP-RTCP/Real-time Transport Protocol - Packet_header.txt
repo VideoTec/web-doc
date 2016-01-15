@@ -1,0 +1,82 @@
+https://en.wikipedia.org/wiki/Real-time_Transport_Protocol#Packet_header
+
+The RTP header has a minimum size of 12 bytes. 
+After the header, optional header extensions may be present. 
+This is followed by the RTP payload, 
+the format of which is determined by the particular class of application.
+
+The fields in the header are as follows:
+
+1）Version: (2 bits) 
+Indicates the version of the protocol. 
+Current version is 2.
+
+2）P (Padding): (1 bit) 
+Used to indicate if there are extra padding bytes at the end of the RTP packet. 
+A padding might be used to fill up a block of certain size, 
+for example as required by an encryption algorithm. 
+The last byte of the padding contains the number of padding bytes 
+that were added (including itself).
+
+3）X (Extension): (1 bit) 
+Indicates presence of an Extension header between standard header and payload data. 
+This is application or profile specific.
+
+4）CC (CSRC count): (4 bits) 
+Contains the number of CSRC identifiers (defined below) 
+that follow the fixed header.
+
+5）M (Marker): (1 bit) 
+Used at the application level and defined by a profile. 
+If it is set, 
+it means that the current data has some special relevance for the application.
+
+6）PT (Payload type): (7 bits) 
+Indicates the format of the payload and determines its interpretation by the application. 
+This is specified by an RTP profile. 
+For example, 
+see RTP Profile for audio and video conferences with minimal control (RFC 3551).
+
+7）Sequence number: (16 bits) 
+The sequence number is incremented by one for each RTP data packet sent and 
+is to be used by the receiver to detect packet loss and to restore packet sequence. 
+The RTP does not specify any action on packet loss; 
+it is left to the application to take appropriate action. 
+For example, 
+video applications may play the last known frame in place of the missing frame.
+According to RFC 3550, 
+the initial value of the sequence number should be random 
+to make known-plaintext attacks on encryption more difficult.
+RTP provides no guarantee of delivery, 
+but the presence of sequence numbers makes it possible to detect missing packets.
+
+8）Timestamp: (32 bits) 
+Used to enable the receiver to 
+play back the received samples at appropriate intervals. 
+When several media streams are present, 
+the timestamps are independent in each stream, 
+and may not be relied upon for media synchronization. 
+The granularity of the timing is application specific. 
+For example, 
+an audio application that samples data once every 125 µs 
+(8 kHz, a common sample rate in digital telephony) 
+would use that value as its clock resolution. 
+The clock granularity is one of the details 
+that is specified in the RTP profile for an application.
+
+9）SSRC: (32 bits) 
+Synchronization source identifier 
+uniquely identifies the source of a stream. 
+The synchronization sources within the same RTP session will be unique.
+
+10）CSRC: (32 bits each) 
+Contributing source IDs enumerate contributing sources to a stream 
+which has been generated from multiple sources.
+
+11）Header extension: (optional) 
+The first 32-bit word contains 
+a profile-specific identifier (16 bits) and 
+a length specifier (16 bits) 
+that indicates the length of the extension (EHL = extension header length) in 32-bit units, 
+excluding the 32 bits of the extension header
+扩展头总长度 = 32bits + ehl * 32bit

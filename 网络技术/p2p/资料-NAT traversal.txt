@@ -1,0 +1,17 @@
+https://en.wikipedia.org/wiki/NAT_traversal
+
+traversal[英][træ'vɜ:sl] [美]['trævɜ:səl]
+n.横越，横断物，（横向）往返移动
+
+principle[英][ˈprɪnsəpl] [美][ˈprɪnsəpəl]
+n.原则，原理；准则，道义；道德标准；本能
+
+NAT traversal is a computer networking methodology 
+with the goal of establishing and maintaining Internet protocol 
+connections across gateways that implement network address translation (NAT). 
+NAT breaks the principle of end-to-end connectivity 
+originally envisioned(想像) in the design of the Internet.
+
+NAT traversal techniques are required 
+for certain client-to-client network applications, 
+such as peer-to-peer file sharing and Voice over IP.

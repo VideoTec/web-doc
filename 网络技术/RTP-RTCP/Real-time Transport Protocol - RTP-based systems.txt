@@ -1,0 +1,19 @@
+https://en.wikipedia.org/wiki/Real-time_Transport_Protocol#RTP-based_systems
+
+A functional network-based system 
+includes other protocols and standards in conjunction with RTP. 
+Protocols such as SIP, Jingle, RTSP, H.225 and H.245 
+are used for session initiation, control and termination. 
+Other standards, such as H.264, MPEG and H.263, 
+are used to encode the payload data as specified via RTP Profile.
+
+An RTP sender captures the multimedia data, 
+then encodes, frames and transmits it as RTP packets 
+with appropriate timestamps and increasing sequence numbers. 
+Depending on the RTP profile in use, 
+the sender may set the Payload Type field. 
+
+The RTP receiver captures the RTP packets, 
+detects missing packets, and may reorder packets. 
+It decodes the frames according to the payload format and 
+presents the stream to its user

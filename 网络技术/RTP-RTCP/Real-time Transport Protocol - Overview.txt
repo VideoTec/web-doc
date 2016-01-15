@@ -1,0 +1,97 @@
+https://en.wikipedia.org/wiki/Real-time_Transport_Protocol#Overview
+
+RTP is designed for end-to-end, real-time, transfer of streaming media. 
+The protocol provides facilities for jitter compensation and 
+detection of out of sequence arrival in data, 
+which are common during transmissions on an IP network. 
+RTP allows data transfer to multiple destinations through IP multicast.
+RTP is regarded as the primary standard 
+for audio/video transport in IP networks and 
+is used with an associated profile and payload format.
+
+Real-time multimedia streaming applications 
+require timely delivery of information and 
+often can tolerate some packet loss to achieve this goal. 
+
+For example, 
+loss of a packet in audio application 
+may result in loss of a fraction of a second of audio data, 
+which can be made unnoticeable with suitable error concealment algorithms.
+
+选择传输层协议
+
+The Transmission Control Protocol (TCP), 
+although standardized for RTP use,
+is not normally used in RTP applications 
+because TCP favors reliability over timeliness. 
+
+Instead the majority of the RTP implementations 
+are built on the User Datagram Protocol (UDP).
+Other transport protocols specifically 
+designed for multimedia sessions are SCTP and DCCP,
+although, as of 2010, they are not in widespread use.
+
+串流控制传输协议（英语：Stream Control Transmission Protocol 或简写 SCTP ）
+传输层协议，SCTP 可以理解为和 TCP 及 UDP 相类似的
+
+数据拥塞控制协议（英语：Datagram Congestion Control Protocol，缩写为 DCCP ）
+针对传输层中UDP的新传输的协议而发展出来，用来传输实时业务
+
+RTP was developed by 
+the Audio/Video Transport working group of 
+the IETF standards organization. 
+RTP is used in conjunction with other protocols such as H.323 and RTSP. The 
+RTP standard defines a pair of protocols: RTP and RTCP. 
+RTP is used for transfer of multimedia data, and the 
+RTCP is used to periodically send control information and QoS parameters.
+
+-------------------------------------
+Protocol components
+-------------------------------------
+The RTP specification describes two sub-protocols, RTP and RTCP.
+
+The data transfer protocol, RTP, 
+facilitates the transfer of real-time data. 
+Information provided by this protocol include 
+1）timestamps (for synchronization), 
+2）sequence numbers (for packet loss and reordering detection) and 
+3）the payload format which indicates the encoded format of the data.
+
+The control protocol RTCP is used to 
+1）specify quality of service (QoS) feedback and 
+2）synchronization between the media streams. 
+The bandwidth of RTCP traffic compared to RTP is small, typically around 5%.
+
+RTP sessions are typically initiated 
+between communicating peers using a signaling protocol, such as 
+1）H.323, 
+2）the Session Initiation Protocol (SIP), or 
+3）Jingle (XMPP). 
+These protocols may use the Session Description Protocol 
+to negotiate the parameters for the sessions.
+
+negotiate[英][nɪˈgəʊʃieɪt] [美][nɪˈgoʊʃieɪt]
+vi.谈判，协商，交涉
+vt.谈判达成；成功越过；议价出售
+
+-------------------------------------
+Sessions
+-------------------------------------
+An RTP session is established for each multimedia stream. 
+A session consists of an IP address with a pair of ports for RTP and RTCP. 
+For example, 
+audio and video streams use separate RTP sessions, 
+enabling a receiver to deselect a particular stream.
+The ports which form a session are negotiated 
+using other protocols such as RTSP (using SDP in the setup method) and SIP.
+
+会话描述协议（Session Description Protocol或简写SDP）
+描述的是流媒体的初始化参数
+
+According to the specification, an 
+RTP port should be even（偶数） and the 
+RTCP port is the next higher odd port number.
+It is however also possible to use a single port for both RTP and RTCP.
+RTP and RTCP typically use unprivileged UDP ports (1024 to 65535),
+but may use other transport protocols (most notably, SCTP and DCCP) as well, 
+as the protocol design is transport independent.
