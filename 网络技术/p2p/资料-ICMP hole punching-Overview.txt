@@ -1,0 +1,27 @@
+https://en.wikipedia.org/wiki/ICMP_hole_punching
+
+Currently the only method of ICMP hole punching or 
+hole punching without third party involvement (autonomous NAT traversal) 
+was developed 
+by Samy Kamkar on January 22, 2010 and 
+released in the open source software pwnat,
+and the method was later published in the IEEE. According to the paper:
+
+The proposed technique assumes that the client 
+has somehow learned the current external (globally routable) IP address of the server's NAT. 
+The key idea for enabling the server to learn the client's IP address is 
+for the server to periodically send a message to a fixed, known IP address. 
+The simplest approach uses ICMP ECHO REQUEST messages to an unallocated IP address, 
+such as 1.2.3.4. 
+Since 1.2.3.4 is not allocated, 
+the ICMP REQUEST will not be routed by routers without a default route; 
+ICMP DESTINATION UNREACHABLE messages that may be created by those routers 
+can just be ignored by the server. 
+As a result of the messages sent to 1.2.3.4, 
+the NAT will enable routing of replies in response to this request. 
+The connecting client will then fake such a reply. 
+Specifically, the client will transmit an ICMP message indicating TTL_EXPIRED. 
+Such a message could legitimately be transmitted by any Internet router and 
+the sender address would not be expected to match the server's target IP. 
+The server listens for (fake) ICMP replies and 
+upon receipt initiates a connection to the sender IP specified in the ICMP reply.

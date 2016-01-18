@@ -1,0 +1,54 @@
+punch[英][pʌntʃ] [美][pʌntʃ]
+vt.用拳猛击；打孔；（用压穿器）穿孔，冲孔；用肘推
+n.冲压机，冲床；打洞器；钻孔机；剪票铗
+vi.用拳猛击
+
+hole punching 冲孔
+
+employed[英][ɪm'plɔɪd] [美][ɪm'plɔɪd]
+v.雇用( employ的过去式和过去分词 )；使用，利用
+
+involving[英][ɪn'vɒlvɪŋ] [美][ɪn'vɒlvɪŋ]
+v.表明（某人参与了罪行等）( involve的现在分词 )；使参与；牵涉；使专心于
+
+https://en.wikipedia.org/wiki/ICMP_hole_punching
+
+ICMP hole punching is a technique employed 
+in network address translator (NAT) applications 
+for maintaining Internet Control Message Protocol (ICMP) packet streams that traverse the NAT. 
+
+NAT traversal techniques are typically required 
+for client-to-client networking applications 
+on the Internet involving hosts connected in private networks, 
+especially in peer-to-peer and Voice over Internet Protocol (VoIP) deployments.
+
+transit[英][ˈtrænzɪt] [美][ˈtrænsɪt, -zɪt]
+n.通过；搬运；转变；运输线
+vt.通过；横越；运送；使（望远镜）水平横轴回转
+vi.通过，经过
+
+involvement[英][ɪnˈvɒlvmənt] [美][ɪnˈvɑ:lvmənt]
+n.牵连，参与；加入；财政困难；牵连的事务，复杂的情况
+
+exploiting[英][ɪksp'lɔɪtɪŋ] [美][ɪksp'lɔɪtɪŋ]
+v.开采( exploit的现在分词 )；利用（…为自己谋利）；运用；剥削
+
+acceptance[英][əkˈseptəns] [美][ækˈsɛptəns]
+n.接受，接纳；[金融]承兑；无怨接受（逆境、困境等）；赞成
+
+ICMP hole punching establishes connectivity 
+between two hosts communicating across one or more network address 
+translators in either a peer-to-peer or client-server model. 
+Typically, third party hosts on the public transit network 
+are used to establish UDP or TCP port states 
+that may be used for direct communications between the communicating hosts, 
+however ICMP hole punching requires no third party involvement 
+to pass information between one or more NATs by exploiting a NAT's 
+loose acceptance of inbound ICMP Time Exceeded packets.
+
+Once an ICMP Time Exceeded packet reaches the destination NAT, 
+arbitrary data in the packet expected by the NAT 
+allows the packet to reach the destination server, 
+allowing the destination server to 
+obtain the client's public IP address and 
+other data stored in the packet from the client.

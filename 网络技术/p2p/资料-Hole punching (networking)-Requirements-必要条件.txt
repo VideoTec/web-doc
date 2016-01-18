@@ -1,0 +1,42 @@
+https://en.wikipedia.org/wiki/Hole_punching_(networking)#Requirements
+
+hairpin[英][ˈheəpɪn] [美][ˈherpɪn]
+n.发夹
+
+Reliable hole punching requires consistent endpoint translation, 
+and for multiple levels of NATs, 
+hairpin translation.
+
+When an outbound connection from a private endpoint passes through a firewall, 
+it receives a public endpoint (public IP address and port number), 
+and the firewall translates traffic between them. 
+Until the connection is closed, 
+the client and server communicate through the public endpoint, 
+and the firewall directs traffic appropriately. 
+Consistent endpoint translation reuses the same public endpoint 
+for a given private endpoint, 
+instead of allocating a new public endpoint for every new connection.
+
+Hairpin translation creates a loopback connection 
+between two of its own private endpoints 
+when it recognizes that the destination endpoint is itself. 
+This functionality is necessary for hole punching only 
+when used within a multiple-layered NAT.
+
+http://www.h3c.com.cn/About_H3C/Company_Publication/IP_Lh/2012/04/Home/Catalog/201208/751474_30008_0.htm
+
+什么是Hairpin技术？
+Hairpin技术又被称为
+Hairpin NAT、
+Loopback NAT或
+Hairpin Translation。
+
+Hairpin技术需要NAT网关支持，
+它能够让两台位于同一台NAT网关后面的主机，
+通过对方的公网地址和端口相互访问，
+NAT网关会根据一系列规则，
+将对内部主机发往其NAT公网IP地址的报文进行转换，并从私网接口发送给目标主机。
+目前有很多NAT设备不支持该技术，
+这种情况下，NAT网关在一些特定场合下将会阻断P2P穿越NAT的行为，
+打洞的尝试是无法成功的。
+好在现在已经有越来越多的NAT设备商开始加入到对该转换的支持中来

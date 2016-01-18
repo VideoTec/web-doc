@@ -1,0 +1,30 @@
+encapsulate[英][ɪnˈkæpsjuleɪt] [美][ɛnˈkæpsəˌlet]
+vt.封装；概述
+vi.形成囊状物
+
+IPsec virtual private network clients use NAT traversal 
+in order to have Encapsulating Security Payload packets traverse NAT. 
+IPsec uses several protocols in its operation which must be enabled 
+to traverse firewalls and network address translators:
+
+1）Internet Key Exchange (IKE) – User Datagram Protocol (UDP) port 500
+2）Encapsulating Security Payload (ESP) – IP protocol number 50
+3）Authentication Header (AH) – IP protocol number 51
+4）IPsec NAT traversal – UDP port 4500, when NAT traversal is in use
+
+Many routers provide explicit features, often called IPsec Passthrough.
+
+In Windows XP, NAT traversal is enabled by default, 
+but in Windows XP with Service Pack 2 it has been disabled by default 
+for the case when the VPN server is also behind a NAT device, 
+because of a rare and controversial security issue.
+IPsec NAT-T patches are also available 
+for Windows 2000, Windows NT and Windows 98.
+
+on demand[英][ɔn diˈmɑ:nd] [美][ɑn dɪˈmænd]
+一经要求；点播
+
+NAT traversal and IPsec may be used to 
+enable opportunistic encryption of traffic between systems. 
+NAT traversal allows systems behind NATs 
+to request and establish secure connections on demand.

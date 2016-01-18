@@ -90,7 +90,7 @@ using other protocols such as RTSP (using SDP in the setup method) and SIP.
 
 According to the specification, an 
 RTP port should be even（偶数） and the 
-RTCP port is the next higher odd port number.
+RTCP port is the next higher odd（奇数） port number.
 It is however also possible to use a single port for both RTP and RTCP.
 RTP and RTCP typically use unprivileged UDP ports (1024 to 65535),
 but may use other transport protocols (most notably, SCTP and DCCP) as well, 

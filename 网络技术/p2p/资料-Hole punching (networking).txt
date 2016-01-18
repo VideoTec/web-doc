@@ -1,0 +1,34 @@
+https://en.wikipedia.org/wiki/Hole_punching_(networking)
+
+restrictive[英][rɪˈstrɪktɪv] [美][rɪˈstrɪktɪv]
+adj.限制的；限定的；约束的
+n.限制性词语
+
+topology[英][tə'pɒlədʒɪ] [美][tə'pɑ:lədʒɪ]
+n.地质学；拓扑结构；局部解剖学
+
+In computer networking, 
+hole punching is a technique for establishing a direct connection 
+between two parties in which one or both are 
+1）behind restrictive firewalls, or 
+2）behind routers that use network address translation (NAT). 
+To "punch" a hole, 
+each client connects to an unrestricted third-party server 
+that temporarily stores external and internal address and port information for each client. 
+The server then relays each client's information to the other one, and 
+using that information both clients try to establish a connection between themselves; 
+as a result of the connections using valid port numbers, 
+restrictive firewalls or routers 
+accept and forward the incoming packets on each side.
+
+nefarious[英][nɪˈfeəriəs] [美][nɪˈferiəs]
+adj.极坏的，恶毒的
+
+Hole punching does not require any knowledge of the network topology to function. 
+ICMP hole punching, 
+UDP hole punching and 
+TCP hole punching 
+respectively use Internet Control Message, 
+User Datagram and Transmission Control Protocols. 
+Using TCP nefarious hole punching, 
+it is possible to send compressed SYN packets through into a common ACK path.

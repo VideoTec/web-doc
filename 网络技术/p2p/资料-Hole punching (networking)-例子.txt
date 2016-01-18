@@ -1,0 +1,33 @@
+https://en.wikipedia.org/wiki/Hole_punching_(networking)#Examples
+
+Examples
+
+1）VoIP products, 
+2）online gaming applications, and 
+3）P2P networking software all use hole punching.
+
+audibly[英]['ɔ:dəblɪ] [美]['ɔ:dəblɪ]
+adv.可听见地
+
+permanent[英][ˈpɜ:mənənt] [美][ˈpɜ:rmənənt]
+adj.永久（性）的，永恒的，不变的，耐久的，持久的，经久的；稳定的；常务的，常设的
+n.电烫发，烫发
+
+pinhole[英][ˈpɪnhəʊl] [美][ˈpɪnhoʊl]
+n.针孔，小孔
+
+Telephony software Skype uses hole punching 
+to allow users to communicate with one or more users audibly.
+
+Fast-paced online multi-player games may use a hole punching technique or 
+require users to create a permanent firewall pinhole in order to reduce network latency.
+
+VPN application Hamachi utilizes hole punching 
+to allow users to connect directly to subscribed devices behind firewalls.
+
+decentralize[英][ˌdi:ˈsentrəlaɪz] [美][diˈsɛntrəˌlaɪz]
+vt.权力分散；人口疏散；密度分散
+vi.地方分权；疏散
+
+Decentralized peer-to-peer file sharing software 
+relies on hole punching for file distribution.

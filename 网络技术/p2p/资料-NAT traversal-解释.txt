@@ -1,0 +1,73 @@
+https://en.wikipedia.org/wiki/NAT_traversal#Explanation
+
+assistance[英][əˈsɪstəns] [美][əˈsɪstəns]
+n.帮助，援助；〈古〉出席，出席者；辅助设备
+
+enterprise[英][ˈentəpraɪz] [美][ˈentərpraɪz]
+n.企（事）业单位；事业，计划；事业心，进取心
+
+marshalling[英]['mɑ:ʃəlɪŋ] [美]['mɑ:ʃəlɪŋ]
+adj.编组的，集结待发的
+n.信号编集
+
+Many techniques exist, 
+but no single method works in every situation 
+since NAT behavior is not standardized. 
+Many NAT traversal techniques require 
+assistance from a server at a publicly routable IP address. 
+Some methods use the server only when establishing the connection, 
+while others are based on relaying all data through it, 
+which adds bandwidth costs and increases latency, 
+detrimental to real-time voice and video communications.
+
+Most NAT behavior-based techniques bypass enterprise security policies. 
+Enterprise security experts prefer techniques 
+that explicitly cooperate with NAT and firewalls, 
+allowing NAT traversal while still enabling marshalling 
+at the NAT to enforce enterprise security policies. 
+IETF standards based on this security model are 
+Realm-Specific IP (RSIP) and 
+middlebox communications (MIDCOM).
+
+alleviate[英][əˈli:vieɪt] [美][əˈliviˌet]
+vt.减轻，缓和
+
+exhaustion[英][ɪgˈzɔ:stʃən] [美][ɪɡˈzɔstʃən]
+n.疲惫，衰竭；枯竭，用尽；排空；彻底的研究
+
+corporate[英][ˈkɔ:pərət] [美][ˈkɔ:rpərət]
+adj.法人的，团体的，社团的；公司的，总体国家的；〈古〉团结的；共同的，全体的
+
+NAT devices are commonly used to 
+alleviate IPv4 address exhaustion by allowing the use of 
+1) private IP addresses on home and corporate networks behind routers with a single 
+2) public IP address facing the public Internet. 
+The internal network devices communicate with hosts on the external network 
+by changing the source address of outgoing 
+requests to that of the NAT device and 
+relaying replies back to the originating device.
+
+ill-suited[英]['ɪl'sju:tɪd] [美]['ɪl'su:tɪd]
+adj.不合适的
+
+thereby[英][ˌðeəˈbaɪ] [美][ˌðerˈbaɪ]
+adv.由此，从而；在那附近
+
+potentially[英][pə'tenʃəlɪ] [美][pəˈtɛnʃəlɪ]
+adv.潜在地；可能地；<古>强有力地；权威地
+
+This leaves the internal network ill-suited for hosting servers, 
+as the NAT device has no automatic method of 
+determining the internal host for which incoming packets are destined. 
+This is not a problem for home users behind NAT devices 
+doing general web access and e-mail. 
+However, applications such as 
+1）peer-to-peer file sharing, 
+2）VoIP services and 
+3）the online services of current generation video game consoles 
+require clients to be servers as well, 
+thereby posing a problem for users behind NAT devices, 
+as incoming requests cannot be easily correlated to the proper internal host. 
+Furthermore, many of these types of services 
+carry IP address and port number information in the application data, 
+potentially requiring substitution or special traversal techniques for NAT traversal.

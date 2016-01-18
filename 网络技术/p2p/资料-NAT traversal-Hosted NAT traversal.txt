@@ -1,0 +1,13 @@
+https://en.wikipedia.org/wiki/NAT_traversal#Hosted_NAT_traversal
+
+relaying[英]['ri:leɪŋ] [美]['ri:leɪŋ]
+v.转述( relay的现在分词 )；转达；中继
+
+latching[英]['lætʃɪŋ] [美]['lætʃɪŋ]
+n.闭塞；闭锁；关闭；闭塞装置
+v.理解( latch的现在分词 )；纠缠；用碰锁锁上（门等）；附着（在某物上）
+
+Hosted NAT traversal (HNT) 
+is set of mechanisms including media relaying and latching used by intermediaries.
+The IETF advises against using latching 
+over the Internet and recommends ICE for security reasons.
