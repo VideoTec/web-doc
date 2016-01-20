@@ -1,0 +1,26 @@
+JSP指令控制JSP编译器如何去生成servlet，以下是可用的指令：
+
+包含指令include –包含指令通知JSP编译器把另外一个文件完全包含入当前文件中。
+效果就好像被包含文件的内容直接被粘贴到当前文件中一样。
+这个功能和C预处理器所提供的很类似。被包含文件的扩展名一般都是"jspf"（即JSP Fragment，JSP碎片）:
+
+<%@ include file="somefile.jsp" %>
+
+页面指令page –页面指令有以下几个选项：
+1）import	使一个JAVA导入声明被插入到最终页面文件。
+2）contentType	规定了生成内容的类型。当生成非HTML内容或者当前字符集character set并非默认字符集时使用。
+3）errorPage	处理HTTP请求时，如果出现异常则显示该错误提示信息页面。
+4）isErrorPage	如果设置为TRUE，则表示当前文件是一个错误提示页面。
+5）isThreadSafe	表示最终生成的servlet是否线程安全（thread safe）。
+
+<%@ page import="java.util.*" %> //example import导入样例
+<%@ page contentType="text/html" %> //example contentType页面类型样例
+<%@ page isErrorPage=false %> //example for non error page无错页面样例
+<%@ page isThreadSafe=true %> //example for a thread safe JSP线程安全JSP样例
+
+注意：在同一个JSP文件中只有"import"导入页面指令可以被多次使用。
+
+标签库指令taglib –标签库指令描述了要使用的JSP标签库。
+该指令需要指定一个前缀prefix（和C++的命名空间很类似）和标签库的描述URI:
+
+<%@ taglib prefix="myprefix" uri="taglib/mytag.tld" %>

@@ -1,0 +1,48 @@
+https://zh.wikipedia.org/wiki/JSP
+
+JSP（全称JavaServer Pages）是由Sun Microsystems公司倡导和许多公司参与共同创建的一种
+使软件开发者可以响应客户端请求，
+而动态生成HTML、XML或其他格式文档的Web网页的技术标准。
+JSP技术是以Java语言作为脚本语言的，
+JSP网页为整个服务器端的Java库单元提供了一个接口来服务于HTTP的应用程序。
+
+JSP使Java代码和特定的预定义动作可以嵌入到静态页面中。
+JSP句法增加了被称为JSP动作的XML标签，它们用来调用内建功能。
+另外，可以创建JSP标签库，然后像使用标准HTML或XML标签一样使用它们。
+标签库提供了一种和平台无关的扩展服务器性能的方法。
+
+JSP被JSP编译器编译成Java Servlets。
+一个JSP编译器可以把JSP编译成JAVA代码写的servlet然后再由JAVA编译器来编译成机器码，
+也可以直接编译成二进制码。
+
+JSP的本地化是通过和JAVA应用程序相同的方式完成的，即使用资源包。
+
+新的JSP规范版本包括新的用于提升程序员工作效率功能，主要有：
+
+1）An Expression Language（EL）允许开发者创建Velocity-样式 templates（among other things）.
+2）更快更简单的创建新标签的方法。
+
+Hello, ${param.visitor}  <%-- same as: Hello, <%=request.getParameter("visitor")%> --%>
+
+模型-视图-控制器 模式
+为了把
+1）表现层presentation从
+2）请求处理request processing和
+3）数据存储data storage中分离开来，
+太阳公司推荐在JSP文件中使用一种模型-视图-控制器Model-view-controller模式。
+规范的SERVLET或者分离的JSP文件用于处理请求。
+当请求处理完后，控制权交给一个只作为创建输出作用的JSP页。
+有几种平台都基于服务于网络层的模-视图-控件 模式（比如Struts和Spring framework）。
+
+从架构上说，
+JSP可以被看作是从Servlets高级提炼而作为JAVA Servlet 2.1 API的扩展而应用。
+Servlets和JSP最早都是由Sun Microsystems（太阳公司）开发的。
+从JSP1.2版本以来，
+JSP处于Java Community Process（有人译为：JAVA社区组织）开发模式下。
+JSR-53  规定了JSP 1.2 和 Servlet 2.4的规范，
+JSR-152 规定了JSP 2.0 的规范。2006年5月，
+JSR-245       JSP 2.1 的规范作为 Java EE 5 的一部分，在JSR-245中发布。
+
+静态数据在输入文件中的内容和输出给HTTP响应的内容完全一致。
+此时，该JSP输入文件会是一个没有内嵌JAVA或动作的HTML页面。
+而且，客户端每次请求都会得到相同的响应内容。
