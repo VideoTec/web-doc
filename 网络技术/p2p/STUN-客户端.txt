@@ -1,0 +1,20 @@
+http://www.voip-info.org/wiki/view/STUN+clients
+
+STUN clients
+Known STUN clients:
+
+Xten softphones: X-lite, X-PRO, eyeBeam
+Linux client on http://sourceforge.net/projects/stun/
+SNOM Phones
+Cisco Ata v 3.0 firmware
+pbxnsip PBX for trunks
+Grandstream Budgetone and Handytone
+HotSIP Active Client
+SIPURA All SPA Products
+Leadtek Research BVA8051, BVA8052, BVA8053, BVA8055
+SIPPhone Call-In-One
+SIPPhone's Gizmo project
+GnomeMeeting H.323 and SIP Open Source softphone GnomeMeeting Project
+pjsua Open Source Console-based SIP User Agent
+doubango open source, cross-platform 3GPP NGN/IMS Framework
+IMSDroid open source SIP/IMS Client for Android

@@ -1,0 +1,35 @@
+http://blog.sina.com.cn/s/blog_949e414101016fai.html
+http://pennlee.blog.163.com/blog/static/5259930200752511814652/
+UDP穿透之NAT类型分析
+
+NAT，即网络地址转换，
+是指在一个网络内部，根据需要可以随意自定义的IP地址，而不需要经过申请。
+而当内部的计算机要与外部internet网络进行通讯时，
+NAT设备（比如：路由器）负责将其内部的IP地址转换为合法的IP地址并进行通信。
+
+从功能上来说，NAT可以分为：
+传统NAT，
+双向NAT(Bi-Directional NAT)，
+两次NAT(Twice NAT)，
+多宿主NAT(Multihomed NAT)，
+
+但是市场上现在最多的是传统NAT，尤其是NAPT设备，
+所以本文的穿透也是针对NAPT展开，
+其类型主要细分为以下四种类型：
+
+1） 非对称NAT(Cone NAT)
+    a) 全ConeNAT(Full Cone NAT)
+    b) 限制性ConeNAT (Restricted Cone NAT)
+    c) 端口限制性 ConeNAT(Port Restricted Cone NAT)
+2） 对称NAT(Symmetric NAT)
+对称NAT(Symmetric NAT)对称NAT是指把所有来自相同内部IP地址和端口号，
+到特定目的1P地址和端口号的请求映射到相同的外部TP地址和端口。
+如果同一主机使用不同的源地址和端口对，发送的目的地址不同，则使用不同的映射。
+只有收到了一个IP包的外部主机才能够向该内部主机发送回一个UDP包。
+对称的NAT不保证所有会话中的(私有地址，私有端口)和(公开IP，公开端口)之间绑定的一致性。
+相反，它为每个新的会话分配一个新的端口号。
+
+传统P2P文件传输在NAT检测方面比较薄弱，
+没有一个系统全面地检测方法，其中对对称型NAT的检测几乎没有。
+本文这里会运用连接服务器和NAT检测辅助服务器对各种常用NAT做一个全面地检测，
+尤其关注对称型NAT。   

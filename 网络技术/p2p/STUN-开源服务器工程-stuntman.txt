@@ -1,0 +1,17 @@
+http://www.stunprotocol.org/
+
+STUNTMAN is an open source implementation of the STUN protocol 
+(Session Traversal Utilities for NAT) 
+as specified in RFCs 5389, 5769, and 5780. 
+
+It also includes backwards compatibility for RFC 3489. 
+Source code distribution includes a high performance STUN server, 
+a client application, and 
+a set of code libraries for implementing a STUN client within an application.
+
+The current C++ code base compiles 
+using gcc/g++ for most UNIX distributions 
+including Linux, MacOS, BSD, and Solaris. 
+
+A Windows port via Cygwin is available now.
+Stuntman is open source software distrubted under the Apache 2.0 License.

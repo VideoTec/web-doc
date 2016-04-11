@@ -1,0 +1,11 @@
+https://zh.wikipedia.org/wiki/%E4%BA%92%E5%8B%95%E5%BC%8F%E9%80%A3%E6%8E%A5%E5%BB%BA%E7%AB%8B
+
+互动式连接建立（Interactive Connectivity Establishment），
+一种综合性的NAT穿越的技术。
+
+互动式连接建立是由IETF的MMUSIC工作组开发出来的一种framework，
+可整合各种NAT穿透技术，如
+STUN、
+TURN（Traversal Using Relay NAT，中继NAT实现的穿透）、
+RSIP（Realm Specific IP，特定域IP）等。
+该framework可以让SIP的客户端利用各种NAT穿透方式打穿远程的防火墙。

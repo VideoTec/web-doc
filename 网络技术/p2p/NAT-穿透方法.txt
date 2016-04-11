@@ -1,0 +1,9 @@
+http://baike.baidu.com/item/nat
+
+NAT穿透方法
+
+目前常用的针对UDP的NAT 穿透（NAT Traversal）方法主要有：
+STUN、TURN、ICE、uPnP等。
+其中ICE方式由于其结合了STUN和TURN的特点，所以使用最为广泛。
+针对TCP的NAT穿透技术目前仍为难点。
+实用的技术仍然不多。

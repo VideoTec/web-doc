@@ -1,0 +1,28 @@
+http://baike.baidu.com/item/nat
+
+Full cone NAT
+即著名的一对一（one-to-one）NAT
+一旦一个内部地址（iAddr:port1）映射到外部地址（eAddr:port2），
+所有发自iAddr:port1的包都经由eAddr:port2向外发送。
+任意外部主机都能通过给eAddr:port2发包到达iAddr:port1
+
+Address-Restricted cone NAT
+限制地址，即只接收曾经发送到对端的IP地址来的数据包。
+一旦一个内部地址（iAddr:port1）映射到外部地址（eAddr:port2），
+所有发自iAddr:port1的包都经由eAddr:port2向外发送。
+任意外部主机（hostAddr:any）都能通过给eAddr:port2发包到达iAddr:port1的前提是：
+iAddr:port1之前发送过包到hostAddr:any. 
+"any"也就是说端口不受限制
+
+Port-Restricted cone NAT
+类似受限制锥形NAT（Restricted cone NAT），但是还有端口限制。
+一旦一个内部地址（iAddr:port1）映射到外部地址（eAddr:port2），
+所有发自iAddr:port1的包都经由eAddr:port2向外发送。
+一个外部主机（hostAddr:port3）能够发包到达iAddr:port1的前提是：
+iAddr:port1之前发送过包到hostAddr:port3.
+
+Symmetric NAT（对称NAT）
+每一个来自相同内部IP与port的请求到一个特定目的地的IP地址和端口，
+映射到一个独特的外部来源的IP地址和端口。
+同一个内部主机发出一个信息包到不同的目的端，
+不同的映射使用外部主机收到了一封包从一个内部主机可以送一封包回来

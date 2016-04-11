@@ -1,0 +1,10 @@
+http://www.stunprotocol.org/
+
+Public STUN server
+A STUN service hosting the Stuntman code 
+is being run at stun.stunprotocol.org (UDP and TCP ports 3478).
+
+http://www.voip-info.org/wiki/view/STUN - 这里有个列表
+
+http://numb.viagenie.ca/
+Numb是一种免费的STUN/TURN server.

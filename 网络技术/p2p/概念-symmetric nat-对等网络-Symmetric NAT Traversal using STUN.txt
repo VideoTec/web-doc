@@ -1,0 +1,17 @@
+https://tools.ietf.org/id/draft-takeda-symmetric-nat-traversal-00.txt
+
+Status of this Memo
+
+   This document is an Internet-Draft and is subject to all provisions
+   of Section 10 of RFC2026 except that the right to produce derivative
+   works is not granted.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF), its areas, and its working groups.  Note that
+   other groups may also distribute working documents as Internet-
+   Drafts.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet- Drafts as reference
+   material or to cite them other than as "work in progress."
