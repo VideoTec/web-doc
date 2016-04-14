@@ -1,0 +1,20 @@
+http://blog.csdn.net/iefreer/article/details/9024993
+
+关于HTTP各个方法在Restful API中的使用，存在一些误区。
+比如PUT/POST各自在什么场合使用，Conditional GET/Partial GET何时使用，PUT/DELETE方法在互联网传递时会不会遇到防火墙的问题。
+
+这里主要说明一下DELETE方法，
+DELETE方法是用来删除URL所指定的资源的，
+作为HTTP协议规定的方法之一，当然可以被使用，
+只是需要注意下面的一些细节，避免系统设计意外。
+
+1、具体实现上，服务器可能会有自己变通的处理方式，
+比如出于安全、数据完整性的考虑，
+把`删除`转义为`禁用`，
+毕竟删除数据是危险的，需要意识到这一点
+
+2、提交DELETE请求时，不能包含Entity Body
+
+http://stackoverflow.com/questions/14323716/restful-alternatives-to-delete-request-body
+
+http://stackoverflow.com/questions/299628/is-an-entity-body-allowed-for-an-http-delete-request

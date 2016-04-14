@@ -1,0 +1,32 @@
+https://msdn.microsoft.com/zh-cn/library/windows/desktop/aa384233(v=vs.85).aspx
+
+HINTERNET HttpOpenRequest(
+  _In_ HINTERNET hConnect,
+  _In_ LPCTSTR   lpszVerb,  --  GET POST PUT etc.
+  _In_ LPCTSTR   lpszObjectName,
+  _In_ LPCTSTR   lpszVersion,
+  _In_ LPCTSTR   lpszReferer,
+  _In_ LPCTSTR   *lplpszAcceptTypes,
+  _In_ DWORD     dwFlags,
+  _In_ DWORD_PTR dwContext
+);
+
+文档中，没有特别，说明 DELETE。
+
+有下面一句：
+With Microsoft Internet Explorer 5 and later, 
+if lpszVerb is set to "HEAD", 
+the Content-Length header is ignored on responses from HTTP/1.1 servers.
+
+https://msdn.microsoft.com/zh-cn/library/windows/desktop/aa384227(v=vs.85).aspx
+
+BOOL HttpAddRequestHeaders(
+  _In_ HINTERNET hRequest,
+  _In_ LPCTSTR   lpszHeaders,
+  _In_ DWORD     dwHeadersLength,
+  _In_ DWORD     dwModifiers
+);
+
+http://www.mzan.com/article/10050153-wininet-cant-remove-content-length-from-headers-to-manually-chunk-an-upload.shtml
+
+Does anyone have an example of getting WinInet to skip sending the Content-Length?

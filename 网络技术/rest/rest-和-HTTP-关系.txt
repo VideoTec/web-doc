@@ -1,0 +1,7 @@
+http://www.infoq.com/cn/articles/understanding-restful-style
+
+Web发展到了1995年，在CGI、ASP等技术出现之后，沿用了多年、主要面向静态文档的HTTP/1.0协议已经无法满足Web应用的开发需求，因此需要设计新版本的HTTP协议。在HTTP/1.0协议专家组之中，有一位年轻人脱颖而出，显示出了不凡的洞察力，后来他成为了HTTP/1.1协议专家组的负责人。这位年轻人就是Apache HTTP服务器的核心开发者Roy Fielding，他还是Apache软件基金会的合作创始人。
+
+Roy Fielding和他的同事们在HTTP/1.1协议的设计工作中，对于Web之所以取得巨大成功，在技术架构方面的因素做了一番深入的总结。Fielding将这些总结纳入到了一套理论框架之中，然后使用这套理论框架中的指导原则，来指导HTTP/1.1协议的设计方向。HTTP/1.1协议的第一个草稿是在1996年1月发布的，经过了三年多时间的修订，于1999年6月成为了IETF的正式规范（包括了RFC 2616以及用于对客户端做身份认证的RFC 2617）。HTTP/1.1协议设计的极为成功，以至于发布之后整整10年时间里，都没有多少人认为有修订的必要。用来指导HTTP/1.1协议设计的这套理论框架，最初是以备忘录的形式在专家组成员之间交流，除了IETF/W3C的专家圈子，并没有在外界广泛流传。Fielding在完成HTTP/1.1协议的设计工作之后，回到了加州大学欧文分校继续攻读自己的博士学位。第二年（2000年）在他的博士学位论文Architectural Styles and the Design of Network-based Software Architectures中，Fielding更为系统、严谨地阐述了这套理论框架，并且使用这套理论框架推导出了一种新的架构风格，并且为这种架构风格取了一个令人轻松愉快的名字“REST”——Representational State Transfer（表述性状态转移）的缩写。
+
+在笔者看来，Fielding这篇博士论文在Web发展史上的价值，不亚于Web之父Tim Berners-Lee关于超文本的那篇经典论文。然而遗憾的是，这篇博士论文在诞生之后的将近5年时间里，一直没有得到足够的重视。例如Web Service相关规范SOAP/WSDL的设计者们，显然不大理解REST是什么，HTTP/1.1究竟是一个什么样的协议、为何要设计成这个样子。
