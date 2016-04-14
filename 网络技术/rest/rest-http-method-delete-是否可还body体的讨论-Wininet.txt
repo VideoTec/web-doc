@@ -27,6 +27,10 @@ BOOL HttpAddRequestHeaders(
   _In_ DWORD     dwModifiers
 );
 
+http delete 请求时：
+传递进去的 Content-Length 无效，
+系统会把这个值改为零
+
 http://www.mzan.com/article/10050153-wininet-cant-remove-content-length-from-headers-to-manually-chunk-an-upload.shtml
 
 Does anyone have an example of getting WinInet to skip sending the Content-Length?
