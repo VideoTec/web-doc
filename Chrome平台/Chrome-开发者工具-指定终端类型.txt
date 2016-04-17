@@ -1,0 +1,23 @@
+49 版本的，直接就出现在页面的顶部。
+
+今天遇到的问题：
+mychebao.com - 不自动检测终端
+m.mychebao.com - 就好了
+
+https://www.zhihu.com/question/20322475
+
+如何在 PC 机上测试移动端的网页？
+
+打开chrome 输入网址,按F12呼出调试器,
+按esc就会底下再冒上来一坨,选 emulation 
+
+17:31 2016/4/1
+实际结果在：
+Console 左边坚着的三个点，选择 Sensors
+
+http://www.w3cplus.com/tools/how-to-use-chrome-devtools-like-a-pro.html
+
+你可以这样操作：
+
+选择“ Elements ”面板
+选择“Emulation > Sensors”和点击“Esc”取消
