@@ -1,0 +1,40 @@
+engage[英][ɪnˈgeɪdʒ] [美][ɪn'gedʒ]
+vt.吸引住；聘用；与…交战
+vi.与…建立密切关系；衔接；从事；紧密结合
+
+essential[英][ɪˈsenʃl] [美][ɪˈsɛnʃəl]
+adj.基本的；必要的；本质的；精华的
+n.必需品；基本要素；必不可少的东西
+
+emergence[英][ɪ'mɜ:dʒəns] [美][ɪˈmədʒəns]
+n.出现，发生；暴露；[植]突出体，（柑果的）瓤胞
+
+facilitator[英][fəˈsɪlɪteɪtə(r)] [美][fəˈsɪlɪteɪtər]
+n.促进者，帮助者；服务商
+
+http://www.codeproject.com/Articles/97657/Introduction-to-SIP-for-Java-C-and-VB-Developers
+
+Session Initiation Protocol (SIP)
+
+Session Initiation Protocol (SIP) was designed from the bottom up to 
+connect people and devices whenever and wherever they are 
+in order to engage in a (possibly lengthy) exchange of information. 
+Existing protocols, such as HTTP and SMTP, 
+were not purpose-built for this essential human activity, 
+and so SIP was born to fill the gap. 
+However, SIP borrows from these two other protocols heavily: 
+from using 
+HTTP's message exchange pattern, message format, and encoding, to 
+SMTP's URI scheme.
+
+In 2002, a revised version of the SIP standard 
+was formalised into the Internet Engineering Task Force's (IEFT) 
+standardisation process as RFC3261. 
+Because of the open nature of the IETF standards process, 
+the fact that SIP is text based and shares many features with existing specifications, 
+it has been readily understood, extended, and implemented.
+
+Since its emergence, 
+SIP has gained traction as a facilitator of 
+1）instant messaging (e.g., Windows Messenger) and 
+2）VoIP (e.g., most well-known platforms apart from Skype).

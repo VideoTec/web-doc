@@ -1,0 +1,13 @@
+An SDP session description consists of a number of lines of text of the form:
+
+<type>=<value>
+
+where 
+<type> MUST be exactly one case-significant character and 
+<value> is structured text whose format depends on <type>. 
+
+In general, 
+<value> is either a number of fields delimited 
+by a single space character or a free format string, 
+and is case-significant unless a specific field defines otherwise. 
+Whitespace MUST NOT be used on either side of the "=" sign.

@@ -1,0 +1,18 @@
+http://www.codeproject.com/Articles/97898/Introduction-to-SDP-for-Java-C-and-VB-Developers
+
+Session Description protocol (SDP)
+
+With the advent of protocols used to negotiate and 
+define a communication session's parameters (e.g., Session Initiation Protocol), 
+there was a need to explain the purpose and enrolment process. 
+Session Description Protocol (SDP), defined in RFC4566, 
+achieves that by providing a format for session characterisation and media definition. 
+As part of a session negotiation, 
+the parties are expected to agree on the descriptive values, timings, 
+their respective capabilities, and desired media formats. 
+This exchange is referred to as the Offer/Answer Model, and is formalised in RFC3264. 
+
+SDP can be used with a number of transport protocols, such as 
+1）Session Announcement Protocol (SAP), 
+2）Session Initiation Protocol (SIP), 
+3）Hypertext Transfer Protocol (HTTP), and others.

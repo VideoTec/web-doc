@@ -1,0 +1,9 @@
+
+      a=recvonly
+
+         This specifies that the tools should be started in receive-only
+         mode where applicable.  It can be either a session- or media-
+         level attribute, and it is not dependent on charset.  Note that
+         recvonly applies to the media only, not to any associated
+         control protocol (e.g., an RTP-based system in recvonly mode
+         SHOULD still send RTCP packets).

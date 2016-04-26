@@ -1,0 +1,21 @@
+
+      Name      | Session or Media level? | Dependent on charset?
+      ----------+-------------------------+----------------------
+      cat       | Session                 | No
+      keywds    | Session                 | Yes
+      tool      | Session                 | No
+      ptime     | Media                   | No
+      maxptime  | Media                   | No
+      rtpmap    | Media                   | No
+      recvonly  | Either                  | No
+      sendrecv  | Either                  | No
+      sendonly  | Either                  | No
+      inactive  | Either                  | No
+      orient    | Media                   | No
+      type      | Session                 | No
+      charset   | Session                 | No
+      sdplang   | Either                  | No
+      lang      | Either                  | No
+      framerate | Media                   | No
+      quality   | Media                   | No
+      fmtp      | Media                   | No

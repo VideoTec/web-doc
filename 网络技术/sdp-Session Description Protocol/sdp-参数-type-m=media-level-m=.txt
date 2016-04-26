@@ -1,0 +1,17 @@
+https://tools.ietf.org/html/rfc4566
+
+Each media-level section 
+starts with an "m=" line and continues to the next media-level section or 
+end of the whole session description.  
+
+In general, session-level values are the default 
+for all media unless overridden by an equivalent media-level value
+
+Media description, if present
+         m=  (media name and transport address)
+         i=* (media title)
+         c=* (connection information -- optional if included at
+              session level)
+         b=* (zero or more bandwidth information lines)
+         k=* (encryption key)
+         a=* (zero or more media attribute lines)

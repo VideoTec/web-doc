@@ -1,0 +1,4 @@
+   An SDP session description consists of a session-level section
+   followed by zero or more media-level sections.  The session-level
+   part starts with a "v=" line and continues to the first media-level
+   section.  

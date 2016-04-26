@@ -1,0 +1,6 @@
+Each media-level section starts with an "m=" line and
+continues to the next media-level section or end of the whole session
+description.  
+
+In general, session-level values are the default for
+all media unless overridden by an equivalent media-level value.

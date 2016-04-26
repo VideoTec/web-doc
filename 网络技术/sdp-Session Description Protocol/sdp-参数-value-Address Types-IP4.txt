@@ -1,0 +1,11 @@
+   New address types ("addrtype") may be registered with IANA.  An
+   address type is only meaningful in the context of a network type, and
+   any registration of an address type MUST specify a registered network
+   type or be submitted along with a network type registration.  A new
+   address type registration MUST reference an RFC giving details of the
+   syntax of the address type.  Address types are not expected to be
+   registered frequently.
+
+   IANA has registered the address types "IP4" and "IP6" with
+   definitions as in Sections 5.2 and 5.7 of this memo (these
+   definitions update those in RFC 2327).

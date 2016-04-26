@@ -1,0 +1,16 @@
+   New network types (the "nettype" field) may be registered with IANA
+   if SDP needs to be used in the context of non-Internet environments.
+   Although these are not normally the preserve of IANA, there may be
+   circumstances when an Internet application needs to interoperate with
+   a non-Internet application, such as when gatewaying an Internet
+   telephone call into the Public Switched Telephone Network (PSTN).
+   The number of network types should be small and should be rarely
+   extended.  A new network type cannot be registered without
+   registering at least one address type to be used with that network
+   type.  A new network type registration MUST reference an RFC that
+   gives details of the network type and address type and specifies how
+   and when they would be used.
+
+   IANA has registered the network type "IN" to represent the Internet,
+   with definition as in Sections 5.2 and 5.7 of this memo (these
+   definitions update those in RFC 2327).

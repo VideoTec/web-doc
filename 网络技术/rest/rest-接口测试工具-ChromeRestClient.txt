@@ -1,0 +1,5 @@
+https://github.com/jarrodek/ChromeRestClient
+Project moved from code.google.com. 
+It's a main repository for the code for Advanced Rest Client.
+
+Advanced Rest Client Application - the Chrome App

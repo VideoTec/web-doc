@@ -1,0 +1,61 @@
+https://tools.ietf.org/html/rfc4566#page-36
+
+   Attribute field names ("att-field") MUST be registered with IANA and
+   documented, because of noticeable issues due to conflicting
+   attributes under the same name.  Unknown attributes in SDP are simply
+   ignored, but conflicting ones that fragment the protocol are a
+   serious problem.
+
+   New attribute registrations are accepted according to the
+   "Specification Required" policy of RFC 2434, provided that the
+   specification includes the following information:
+
+   o  contact name, email address, and telephone number
+
+   o  attribute name (as it will appear in SDP)
+
+   o  long-form attribute name in English
+
+   o  type of attribute (session level, media level, or both)
+
+   o  whether the attribute value is subject to the charset attribute
+
+   o  a one-paragraph explanation of the purpose of the attribute
+
+   o  a specification of appropriate attribute values for this attribute
+
+   The above is the minimum that IANA will accept.  Attributes that are
+   expected to see widespread use and interoperability SHOULD be
+   documented with a standards-track RFC that specifies the attribute
+   more precisely.
+
+   Submitters of registrations should ensure that the specification is
+   in the spirit of SDP attributes, most notably that the attribute is
+   platform independent in the sense that it makes no implicit
+   assumptions about operating systems and does not name specific pieces
+   of software in a manner that might inhibit interoperability.
+
+   IANA has registered the following initial set of attribute names
+   ("att-field" values), with definitions as in Section 6 of this memo
+   (these definitions update those in RFC 2327):
+   
+      Name      | Session or Media level? | Dependent on charset?
+      ----------+-------------------------+----------------------
+      cat       | Session                 | No
+      keywds    | Session                 | Yes
+      tool      | Session                 | No
+      ptime     | Media                   | No
+      maxptime  | Media                   | No
+      rtpmap    | Media                   | No
+      recvonly  | Either                  | No
+      sendrecv  | Either                  | No
+      sendonly  | Either                  | No
+      inactive  | Either                  | No
+      orient    | Media                   | No
+      type      | Session                 | No
+      charset   | Session                 | No
+      sdplang   | Either                  | No
+      lang      | Either                  | No
+      framerate | Media                   | No
+      quality   | Media                   | No
+      fmtp      | Media                   | No

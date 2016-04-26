@@ -1,0 +1,6 @@
+https://tools.ietf.org/html/rfc4566#page-10
+
+      v=0
+
+   The "v=" field gives the version of the Session Description Protocol.
+   This memo defines version 0.  There is no minor version number.
