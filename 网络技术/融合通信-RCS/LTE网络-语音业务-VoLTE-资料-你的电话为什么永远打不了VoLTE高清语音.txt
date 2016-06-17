@@ -1,0 +1,12 @@
+http://mp.weixin.qq.com/s?__biz=MzAwOTMwNTQzMA==&mid=2651297507&idx=1&sn=73cd7b42e3c5cec48786c4e78c807d44&scene=2&srcid=0614CkeZ7TvqFMGjyitT32ok&from=timeline&isappinstalled=0#wechat_redirect
+
+你的电话为什么永远打不了VoLTE高清语音？
+
+今天我们扒一扒换了VoLTE手机，开通业务的小伙伴为什么发现经常显示注册在4G网络，
+但是打不了电话，或者一打电话发现就跑到了2G通话？
+
+小编悄悄告诉你，下次有幸再发现这样的问题，你可以自豪的告诉小伙伴，
+这很可能是由于VoLTE注册失败导致，
+因为在4G网络上，即使VoLTE电话对于IMS域的注册失败了，
+而此时EPS与MSC的双域注册还是成功的，此时可以使用数据业务刷刷朋友圈，
+但是一打电话就可能跑到（更专业的名词叫“回落”）2G网络。
