@@ -1,0 +1,7 @@
+
+实现websocket的协议，浏览器扮演着一个很重要的角色。
+所有最新的浏览器支持最新规范（RFC 6455）的WebSocket协议。
+一个详细的测试报告[1]列出了这些浏览器支持的Websocket版本。
+
+http://autobahn.ws/testsuite/reports/clients/index.html
+

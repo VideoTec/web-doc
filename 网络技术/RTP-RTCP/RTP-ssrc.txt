@@ -1,0 +1,105 @@
+https://tools.ietf.org/html/rfc3550#page-59
+
+sufficient[英][səˈfɪʃnt] [美][səˈfɪʃənt]
+adj.足够的；充足的；充分的
+
+8.  SSRC Identifier Allocation and Use
+
+   The SSRC identifier carried in the RTP header and in various fields
+   of RTCP packets is a random 32-bit number that is required to be
+   globally unique within an RTP session.  It is crucial that the number
+   be chosen with care in order that participants on the same network or
+   starting at the same time are not likely to choose the same number.
+
+   It is not sufficient to use the local network address (such as an
+   IPv4 address) for the identifier because the address may not be
+   unique.  Since RTP translators and mixers enable interoperation among
+   multiple networks with different address spaces, the allocation
+   patterns for addresses within two spaces might result in a much
+   higher rate of collision than would occur with random allocation.
+
+   Multiple sources running on one host would also conflict.
+
+   It is also not sufficient to obtain an SSRC identifier simply by
+   calling random() without carefully initializing the state.  An
+   example of how to generate a random identifier is presented in
+   Appendix A.6.
+
+https://tools.ietf.org/html/rfc3550#appendix-A.6
+
+Generating a Random 32-bit Identifier
+
+   The following subroutine generates a random 32-bit identifier using
+   the MD5 routines published in RFC 1321 [32].  The system routines may
+   not be present on all operating systems, but they should serve as
+   hints as to what kinds of information may be used.  Other system
+   calls that may be appropriate include
+   
+   o  getdomainname(),
+
+   o  getwd(), or
+
+   o  getrusage().
+   
+  "Live" video or audio samples are also a good source of random
+   numbers, but care must be taken to avoid using a turned-off
+   microphone or blinded camera as a source [17].
+
+   Use of this or a similar routine is recommended to generate the
+   initial seed for the random number generator producing the RTCP
+   period (as shown in Appendix A.7), to generate the initial values for
+   the sequence number and timestamp, and to generate SSRC values.
+   Since this routine is likely to be CPU-intensive, its direct use to
+   generate RTCP periods is inappropriate because predictability is not
+   an issue.  Note that this routine produces the same result on
+   repeated calls until the value of the system clock changes unless
+   different values are supplied for the type argument.
+
+http://blog.csdn.net/heanyu/article/details/6096415
+   同步源(SSRC，Synchronization source)：
+   RTP包流的源，用RTP报头中32位数值的SSRC标识符进行标识，
+   使其不依赖于网络地址。
+   一个同步源的所有包构成了相同计时和序列号空间的一部分，
+   这样接收方就可以把一个同步源的包放在一起，来进行重放。
+   举些同步源的例子，
+   像来自同一信号源的包流的发送方，
+   如麦克风、摄影机、RTP混频器（见下文）就是同步源。
+   一个同步源可能随着时间变化而改变其数据格式，如音频编码。
+   SSRC标识符是一个随机选取的值，
+   它在特定的RTP会话中是全局唯一（globally unique）的（见章节8）。
+   参与者并不需要在一个多媒体会议的所有RTP会话中，使用相同的SSRC标识符；
+   SSRC标识符的绑定通过RTCP（见章节6.5.1）。
+   如果参与者在一个RTP会话中生成了多个流，
+   例如来自多个摄影机，则每个摄影机都必须标识成单独的同步源。
+   
+http://blog.chinaunix.net/uid-23782786-id-4297796.html
+
+SSRC, Synchronization source. 32 bits.
+Identifies the synchronization source. 
+The value is chosen randomly, 
+with the intent that no two synchronization sources within the same RTP session will have the same SSRC. 
+
+Although the probability of multiple sources choosing the same identifier is low, 
+all RTP implementations must be prepared to detect and resolve collisions. 
+If a source changes its source transport address, 
+it must also choose a new SSRC to avoid being interpreted as a looped source.
+
+https://en.wikipedia.org/wiki/Real-time_Transport_Protocol
+
+SSRC: (32 bits) Synchronization source identifier uniquely identifies the source of a stream. 
+The synchronization sources within the same RTP session will be unique
+
+http://stackoverflow.com/questions/21775531/csrc-and-ssrc-in-rtp
+
+To be honest, 
+I have never seen anyone actually use SSRC or CSRC in any meaningful way. 
+In all the code I've dealt with, 
+we just generate a random number in SSRC and don't never bother filling in CSRC.
+
+I would guess SSRC may be useful 
+in tracing and/or detecting looping audio paths.
+
+I would guess CSRC may be useful for a sip endpoint 
+receiving audio from a conference servers 
+where multiple audio sources are mixed together as hinted in the quote above. 
+As I said tho, in the conference server code I've dealt with, we don't bother.

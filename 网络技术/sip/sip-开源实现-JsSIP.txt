@@ -1,0 +1,13 @@
+http://www.jssip.net/
+
+JsSIP implements the SIP WebSocket transport. 
+Enjoy the real integration of SIP within the Web and communicate with SIP networks out there.
+This is pure SIP on the web (no protocol conversion, no limits).
+
+JsSIP makes use of the WebRTC stack present in modern web browsers 
+for enabling audio/video realtime communication.
+Zero plugins, zero vendor lock-in. Bye bye Flash and Java Applets!
+
+JsSIP comes with an easy JavaScript API that provides the user 
+with full flexibility over the SIP application running in the web.
+Enjoy coding the custom SIP logic for your web application.
