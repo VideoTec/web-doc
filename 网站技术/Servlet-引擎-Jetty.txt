@@ -1,0 +1,8 @@
+https://zh.wikipedia.org/wiki/Jetty
+Jetty是一个纯粹的基于Java的网页服务器和Java Servlet容器。
+尽管网页服务器通常用来为人们呈现文档，
+但是Jetty通常在较大的软件框架中用于计算机与计算机之间的通信。
+
+https://www.ibm.com/developerworks/cn/java/j-lo-jetty/
+Jetty 应该是目前最活跃也是很有前景的一个 Servlet 引擎
+将比较一下两个 Servlet 引擎：Tomcat 和 Jetty 的优缺点。
