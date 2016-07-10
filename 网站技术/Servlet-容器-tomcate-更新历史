@@ -1,0 +1,63 @@
+https://zh.wikipedia.org/wiki/Apache_Tomcat
+
+------------------------------------------
+Tomcat 3.x[编辑]
+------------------------------------------
+匹配Servlet 2.2和JSP 1.1规范
+Servlet更新
+基础的HTTP功能
+
+------------------------------------------
+Tomcat 4.x[编辑]
+------------------------------------------
+匹配Servlet 2.3和JSP 1.2规范
+Servlet容器被重新设计，并被命名为Catalina
+JSP引擎被重新设计，并被命名为Jasper
+新的Coyote连接器
+支持JMX，使用JSP和基于Struts的管理系统
+
+------------------------------------------
+Tomcat 5.x[编辑]
+------------------------------------------
+匹配Servlet 2.4和JSP 2.0规范
+精简的垃圾收集系统
+更快的JSP解析和改进过的标签库处理
+Windows和Unix的本地操作系统集成，可以将Tomcat注册为系统服务
+重构过的应用程序发布环境
+
+------------------------------------------
+Tomcat 6.x[编辑] 2007-02-28
+------------------------------------------
+匹配Servlet 2.5和JSP 2.1规范
+支持统一表达式语言2.1
+设计运行在Java SE 5.0及以后版本上
+通过CometProcessor接口实现了对Comet的支持
+不同于过去版本，未集成管理员（admin）控制台
+
+First Apache Tomcat release to support the Servlet 2.5, JSP 2.1, and EL 2.1 specifications.
+
+6.0.45（2016年2月11日，​4个月前）
+
+------------------------------------------
+Tomcat 7.x[编辑] 2011-01-14
+------------------------------------------
+支持Servlet 3.0
+First Apache Tomcat release to support the Servlet 3.0, JSP 2.2, and EL 2.2 specifications
+
+7.0.69（2016年4月15日，​2个月前）
+
+------------------------------------------
+Tomcat 8.x[编辑] 2014-06-25
+------------------------------------------
+最新版的tomcat
+First Apache Tomcat release to support the Servlet 3.1, JSP 2.3, EL 3.0,[19] and WebSocket specifications.
+
+8.0.36（2016年6月13日，​15天前）
+8.5.3（2016年6月13日，​15天前）
+Adds support for HTTP/2, OpenSSL for JSSE, TLS virtual hosting and JASPIC 1.1. 
+Created from Tomcat 9, following delays to Java EE 8.
+
+------------------------------------------
+Tomcat 9.x
+------------------------------------------
+9.0.0.M8 (alpha)（2016年6月13日，​15天前）

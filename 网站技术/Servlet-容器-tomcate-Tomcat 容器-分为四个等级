@@ -1,0 +1,10 @@
+https://www.ibm.com/developerworks/cn/java/j-lo-servlet/
+
+Tomcat 的容器分为四个等级，真正管理 Servlet 的容器是 Context 容器，
+一个 Context 对应一个 Web 工程，
+
+在 Tomcat 的配置文件中可以很容易发现这一点，如下：
+
+清单 1 Context 配置参数
+ <Context path="/projectOne " docBase="D:\projects\projectOne" 
+ reloadable="true" />

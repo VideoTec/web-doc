@@ -1,0 +1,14 @@
+https://www.ibm.com/developerworks/cn/java/j-lo-servlet/
+
+Servlet 工作原理解析
+Web 技术成为当今主流的互联网 Web 应用技术之一，而 Servlet 是 Java Web 技术的核心基础。
+因而掌握 Servlet 的工作原理是成为一名合格的 Java Web 技术开发人员的基本要求。
+本文将带你认识 Java Web 技术是如何基于 Servlet 工作，你将知道：
+以 Tomcat 为例了解 Servlet 容器是如何工作的？
+一个 Web 工程在 Servlet 容器中是如何启动的？ 
+Servlet 容器如何解析你在 web.xml 中定义的 Servlet ？
+用户的请求是如何被分配给指定的 Servlet 的？ 
+Servlet 容器如何管理 Servlet 生命周期？你还将了解到最新的 Servlet 的 API 的类层次结构，
+以及 Servlet 中一些难点问题的分析。
+
+
