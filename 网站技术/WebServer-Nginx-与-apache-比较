@@ -1,0 +1,7 @@
+https://www.zhihu.com/question/32212996
+
+apache是当年主流服务器，但不思进取，后来被俄罗斯的更加轻便的nignx赶上。
+apache用的越来越少了，大体上和nginx功能重合的更多
+
+apache属于比较老的静态页面服务器，比较多现有插件，包括代理、SSL支持、动态编程语言处理等。
+nginx和apache差不多，都有插件支持动态编程语言处理等、但nginx的IO模型比apache更适合跑代理。所以一般都作为前端缓冲代理

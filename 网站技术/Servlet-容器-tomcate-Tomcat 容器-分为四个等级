@@ -8,3 +8,30 @@ Tomcat 的容器分为四个等级，真正管理 Servlet 的容器是 Context �
 清单 1 Context 配置参数
  <Context path="/projectOne " docBase="D:\projects\projectOne" 
  reloadable="true" />
+
+http://gearever.iteye.com/blog/1533678
+
+阐述了tomcat的四大容器结构
+
+Tomcat提供了engine，host，context及wrapper四种容器。
+在总体结构中已经阐述了他们之间的包含关系。
+这四种容器继承了一个容器基类，因此可以定制化。
+当然，tomcat也提供了标准实现。
+
+Engine：org.apache.catalina.core.StandardEngine
+Engine是最顶层的容器，它是host容器的组合
+
+Host： org.apache.catalina.core.StandardHost
+Host是engine的子容器，它是context容器的集合。
+
+Context：org.apache.catalina.core.StandardContext
+Context是host的子容器，它是wrapper容器的集合
+
+Wrapper：org.apache.catalina.core.StandardWrapper
+Wrapper是context的子容器，它封装的处理资源的每个具体的servlet
+
+所谓容器，就是说它承载了若干逻辑单元及运行时数据。
+好比，
+整个酒店是一个容器，它包含了各个楼层等设施；
+每个楼层也是容器，它包含了各个房间；
+每个房间也是容器，它包含了各种家电等等。

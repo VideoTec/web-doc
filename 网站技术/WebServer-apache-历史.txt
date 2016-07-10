@@ -1,3 +1,5 @@
+Apache是这个称呼不对，准确的说应该是Apache httpd
+
 https://zh.wikipedia.org/wiki/Apache_HTTP_Server
 
 Apache起初由伊利诺伊大学香槟分校的国家超级电脑应用中心（NCSA）开发。

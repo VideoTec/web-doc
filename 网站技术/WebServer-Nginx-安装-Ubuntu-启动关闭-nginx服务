@@ -1,0 +1,19 @@
+service nginx start
+service nginx stop
+service nginx restart
+service nginx status
+
+wangxiang@wangxiang-M68MT-S2P:/usr$ service nginx status
+● nginx.service - A high performance web server and a reverse proxy server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+   Active: active (running) since 日 2016-07-10 22:07:47 CST; 22min ago
+ Main PID: 4393 (nginx)
+   CGroup: /system.slice/nginx.service
+           ├─4393 nginx: master process /usr/sbin/nginx -g daemon on; master_process on
+           ├─4394 nginx: worker process                           
+           └─4395 nginx: worker process                           
+
+7月 10 22:07:47 wangxiang-M68MT-S2P systemd[1]: Starting A high performance web server and a rever
+7月 10 22:07:47 wangxiang-M68MT-S2P systemd[1]: Started A high performance web server and a revers
+lines 1-11/11 (END)
+

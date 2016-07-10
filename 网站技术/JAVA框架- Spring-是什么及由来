@@ -1,0 +1,17 @@
+http://book.51cto.com/art/200807/82708.htm
+
+1996年12月，Sun微系统公司发布了JavaBeans 1.00-A规范。
+
+1998年3月，Sun发布了EJB1.0规范
+事实上，除了名字和JavaBeans有点相像外，EJB已经和JavaBeans没有什么关系了
+
+EJB 3规范上市时，其他基于POJO的开发框架已经在Java领域打下了坚实的基础
+负责轻量级POJO开发就是Spring框架
+
+Spring是为简化企业级应用开发应运而生的。使用Spring，
+你可以用简单的JavaBeans来实现那些以前只有EJB才能实现的功能。
+不只是服务端开发能从中受益，任何Java应用开发都能从Spring的简单、可测试和松耦合特征中得到好处。
+
+注意：为了避免歧义，
+我们使用“Bean”来表示传统的JavaBeans，
+使用“EJB”来代表Enterprise JavaBeans，我们还会经常使用术语POJO（Plain Old Java Object）。

@@ -1,0 +1,12 @@
+https://zh.wikipedia.org/wiki/Nginx
+
+自PHP-5.3.3起，PHP-FPM加入到了PHP核心，编译时加上--enable-fpm即可提供支持。 
+PHP-FPM以守护进程在后台运行，Nginx响应请求后，自行处理静态请求，PHP请求则经过fastcgi_pass交由PHP-FPM处理，处理完毕后返回。 
+Nginx和PHP-FPM的组合，是一种稳定、高效的PHP运行方式，效率要比传统的Apache和mod_php高出不少。
+
+PHP-FPM不支持Windows平台，
+由于没有fastcgi进程管理器管理php-cgi.exe，因此一旦php-cgi.exe崩溃退出，前端将失去响应，
+这时Nginx会返回“The page you are looking for is temporarily unavailable. Please try again later.”的错误信息。 
+因此在Windows上用Nginx和php-cgi.exe组合来运行PHP的方式并不可靠，稳定性有待提高。
+
+

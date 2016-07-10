@@ -1,0 +1,17 @@
+默认路径是：
+configure 时指定的 --prefix=/usr/share/nginx 
+
+自定义路径需要修改配置文件
+--conf-path=/etc/nginx/nginx.conf
+location / {
+          root   /root;      #定义服务器的默认网站根目录位置
+
+自定义路径后nginx服务器启动出错：
+7月 10 23:00:16 wangxiang-M68MT-S2P nginx[6385]: nginx: [emerg] "location" directive is not allowed here in /etc/nginx/nginx.conf:64
+7月 10 23:00:16 wangxiang-M68MT-S2P nginx[6385]: nginx: configuration file /etc/nginx/nginx.conf test failed
+
+http://www.wkii.org/nginx-set-directory-alias-and-root.html
+http://blog.liuts.com/post/149/
+http://seanlook.com/2015/05/17/nginx-location-rewrite/
+
+
