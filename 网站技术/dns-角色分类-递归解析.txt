@@ -1,0 +1,24 @@
+
+--------------------------------------------------------------
+https://en.wikipedia.org/wiki/Domain_Name_System
+--------------------------------------------------------------
+recursive[英][rɪˈkɜ:sɪv] [美][rɪˈkɜrsɪv]
+adj.回归的，递归的
+
+Recursive and caching name server
+
+In other words, an authoritative name server 
+lets recursive name servers know what DNS data 
+(the IPv4 IP, the IPv6 IP, a list of incoming mail servers, etc.) 
+a given host name (such as "www.example.com") has. 
+
+As just one example, 
+the authoritative name server for "example.com" tells recursive name servers 
+that "www.example.com" has the IPv4 IP address 192.0.43.10.
+
+Recursive and caching name server
+In theory, authoritative name servers are sufficient for the operation of the Internet. 
+However, with only authoritative name servers operating, 
+every DNS query must start with recursive queries 
+at the root zone of the Domain Name System and 
+each user system would have to implement resolver software capable of recursive operation.

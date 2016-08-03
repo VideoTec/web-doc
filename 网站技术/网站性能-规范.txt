@@ -1,0 +1,9 @@
+For a more thorough guide to creating great mobile web applications, 
+see the W3C's Mobile Web Best Practices
+http://www.w3.org/TR/mobile-bp/
+
+For other guidance on improving the speed of your web site (for mobile and desktop), 
+see Yahoo!'s guide to Exceptional Performance and 
+http://developer.yahoo.com/performance/index.html#rules
+Google's speed tutorials in Let's make the web faster.
+http://code.google.com/speed/articles/
