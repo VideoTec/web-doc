@@ -1,0 +1,16 @@
+http://tomcat.apache.org/tomcat-6.0-doc/manager-howto.html#Configuring%20Manager%20Application%20Access
+
+In many production environments, it is very useful to have the capability to deploy a new web application, or undeploy an existing one, without having to shut down and restart the entire container. In addition, you can request an existing application to reload itself, even if you have not declared it to be reloadable in the Tomcat 6 server configuration file.
+
+To support these capabilities, Tomcat 6 includes a web application (installed by default on context path /manager) that supports the following functions:
+
+1) Deploy a new web application from the uploaded contents of a WAR file.
+1) Deploy a new web application, on a specified context path, from the server file system.
+1) List the currently deployed web applications, as well as the sessions that are currently active for those web apps.
+1) Reload an existing web application, to reflect changes in the contents of /WEB-INF/classes or /WEB-INF/lib.
+1) List the OS and JVM property values.
+1) List the available global JNDI resources, for use in deployment tools that are preparing <ResourceLink> elements nested in a <Context> deployment description.
+1) List the available security roles defined in the user database.
+1) Start a stopped application (thus making it available again).
+1) Stop an existing application (so that it becomes unavailable), but do not undeploy it.
+1) Undeploy a deployed web application and delete its document base directory (unless it was deployed from file system).

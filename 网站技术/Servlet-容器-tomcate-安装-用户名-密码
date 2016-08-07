@@ -1,0 +1,58 @@
+这里的用户名和密码用于访问下面三个网址
+
+http://localhost:8080/manager/status
+http://127.0.0.1:8080/manager/html   -----------  必须使用 localhost
+By default the Host Manager is only accessible from a browser running on the same machine as Tomcat.
+http://localhost:8080/host-manager/html --- 需要单独的权限见下文
+
+  <role rolename="manager-gui"/>
+  <role rolename="admin-gui"/>
+  <user username="admin" password="wangxiang" roles="manager-gui,admin-gui"/>
+
+-------------------------------------------------------------
+http://dove19900520.iteye.com/blog/1774980
+-------------------------------------------------------------
+tomcat安装文件下的conf中的tomcat-user.xml文件
+
+<!--
+  NOTE:  By default, no user is included in the "manager-gui" role required
+  to operate the "/manager/html" web application.  If you wish to use this app,
+  you must define such a user - the username and password are arbitrary. It is
+  strongly recommended that you do NOT use one of the users in the commented out
+  section below since they are intended for use with the examples web
+  application.
+-->
+<!--
+  NOTE:  The sample user and role entries below are intended for use with the
+  examples web application. They are wrapped in a comment and thus are ignored
+  when reading this file. If you wish to configure these users for use with the
+  examples web application, do not forget to remove the <!.. ..> that surrounds
+  them. You will also need to set the passwords to something appropriate.
+-->
+<!--
+  <role rolename="tomcat"/>
+  <role rolename="role1"/>
+  <user username="tomcat" password="<must-be-changed>" roles="tomcat"/>
+  <user username="both" password="<must-be-changed>" roles="tomcat,role1"/>
+  <user username="role1" password="<must-be-changed>" roles="role1"/>
+-->
+
+</tomcat-users>
+
+解释：
+1. role 标签定义权限名称
+2. user 标签用于定义用户
+   user roles 属性用于指定权限
+
+系统定义角色权限：
+
+http://tomcat.apache.org/tomcat-6.0-doc/manager-howto.html#Configuring%20Manager%20Application%20Access
+
+You can find the role names in the web.xml file of the Manager web application. The available roles are:
+
+manager-gui — Access to the HTML interface.
+manager-status — Access to the "Server Status" page only.
+manager-script — Access to the tools-friendly plain text interface that is described in this document, and to the "Server Status" page.
+manager-jmx — Access to JMX proxy interface and to the "Server Status" page.
+manager (deprecated) — Combines the above four roles, allows access everywhere where one of the above roles is allowed. 
+Do not use it. Use one of the above specific manager-** roles or a combination of them.

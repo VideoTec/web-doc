@@ -1,0 +1,16 @@
+http://www.cnblogs.com/freeweb/p/5428373.html
+
+        location ^~ /tomcat/ {
+            proxy_pass   http://127.0.0.1:8080/;
+            proxy_redirect  off;
+            proxy_set_header  X-Real-IP $remote_addr;
+            proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+因为上面配置了php-fpm的支持，所以这里使用/tomcat/请求来确定是否转发到tomcat容器，
+前面的^~就是匹配任意的域名或者IP地址部分，
+所以当访问http://ip/tomcat这样的请求时，那么tomcat容器就会起作用，
+和访问http://ip:8080效果是一样的，包括容器下的项目都是完全一样的
+
+保存之后，重新载入nginx配置文件： 
+/usr/local/nginx/nginx -s reload

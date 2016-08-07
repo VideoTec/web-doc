@@ -1,0 +1,8 @@
+http://oilbeater.com/nginx/2014/12/28/nginx-conf-from-zero.html
+
+以上是最简单的通过 nginx 实现静态文件转发、反向代理和负载均衡的配置。
+在 nginx 中所有的功能都是通过模块来实现的，
+比如当我们配置 upstream 时是对 upstream 模块，
+而 server 和 location 是在 http core 模块，
+其他的还有流控的 limt 模块，邮件的 mail 模块，https 的 ssl 模块。
+他们的配置都是类似的可以再 nginx 的模块文档中找到详细的配置说明。

@@ -1,3 +1,25 @@
+
+修改 nginx 的根目录步骤
+1) 修改 /etc/nginx/nginx.conf --  disable in sites-enabled
+    注释下面的 include 语句：
+	include /etc/nginx/conf.d/*.conf;
+	include /etc/nginx/sites-enabled/*;
+2) 修改 /etc/nginx/nginx.conf http-server 块
+	##
+	# Virtual Host Configs
+	##
+	server {
+		root /home/wangxiang/nginx;
+	}
+
+理解下面的事实：
+一 nginx.conf 可以配置多个服务器 --- 用 http-service 块设置
+二 每个 http-service 可设置多个 location 用于
+
+------------------------------------------------------------
+下面是在没有搞清配置时-杂乱无用的试探
+------------------------------------------------------------
+
 默认路径是：
 configure 时指定的 --prefix=/usr/share/nginx 
 

@@ -1,0 +1,88 @@
+
+http://localhost:8080/manager/status
+http://127.0.0.1:8080/manager/html   -----------  必须使用 localhost
+By default the Host Manager is only accessible from a browser running on the same machine as Tomcat.
+http://localhost:8080/host-manager/html --- 需要单独的权限见下文
+
+HTTP Status 403 - Access to the requested resource has been denied
+
+解决方法
+
+第一步设置正确的用户角色
+
+conf中的tomcat-user.xml文件
+
+<role rolename="manager-gui"/>
+<user username="admin" password="wangxiang" roles="manager-gui"/>
+
+第二步
+如果之前输错过用户名密码，再次访问还是会出错。（并且不弹出输入用户名和密码的提示框）
+
+http://superuser.com/questions/567568/tomcat-7-manager-app-not-prompt-for-login
+After restarting tomcat, the manager app this time shows 403 page directly without asking for username and password. 
+So I'm a bit confused. 
+What kind of authentication is this manager app using? 
+And how can I login to the manager app?
+
+清除浏览器历史记录，等等所有数据都不行。
+
+解决方法： 127.0.0.1 改成 localhost
+http://localhost:8080/manager/html
+
+注意启动 tomcat 时必须要用 sudo 权限，再则会出现在莫明其妙的问题。
+
+403 Access Denied
+
+You are not authorized to view this page.
+
+By default the Host Manager is only accessible from a browser running on the same machine as Tomcat. 
+If you wish to modify this restriction, you'll need to edit the Host Manager's context.xml file.
+
+If you have already configured the Manager application to allow access and you have used your browsers back button, used a saved book-mark or similar then you may have triggered the cross-site request forgery (CSRF) protection that has been enabled for the HTML interface of the Manager application. You will need to reset this protection by returning to the main Manager page. Once you return to this page, you will be able to continue using the Manager appliction's HTML interface normally. If you continue to see this access denied message, check that you have the necessary permissions to access this application.
+
+If you have not changed any configuration files, please examine the file conf/tomcat-users.xml in your installation. That file must contain the credentials to let you use this webapp.
+
+For example, to add the manager-gui role to a user named tomcat with a password of s3cret, add the following to the config file listed above.
+
+<role rolename="manager-gui"/>
+<user username="tomcat" password="s3cret" roles="manager-gui"/>
+
+Note that for Tomcat 7 onwards, the roles required to use the manager application were changed from the single manager role to the following four roles. You will need to assign the role(s) required for the functionality you wish to access.
+
+manager-gui - allows access to the HTML GUI and the status pages
+manager-script - allows access to the text interface and the status pages
+manager-jmx - allows access to the JMX proxy and the status pages
+manager-status - allows access to the status pages only
+The HTML interface is protected against CSRF but the text and JMX interfaces are not. To maintain the CSRF protection:
+
+Users with the manager-gui role should not be granted either the manager-script or manager-jmx roles.
+If the text or jmx interfaces are accessed through a browser (e.g. for testing since these interfaces are intended for tools not humans) then the browser must be closed afterwards to terminate the session.
+For more information - please see the Manager App HOW-TO.
+
+------------------------------------------------------------------------------------
+http://localhost:8080/host-manager/html
+------------------------------------------------------------------------------------
+
+403 Access Denied
+
+You are not authorized to view this page.
+
+By default the Host Manager is only accessible from a browser running on the same machine as Tomcat. If you wish to modify this restriction, you'll need to edit the Host Manager's context.xml file.
+
+If you have already configured the Host Manager application to allow access and you have used your browsers back button, used a saved book-mark or similar then you may have triggered the cross-site request forgery (CSRF) protection that has been enabled for the HTML interface of the Host Manager application. You will need to reset this protection by returning to the main Host Manager page. Once you return to this page, you will be able to continue using the Host Manager appliction's HTML interface normally. If you continue to see this access denied message, check that you have the necessary permissions to access this application.
+
+If you have not changed any configuration files, please examine the file conf/tomcat-users.xml in your installation. That file must contain the credentials to let you use this webapp.
+
+For example, to add the admin-gui role to a user named tomcat with a password of s3cret, add the following to the config file listed above.
+
+<role rolename="admin-gui"/>
+<user username="tomcat" password="s3cret" roles="admin-gui"/>
+
+Note that for Tomcat 7 onwards, the roles required to use the host manager application were changed from the single admin role to the following two roles. You will need to assign the role(s) required for the functionality you wish to access.
+
+admin-gui - allows access to the HTML GUI
+admin-script - allows access to the text interface
+The HTML interface is protected against CSRF but the text interface is not. To maintain the CSRF protection:
+
+Users with the admin-gui role should not be granted the admin-script role.
+If the text interface is accessed through a browser (e.g. for testing since this interface is intended for tools not humans) then the browser must be closed afterwards to terminate the session.
