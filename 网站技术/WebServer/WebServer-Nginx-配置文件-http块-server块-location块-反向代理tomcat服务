@@ -14,3 +14,6 @@ http://www.cnblogs.com/freeweb/p/5428373.html
 
 保存之后，重新载入nginx配置文件： 
 /usr/local/nginx/nginx -s reload
+
+参考：
+WebServer-Nginx-反向代理-tomcat

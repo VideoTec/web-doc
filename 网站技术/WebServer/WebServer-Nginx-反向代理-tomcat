@@ -1,0 +1,50 @@
+------------------------------------------------
+第一次修改 /etc/nginx/nginx.conf
+------------------------------------------------
+	server {
+		root /home/wangxiang/nginx;
+		location /tomcat {
+			proxy_pass http://localhost:8080;
+		}
+	}
+
+访问 127.0.0.1/tomcat 出下面的错误提示：
+
+HTTP Status 404 - /tomcat
+type Status report
+message /tomcat
+description The requested resource is not available.
+
+另外测试 127.0.0.1/tomcat/index.jsp 错误提示：
+HTTP Status 404 - /tomcat/index.jsp
+
+在 tomcat 的ROOT目录下创建 tomcat 目录，并且新建 test.html
+/home/wangxiang/apache-tomcat-8.5.4/webapps/ROOT/tomcat/test.html
+然后访问 127.0.0.1/tomcat/test.html 就正常了。
+
+------------------------------------------------
+第二次修改 /etc/nginx/nginx.conf
+------------------------------------------------
+
+	server {
+		root /home/wangxiang/nginx;
+		location ~* "\.(jsp|do)$" {
+			proxy_pass http://localhost:8080;
+		}
+	}
+
+访问 127.0.0.1/index.jsp 可以正确导航到 tomcat 的 index.jsp 页面。
+
+
+------------------------------------------------
+第三次修改 /etc/nginx/nginx.conf
+------------------------------------------------
+
+	server {
+		root /home/wangxiang/nginx;
+		location / {
+			proxy_pass http://localhost:8080;
+		}
+	}
+
+访问 127.0.0.1 可以正确导航到 tomcat 的 index.jsp 页面。

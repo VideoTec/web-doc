@@ -1,5 +1,5 @@
 每个 server 块对应一个 http 服务器
-
+http://nginx.org/en/docs/http/ngx_http_core_module.html#location
 
 -----------------------------------------------------------------
 http://nginx.org/en/docs/beginners_guide.html

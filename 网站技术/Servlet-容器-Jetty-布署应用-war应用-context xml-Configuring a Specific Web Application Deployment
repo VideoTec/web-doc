@@ -1,0 +1,29 @@
+Alternatively, you can use a JAASLoginService with just a specific webapp 
+by creating a context xml file for the webapp, 
+and specifying the JAASLoginService in it
+
+http://www.eclipse.org/jetty/documentation/current/configuring-specific-webapp-deployment.html#deployable-descriptor-file
+
+Using the Automatic Web Application Deployment model is quick and easy, 
+but sometimes you might need to tune certain deployment properties 
+
+(
+for example, 
+you want to deploy with a context path that is not based on the file name, 
+or you want to define a special database connection pool just for this web application
+). 
+
+You can use a Jetty Deployable Descriptor XML File to accomplish such tuning.
+
+示例：
+
+webapp/wiki.war
+webapp/wiki.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/wiki</Set>
+  <Set name="war">/opt/myapp/myapp.war</Set>
+</Configure>

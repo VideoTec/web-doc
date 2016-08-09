@@ -1,0 +1,35 @@
+
+------------------------------------------------------------
+http://blog.csdn.net/tomato__/article/details/28874805
+------------------------------------------------------------
+
+为了部署Web应用，最简单的方式就是放置你的WAR文件或者解压后的WAR文件夹到${jetty.home}/webapps/，
+Jetty的部署扫描器将发现它，并部署它到同名的Context路径下。
+上下文路径基于你的WAR的文件名（或文件夹名）。下面是一些例子（文件或文件夹名->上下文路径）：
+
+/webapps/footrope.war -> http://host/footrope/
+/webapps/baggywrinkle-1.0.war -> http://host/baggywrinkle-1.0/
+/webapps/lazaret-2.1.3-SNAPSHOT.war -> http://host/lazaret-2.1.3-SNAPSHOT/
+/webapps/belaying-pins/WEB-INF/web.xml -> http://host/belaying-pins/
+/webapps/root.war (special name) -> http://host/
+/webapps/root/WEB-INF/web.xml (special name) -> http://host/
+
+------------------------------------------------------------
+http://blog.csdn.net/kongxx/article/details/7218767
+5 部署新的web应用程序
+------------------------------------------------------------
+
+5.1 对于war包的部署，只需要将war文件放到${JETTY_HOME}/webapps目录下，然后就可以通过浏览器直接访问了；
+
+5.2 对于web应用程序目录的部署，
+此时可以将web应用程序目录复制到${JETTY_HOME}/webapps/<myapp>目录下，
+然后在${JETTY_HOME}/contexts/<myapp>.xml文件，其中内容如下：
+
+<?xml version="1.0"  encoding="ISO-8859-1"?>  
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">  
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">  
+  <Set name="contextPath">/myapp</Set>  
+  <Set name="war"><SystemProperty name="jetty.home" default="."/>/webapps/myapp</Set>  
+</Configure>  
+
+重新启动Jetty服务，访问http://localhost:8080/myapp就可以看到新部署web应用程序了

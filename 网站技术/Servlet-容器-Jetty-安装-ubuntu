@@ -1,0 +1,39 @@
+第一步：下载安装包
+http://www.eclipse.org/jetty/download.html
+
+解压到文件夹，
+添加环境变量 ：
+
+注意：这种增加环境变量的方法，在 sudo 命令里不起作用，详细见下文 
+/etc/profile
+export JETTY_HOME=/home/wangxiang/jetty-distribution-9.3.11.v20160721
+export JETTY_ARGS=jetty.http.port=8085\ jetty.ssl.port=8445
+
+执行 sudo jetty.sh start 错误信息：
+Cannot find a Java JDK. Please set either set JAVA or put java (>=1.5) in your PATH.
+原因是 sudo 环境变量，和非 sudo 环境变量不一致。
+
+解决方法是，修改 jetty.sh 增加环境变量
+
+JAVA_HOME=/usr/java/jdk1.8.0_91  
+JRE_HOME=/usr/java/jdk1.8.0_91/jre  
+PATH=$JAVA_HOME/bin:$JRE_HOME:$PATH  
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export JETTY_HOME=/home/wangxiang/jetty-distribution-9.3.11.v20160721
+export JETTY_ARGS=jetty.http.port=8085\ jetty.ssl.port=8445
+
+验证
+start.jar jetty.sh
+
+  $ cd demo-base
+  $ java -jar ../start.jar
+
+第二步：修改默认端口号
+
+http://stackoverflow.com/questions/24644114/change-jetty-default-port
+does it work if you set the port when you start it from the command line like this:
+java -jar start.jar -Djetty.port=9999
+
+第三步：设置随机启动
+配置 /etc/rc.local 添加 startup.sh 脚本绝对路径 - 这个方法不行，参考
+/home/wangxiang/doc/linux/Linux平台/bash-脚本文件-随机启动的的设置

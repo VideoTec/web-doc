@@ -58,5 +58,6 @@ sh startup.sh
 5. 关闭 Tomcat ----------------- 一定要用sudo权限，否则会出些莫明其妙的问题
 sudo ./bin/shutdown.sh
 6. 自动启动 Tomcat 服务
-配置 /etc/rc.local 添加 startup.sh 脚本绝对路径
+配置 /etc/rc.local 添加 startup.sh 脚本绝对路径 - 这个方法不行，参考
+/home/wangxiang/doc/linux/Linux平台/bash-脚本文件-随机启动的的设置
 

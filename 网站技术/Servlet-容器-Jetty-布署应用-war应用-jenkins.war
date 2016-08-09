@@ -1,0 +1,23 @@
+参考：
+https://wiki.jenkins-ci.org/display/JENKINS/Jetty
+
+1. 复制 jenkins.war 到 webapp
+2. 访问： http://127.0.0.1:8085/jenkins/ 出错
+
+HTTP ERROR: 503
+Problem accessing /jenkins/. Reason:
+    Service Unavailable
+
+查看 /home/wangxiang/jetty-distribution-9.3.11.v20160721/logs/ 错误日志知道
+
+2016-08-07 20:36:45.643:INFO:oejs.Server:main: jetty-9.3.11.v20160721
+2016-08-07 20:36:45.666:INFO:oejdp.ScanningAppProvider:main: Deployment monitor [file:///home/wangxiang/jetty-distribution-9.3.11.v20160721/webapps/] at interval 1
+2016-08-07 20:36:46.101:WARN:oejw.WebAppContext:main: Failed startup of context o.e.j.w.WebAppContext@77cd7a0{/jenkins,null,null}{/jenkins.war}
+java.io.EOFException: Unexpected end of ZLIB input stream
+	at java.util.zip.InflaterInputStream.fill(InflaterInputStream.java:240)
+	at java.util.zip.InflaterInputStream.read(InflaterInputStream.java:158)
+	at java.util.zip.ZipInputStream.read(ZipInputStream.java:194)
+	at java.util.jar.JarInputStream.read(JarInputStream.java:207)
+	at org.eclipse.jetty.util.IO.copy(IO.java:170)
+	at org.eclipse.jetty.util.IO.copy(IO.java:122)
+可能的原因是 jenkins.war 没有下载完整。

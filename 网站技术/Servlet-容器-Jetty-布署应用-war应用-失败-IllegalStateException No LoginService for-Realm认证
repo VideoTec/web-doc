@@ -1,0 +1,72 @@
+--------------------------------------------------------------------
+https://wiki.jenkins-ci.org/display/JENKINS/Jetty
+--------------------------------------------------------------------
+
+As of Jetty 8.1.0 due to a bug fix an explicit security realm is required.  
+This can be given in the context (e.g. contexts/jenkins.xml) like the example below.
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/jenkins</Set>
+  <Set name="war"><SystemProperty name="jetty.home" default="."/>/webapps/jenkins.war</Set>
+  <Get name="securityHandler">
+    <Set name="loginService">
+      <New class="org.eclipse.jetty.security.HashLoginService">
+        <Set name="name">Jenkins Realm</Set>
+        <Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/realm.properties</Set>
+      </New>
+    </Set>
+  </Get>
+</Configure>
+
+--------------------------------------------------------------------
+https://bugs.eclipse.org/bugs/show_bug.cgi?id=368773 jetty 添加 realm 的原因
+http://wiki.eclipse.org/Jetty/Tutorial/Realms 官方文档
+http://www.eclipse.org/jetty/documentation/current/jaas-support.html
+--------------------------------------------------------------------
+
+Java Authentication and Authorization Service (JAAS) Reference Guide for more information about JAAS.
+
+security realms 安全领域
+
+This tutorial describes how to configure security realms to 
+provide authentication and access control for web applications running in Jetty. 
+
+A realm has a unique name, and is composed of a set of users. 
+Each user has authentication information (for example, a password) and 
+a set of roles associated with him/herself. 
+You can configure one or many different realms depending on your needs.
+
+Configure a single realm to share common security information across all of your web applications.
+Configure distinct realms to partition your security information webapp by webapp.
+
+Jetty provides a number of different LoginService types from which you can choose.
+不同的登录服务
+1）HashLoginService
+2）JDBCLoginService
+
+Assigning Realms
+
+You need to explicitly tell a context which realm (LoginService) to use 
+if you have defined more than one in the Server.
+
+1）Configure realms on the server.
+
+2）Give the SecurityHandler for a context either the name of the realm you want to use, 
+or give it the actual LoginService.
+
+For example:
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+ <Get name="securityHandler">
+   <!-- Either: -->
+   <Set name="loginService">
+     <New class="org.eclipse.jetty.security.HashLoginService">
+           <Set name="name">Test Realm</Set>
+     </New>
+   </Set>
+ 
+   <!-- or if you defined a LoginService called "Test Realm" in jetty.xml : -->
+   <Set name="realmName">Test Realm</Set>
+ 
+ </Get>
+
