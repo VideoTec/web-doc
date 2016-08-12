@@ -1,0 +1,9 @@
+https://www.ibm.com/developerworks/cn/java/j2ee/
+
+容器类型
+J2EE应用组件可以安装部署到以下几种容器中去:
+
+EJB 容器管理所有J2EE 应用程序中企业级bean 的执行. enterprise bean 和它们的容器运行在J2EE 服务器上.
+Web 容器管理所有J2EE 应用程序中JSP页面和Servlet组件的执行. Web 组件和它们的容器运行在J2EE 服务器上.
+应用程序客户端容器管理所有J2EE应用程序中应用程序客户端组件的执行. 应用程序客户端和它们的容器运行在J2EE 服务器上.
+Applet 容器是运行在客户端机器上的web浏览器和 Java 插件的结合.

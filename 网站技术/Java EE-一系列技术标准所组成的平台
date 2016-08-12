@@ -1,0 +1,27 @@
+https://zh.wikipedia.org/wiki/Java_EE
+
+Java EE是一系列技术标准所组成的平台，包括：
+
+Applet 		- Java Applet
+EJB 		- 企业级JavaBean（Enterprise Java Beans）
+JAAS 		- Java Authentication and Authorization Service
+JACC 		- J2EE Authorization Contract for Containers
+JAF 		- Java Beans Activation Framework
+JAX-RPC 	- Java API for XML-Based Remote Procedure Calls
+JAX-WS 		- Java API for XML Web Services
+JAXM 		- Java API for XML Messaging
+JAXP 		- Java XML解析API（Java API for XML Processing）
+JAXR 		- Java API for XML Registries
+JCA 		- J2EE连接器架构（J2EE Connector Architecture）
+JDBC 		- Java数据库联接（Java Database Connectivity）
+JMS 		- Java消息服务（Java Message Service）
+JMX 		- Java Management
+JNDI 		- Java名称与目录接口（Java Naming and Directory Interface）
+JSF 		- Java Server Faces
+JSP 		- Java服务器页面（Java Server Pages）
+JSTL 		- Java服务器页面标准标签库（Java Server Pages Standard Tag Library）
+JTA 		- Java事务API（Java Transaction API）
+JavaMail
+Servlet 	- Java Servlet API
+StAX 		- Streaming APIs for XML Parsers
+WS 		- Web Services

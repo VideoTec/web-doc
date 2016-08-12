@@ -1,0 +1,15 @@
+http://docs.oracle.com/cd/E13222_01/wls/docs92/webapp/configureservlet.html
+
+Configuring Servlets
+
+You define servlets as a part of a Web application in several entries 
+in the J2EE standard Web Application deployment descriptor, web.xml. 
+The web.xml file is located in the WEB-INF directory of your Web application.
+
+The first entry, under the root servlet element in web.xml, 
+defines a name for the servlet and specifies the compiled class that executes the servlet. 
+(Or, instead of specifying a servlet class, you can specify a JSP.) 
+The servlet element also contains definitions for initialization attributes and security roles for the servlet.
+
+The second entry in web.xml, 
+under the servlet-mapping element, defines the URL pattern that calls this servlet.

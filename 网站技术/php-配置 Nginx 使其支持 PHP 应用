@@ -1,0 +1,30 @@
+http://php.net/manual/zh/install.unix.nginx.php
+
+配置 Nginx 使其支持 PHP 应用：
+
+vim /usr/local/nginx/conf/nginx.conf
+修改默认的 location 块，使其支持 .php 文件：
+
+location / {
+    root   html;
+    index  index.php index.html index.htm;
+}
+
+下一步配置来保证对于 .php 文件的请求将被传送到后端的 PHP-FPM 模块， 
+取消默认的 PHP 配置块的注释，并修改为下面的内容：
+
+location ~* \.php$ {
+    fastcgi_index   index.php;
+    fastcgi_pass    127.0.0.1:9000;
+    include         fastcgi_params;
+    fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+    fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
+}
+
+重启 Nginx。
+
+sudo /usr/local/nginx/sbin/nginx -s stop
+sudo /usr/local/nginx/sbin/nginx
+
+通过以上步骤的配置，
+Nginx 服务器现在可以以 SAPI 模块的方式支持 PHP 应用了

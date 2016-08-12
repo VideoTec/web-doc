@@ -1,0 +1,15 @@
+https://www.ibm.com/developerworks/cn/java/j2ee/
+
+J2EE十三种核心技术
+J2EE典型的四层模型，和它的框架结构
+
+Java 2平台有3个版本，它们是
+适用于小型设备和智能卡的Java 2平台Micro版（Java 2 Platform Micro Edition，J2ME）、
+适用于桌面系统的Java 2平台标准版（Java 2 Platform Standard Edition，J2SE）、
+适用于创建服务器应用程序和服务的Java 2平台企业版（Java 2 Platform Enterprise Edition，J2EE）。
+
+ J2EE 典型的四层结构:
+1) 运行在客户端机器上的客户层组件
+2) 运行在J2EE服务器上的Web层组件
+3) 运行在J2EE服务器上的业务逻辑层组件
+4) 运行在EIS服务器上的企业信息系统(Enterprise information system)层软件

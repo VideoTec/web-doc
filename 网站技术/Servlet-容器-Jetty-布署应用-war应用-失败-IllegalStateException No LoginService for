@@ -10,6 +10,56 @@ in your jetty-maven-plugin configuration
 is the same as 
 <realm-name>MySecurityRealm</realm-name> for <login-config> in your web.xml.
 
+-----------------------------------------------
+产生错误的原因是：
+-----------------------------------------------
+jenkins.war/WEB-INFO/web.xml
+<login-config> 元素中没有定义 <realm-name>
+
+web.xml 中添加 realm-name
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>Jenkins Realm</realm-name>
+    <form-login-config>
+      <form-login-page>/login</form-login-page>
+      <form-error-page>/loginError</form-error-page>
+    </form-login-config>
+  </login-config>
+
+jenkins.xml 添加
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/jenkins</Set>
+  <Set name="war"><SystemProperty name="jetty.home" default="."/>/webapps/jenkins</Set>
+  <Get name="securityHandler">
+    <Set name="loginService">
+      <New class="org.eclipse.jetty.security.HashLoginService">
+        <Set name="name">Jenkins Realm</Set>
+        <Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/realm.properties</Set>
+      </New>
+    </Set>
+  </Get>
+</Configure>
+
+-----------------------------------------------
+可以正常启动了，但是 jenkins 启动后，
+-----------------------------------------------
+Unlock Jenkins
+To ensure Jenkins is securely set up by the administrator, 
+a password has been written to the log (not sure where to find it?) and this file on the server:
+
+/root/.jenkins/secrets/initialAdminPassword
+
+Please copy the password from either location and paste it below.
+
+查看初始密码方法：
+wangxiang@wangxiang-M68MT-S2P:~$ sudo cat /root/.jenkins/secrets/initialAdminPassword
+8b814ab958994857b1b4a77233f68170
+
+
+-----------------------------------------------
+错误日志：
+-----------------------------------------------
+
 2016-08-07 21:40:24.261:INFO:oejs.Server:main: jetty-9.3.11.v20160721
 2016-08-07 21:40:24.301:INFO:oejdp.ScanningAppProvider:main: Deployment monitor [file:///home/wangxiang/jetty-distribution-9.3.11.v20160721/webapps/] at interval 1
 2016-08-07 21:40:30.704:INFO:oeja.AnnotationConfiguration:main: Scanning elapsed time=3847ms

@@ -8,6 +8,7 @@ HTTP ERROR: 503
 Problem accessing /jenkins/. Reason:
     Service Unavailable
 
+第一个错误：
 查看 /home/wangxiang/jetty-distribution-9.3.11.v20160721/logs/ 错误日志知道
 
 2016-08-07 20:36:45.643:INFO:oejs.Server:main: jetty-9.3.11.v20160721
@@ -21,3 +22,23 @@ java.io.EOFException: Unexpected end of ZLIB input stream
 	at org.eclipse.jetty.util.IO.copy(IO.java:170)
 	at org.eclipse.jetty.util.IO.copy(IO.java:122)
 可能的原因是 jenkins.war 没有下载完整。
+
+第二个错误：
+java.lang.IllegalStateException: No LoginService for org.eclipse.jetty.security.authentication.FormAuthenticator
+参考：
+Servlet-容器-Jetty-布署应用-war应用-失败-IllegalStateException No LoginService for
+
+启动后，要解锁 jenkins
+Unlock Jenkins
+To ensure Jenkins is securely set up by the administrator, 
+a password has been written to the log (not sure where to find it?) and this file on the server:
+
+/root/.jenkins/secrets/initialAdminPassword
+
+Please copy the password from either location and paste it below.
+
+查看初始密码方法：
+wangxiang@wangxiang-M68MT-S2P:~$ sudo cat /root/.jenkins/secrets/initialAdminPassword
+8b814ab958994857b1b4a77233f68170
+
+安装推荐插件

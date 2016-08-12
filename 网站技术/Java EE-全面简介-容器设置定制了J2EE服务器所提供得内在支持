@@ -1,0 +1,10 @@
+https://www.ibm.com/developerworks/cn/java/j2ee/
+
+容器和服务
+容器设置定制了J2EE服务器所提供得内在支持，包括安全，事务管理，JNDI(Java Naming and Directory Interface)寻址,远程连接等服务，以下列出最重要的几种服务：
+J2EE安全(Security)模型可以让你配置 web 组件或enterprise bean ,这样只有被授权的用户才能访问系统资源. 每一客户属于一个特别的角色，而每个角色只允许激活特定的方法。你应在enterprise bean的布置描述中声明角色和可被激活的方法。由于这种声明性的方法，你不必编写加强安全性的规则。
+J2EE 事务管理（Transaction Management）模型让你指定组成一个事务中所有方法间的关系，这样一个事务中的所有方法被当成一个单一的单元. 当客户端激活一个enterprise bean中的方法，容器介入一管理事务。因有容器管理事务，在enterprise bean中不必对事务的边界进行编码。要求控制分布式事务的代码会非常复杂。你只需在布置描述文件中声明enterprise bean的事务属性，而不用编写并调试复杂的代码。容器将读此文件并为你处理此enterprise bean的事务。
+JNDI 寻址(JNDI Lookup)服务向企业内的多重名字和目录服务提供了一个统一的接口,这样应用程序组件可以访问名字和目录服务.
+J2EE远程连接（Remote Client Connectivity）模型管理客户端和enterprise bean间的低层交互. 当一个enterprise bean创建后, 一个客户端可以调用它的方法就象它和客户端位于同一虚拟机上一样.
+生存周期管理（Life Cycle Management）模型管理enterprise bean的创建和移除,一个enterprise bean在其生存周期中将会历经几种状态。容器创建enterprise bean，并在可用实例池与活动状态中移动他，而最终将其从容器中移除。即使可以调用enterprise bean的create及remove方法，容器也将会在后台执行这些任务。
+数据库连接池（Database Connection Pooling）模型是一个有价值的资源。获取数据库连接是一项耗时的工作，而且连接数非常有限。容器通过管理连接池来缓和这些问题。enterprise bean可从池中迅速获取连接。在bean释放连接之可为其他bean使用。

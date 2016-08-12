@@ -1,0 +1,25 @@
+https://www.eclipse.org/jetty/documentation/9.3.x/configuring-specific-webapp-deployment.html#deployable-descriptor-file
+
+Jetty supports deploying Web Applications via XML files 
+which will build an instance of a ContextHandler that Jetty can then deploy.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/wiki</Set>
+  <Set name="war">/opt/myapp/myapp.war</Set>
+</Configure>
+
+或者
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/wiki</Set>
+  <Set name="war"><SystemProperty name="myapp.home"/>/myapp.war</Set>
+</Configure>
+
+http://download.eclipse.org/jetty/stable-9/apidocs/org/eclipse/jetty/webapp/WebAppContext.html
+列出所有可编写的属性

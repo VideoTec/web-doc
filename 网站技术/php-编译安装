@@ -1,0 +1,9 @@
+http://php.net/manual/zh/install.unix.nginx.php
+
+配置并构建 PHP。在此步骤您可以使用很多选项自定义 PHP，例如启用某些扩展等。 
+运行 ./configure --help 命令来获得完整的可用选项清单。 
+在本示例中，我们仅进行包含 PHP-FPM 和 MySQL 支持的简单配置。
+
+./configure --enable-fpm --with-mysql
+make
+sudo make install

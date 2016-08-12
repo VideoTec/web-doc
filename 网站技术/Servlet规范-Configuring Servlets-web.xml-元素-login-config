@@ -1,0 +1,36 @@
+
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>Test Realm</realm-name>
+    <form-login-config>
+      <form-login-page>/login</form-login-page>
+      <form-error-page>/loginError</form-error-page>
+    </form-login-config>
+  </login-config>
+
+http://docs.oracle.com/cd/E13222_01/wls/docs92/webapp/web_xml.html#wp1019996
+
+login-config
+
+Use the optional login-config element to configure how the user is authenticated; 
+the realm name that should be used for this application; 
+and the attributes that are needed by the form login mechanism.
+
+constrain[英][kənˈstreɪn] [美][kənˈstren]
+vt.强迫；强使；限制；约束
+
+If this element is present, 
+the user must be authenticated in order to access any resource 
+that is constrained by a <security-constraint> defined in the Web application. 
+Once authenticated, the user can be authorized to access other resources with access privileges.
+
+The following table describes the elements you can define within a login-config element.
+
+	The <realm-name> element does not refer to system security realms within WebLogic Server. 
+This element defines the realm name to use in HTTP Basic authorization. 
+
+The system security realm is a collection of security information 
+that is checked when certain operations are performed in the server. 
+
+The servlet security realm is a different collection of security information 
+that is checked when a page is accessed and basic authentication is used.
