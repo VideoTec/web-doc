@@ -107,6 +107,6 @@ vim /usr/local/etc/php-fpm.conf
 user = www-data
 group = www-data
 
-然后启动 php-fpm 服务：
+然后启动 php-fpm 服务： 需要使用 sudo
 /usr/local/bin/php-fpm
 

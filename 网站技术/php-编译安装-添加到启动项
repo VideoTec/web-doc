@@ -1,0 +1,7 @@
+参考：
+linux-service-自定义服务-例子-php-fpm-服务
+
+或者
+
+使用 /etc/rc.local 添加启动项
+/usr/local/bin/php-fpm
