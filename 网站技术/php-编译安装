@@ -29,7 +29,17 @@ wangxiang@wangxiang-M68MT-S2P:~/code/php-5.6.24$ sudo apt-get install libxm2-dev
 正在读取状态信息... 完成       
 E: 无法定位软件包 libxm2-devel
 
-解决方法：调用 sudo apt-install update
+解决方法：
+更改正确的
+调用 sudo apt-install update
+
+-----------------------------------------------------------------
+安装 phabricator 时需要 configure 选项
+-----------------------------------------------------------------
+./configure --enable-fpm --with-mysql --with-openssl --enable-mbstring --with-libmbfl -with-curl
+
+重新编译后，需要重新复制
+cp sapi/fpm/php-fpm /usr/local/bin
 
 -----------------------------------------------------------------
 sudo make install

@@ -1,0 +1,68 @@
+http://php.net/manual/zh/book.curl.php
+
+PHP 支持 Daniel Stenberg 创建的 libcurl 库，能够连接通讯各种服务器、使用各种协议。
+
+libcurl 目前支持的协议有 http、https、ftp、gopher、telnet、dict、file、ldap。 
+
+libcurl 同时支持 
+HTTPS 证书、HTTP POST、HTTP PUT、 FTP 上传(也能通过 PHP 的 FTP 扩展完成)、
+HTTP 基于表单的上传、代理、cookies、用户名+密码的认证。
+
+这些函数在 PHP 4.0.2 中引入。
+
+---------------------------------------------------------------------
+需求 
+---------------------------------------------------------------------
+需要安装» libcurl包才能使用 PHP 的 cURL 函数。
+
+wangxiang@wangxiang-M68MT-S2P:/usr/local/include$ sudo apt-get install libcurl-dev
+正在读取软件包列表... 完成
+正在分析软件包的依赖关系树       
+正在读取状态信息... 完成       
+虚拟软件包 libcurl-dev 由下面的软件包提供：
+  libcurl4-openssl-dev 7.47.0-1ubuntu2.1
+  libcurl4-nss-dev 7.47.0-1ubuntu2.1
+  libcurl4-gnutls-dev 7.47.0-1ubuntu2.1
+请您明确地选择安装其中一个。
+
+E: 软件包 libcurl-dev 没有可安装候选
+
+phabricator libcurl4 应该安装那个呢？
+先安装 libcurl4-openssl-dev 试试
+sudo apt-get install libcurl4-openssl-dev
+判断是否安装了，安装到那了：dpkg -L libcurl4-openssl-dev
+
+https://curl.haxx.se/dlwiz/?type=*&os=Linux&flav=Debian 文档：
+
+curl version: 7.50.1 - SSL enabled SSH enabled 
+URL: http://packages.debian.org/libcurl4-openssl-dev 
+Provided by: Debian
+This package is type libcurl development This is for libcurl development - 
+but does not always contain libcurl itself. 
+Most likely header files and documentation. 
+If you intend to compile or build something that uses libcurl, 
+this is most likely the package you want.
+The file is packaged using deb. deb is a file format with accompanying tools collection made 
+to handle software installation for Debian Linux (and derivatives). 
+Wikipedia has more details on deb
+
+curl version: 7.50.1 - SSL enabled SSH enabled 
+URL: http://packages.debian.org/libcurl4-gnutls-dev 
+Provided by: Debian
+This package is type libcurl development This is for libcurl development - 
+but does not always contain libcurl itself. Most likely header files and documentation. 
+If you intend to compile or build something that uses libcurl,
+ this is most likely the package you want.
+The file is packaged using deb. deb is a file format with accompanying tools collection made 
+to handle software installation for Debian Linux (and derivatives). 
+Wikipedia has more details on deb
+
+------------------------------------------------------
+安装
+------------------------------------------------------
+
+要 PHP 支持 cURL，
+必须在编译 PHP 时加上 --with-curl[=DIR] 选项，DIR 为包含 lib 和 include 的目录路径。
+在 include 目录中必须有一个名为curl，包含了easy.h 和curl.h 的文件夹。
+lib文件夹里应该有一个名为libcurl.a的文件。
+对于 PHP 4.3.0 你可以配置 --with-curlwrappers 使 cURL 使用 URL 流。

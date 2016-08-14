@@ -1,0 +1,105 @@
+http://php.net/manual/zh/extensions.membership.php
+
+核心扩展库 
+以下并非真正的扩展库，它们属于 PHP 内核的一部分，不能通过编译选项将其排除。
+
+绑定的扩展库 
+以下扩展库绑定在 PHP 发行包中。
+
+外部扩展库 
+这些扩展库已经绑定在 PHP 发行包中，但是要编译扩展库，需要外部的库文件。
+
+PECL 扩展库 
+以下扩展来自 » PECL，它们可能需要额外的库。
+还有更多的 PECL 扩展存在，但是在 PHP 手册中尚未有文档。
+
+-------------------------------------------------------------------
+https://segmentfault.com/a/1190000002601603
+在源码的 /ext 目录下面可以看到所有PHP原生的扩展
+-------------------------------------------------------------------
+核心扩展库
+绑定的扩展库 
+外部扩展库 
+
+wangxiang@wangxiang-M68MT-S2P:~/code/php-5.6.24/ext$ ls -l
+总用量 332
+drwxr-xr-x  4 wangxiang wangxiang  4096 7月  21 08:23 bcmath
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 bz2
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 calendar
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 com_dotnet
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:02 ctype
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 curl
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 21:59 date
+drwxr-xr-x  6 wangxiang wangxiang  4096 7月  21 08:23 dba
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 22:02 dom
+drwxr-xr-x  4 wangxiang wangxiang  4096 7月  21 08:23 enchant
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 22:00 ereg
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 exif
+-rwxr-xr-x  1 wangxiang wangxiang  8574 7月  21 08:23 ext_skel
+-rw-r--r--  1 wangxiang wangxiang  1524 7月  21 08:23 ext_skel_win32.php
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 22:02 fileinfo
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 22:03 filter
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 ftp
+drwxr-xr-x  4 wangxiang wangxiang  4096 7月  21 08:23 gd
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 gettext
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 gmp
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:03 hash
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:03 iconv
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 imap
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 interbase
+drwxr-xr-x 20 wangxiang wangxiang  4096 7月  21 08:23 intl
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:03 json
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 ldap
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:00 libxml
+drwxr-xr-x  6 wangxiang wangxiang  4096 7月  21 08:23 mbstring
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 mcrypt
+drwxr-xr-x  2 wangxiang wangxiang  4096 7月  21 08:23 mssql
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:03 mysql
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 mysqli
+drwxr-xr-x  3 wangxiang wangxiang  4096 8月  12 22:06 mysqlnd
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 oci8
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 odbc
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 21:59 opcache
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 openssl
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 pcntl
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 22:01 pcre
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:03 pdo
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 pdo_dblib
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 pdo_firebird
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 pdo_mysql
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 pdo_oci
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 pdo_odbc
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 pdo_pgsql
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:03 pdo_sqlite
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 pgsql
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 22:08 phar
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:04 posix
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 pspell
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 readline
+drwxr-xr-x  2 wangxiang wangxiang  4096 7月  21 08:23 recode
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:04 reflection
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:04 session
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 shmop
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 22:04 simplexml
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 skeleton
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 snmp
+drwxr-xr-x  4 wangxiang wangxiang  4096 7月  21 08:23 soap
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 sockets
+drwxr-xr-x  6 wangxiang wangxiang  4096 8月  12 22:04 spl
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 22:01 sqlite3
+drwxr-xr-x  5 wangxiang wangxiang 12288 8月  12 22:05 standard
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 sybase_ct
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 sysvmsg
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 sysvsem
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 sysvshm
+drwxr-xr-x  4 wangxiang wangxiang  4096 7月  21 08:23 tidy
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:05 tokenizer
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 wddx
+drwxr-xr-x  4 wangxiang wangxiang  4096 8月  12 22:05 xml
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 22:05 xmlreader
+drwxr-xr-x  4 wangxiang wangxiang  4096 7月  21 08:23 xmlrpc
+drwxr-xr-x  5 wangxiang wangxiang  4096 8月  12 22:05 xmlwriter
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 xsl
+drwxr-xr-x  5 wangxiang wangxiang  4096 7月  21 08:23 zip
+drwxr-xr-x  3 wangxiang wangxiang  4096 7月  21 08:23 zlib
+

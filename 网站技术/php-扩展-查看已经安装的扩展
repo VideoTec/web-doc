@@ -1,0 +1,49 @@
+PHP有两种可供安装的扩展：
+
+一种是PHP原生的但是默认没有安装的，另
+在源码 /ext 目录下面可以看到所有PHP原生的扩展
+参考：php-扩展-外部扩展库-curl
+
+一种是第三方开发的扩展
+
+---------------------------------------------------------------
+<?php phpinfo(); ?>  执行这的结果
+---------------------------------------------------------------
+
+配置区域，每个已经安装的扩展都有配置信息表
+
+---------------------------------------------------------------
+wangxiang@wangxiang-M68MT-S2P:~/code/php-5.6.24$ php -m
+---------------------------------------------------------------
+[PHP Modules]
+Core
+ctype
+date
+dom
+ereg
+fileinfo
+filter
+hash
+iconv
+json
+libxml
+mysql
+mysqlnd
+pcre
+PDO
+pdo_sqlite
+Phar
+posix
+Reflection
+session
+SimpleXML
+SPL
+sqlite3
+standard
+tokenizer
+xml
+xmlreader
+xmlwriter
+
+[Zend Modules]
+

@@ -1,0 +1,25 @@
+查看当前端口号：
+
+mysql> show variables like 'port';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| port          | 3306  |
++---------------+-------+
+1 row in set (0.00 sec)
+
+http://www.cyberciti.biz/faq/change-default-mysql-port-under-linuxunix/
+
+编辑配置文件：
+vi /etc/my.cnf
+
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+port=5123 --------------------------------- 修改这个值
+old_passwords=1
+bind = 10.10.29.66
+key_buffer = 500M
+
+重启mysql服务
+service mysqld restart

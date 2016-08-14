@@ -1,0 +1,17 @@
+http://php.net/manual/zh/book.openssl.php
+
+This module uses the functions of » OpenSSL 
+for generation and verification of signatures and 
+for sealing (encrypting) and opening (decrypting) data. 
+
+OpenSSL offers many features that this module currently doesn't support. 
+Some of these may be added in the future.
+
+需要：
+In order to use the OpenSSL functions you need to install the » OpenSSL package.
+
+sudo apt-get install openssl --- 这个不开发包
+Yes, you are right. It is libssl-dev --- 这个才对 apt-get install libssl-dev
+
+安装
+To use PHP's OpenSSL support you must also compile PHP --with-openssl[=DIR] .

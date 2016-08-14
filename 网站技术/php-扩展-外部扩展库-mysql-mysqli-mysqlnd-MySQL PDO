@@ -1,0 +1,29 @@
+http://php.net/manual/zh/intro.mysql.php
+在写新的代码时，不推荐使用本扩展。您应该使用 mysqli 或者 PDO_MySQL 扩展代替。
+这些函数允许你接入 MySQL 数据库服务器
+
+http://php.net/manual/zh/intro.mysqli.php
+mysqli扩展允许我们访问MySQL 4.1及以上版本提供的功能。
+Overview是在PHP中可以用于MySQL访问的软件的一个概览。
+
+http://php.net/manual/zh/intro.mysqlnd.php
+MySQL Native Driver is a replacement for the MySQL Client Library (libmysqlclient). 
+MySQL Native Driver is part of the official PHP sources as of PHP 5.3.0.
+
+什么是PHP的MySQL Native 驱动?
+为了与MySQL数据库服务端进行交互，mysql扩展，mysqli扩展， PDO MySQL驱动都使用了实现了必要的协议的底层库。
+以前，可用的库只有MySQL客户端库和libmysql。
+然而，libmysql包含的接口没有针对与PHP的应用交互进行优化，libmysql 是早期为C应用程序设计的。
+基于这个原因，MySQL Native驱动mysqlnd，作为libmysql的一个 针对PHP应用的修改版本被开发。
+mysql，mysqli以及PDO Mysql驱动都可以各自配置使用 libmysql或者mysqlnd。
+mysqlnd作为一个专门设计 用于PHP系统的库，它在内存和速度上都比libmysql有很大提升。
+非常希望你去尝试这些提升。
+Note:
+MySQL Native驱动仅仅可以在MySQL服务端版本为4.1.3及以后版本才可以使用。
+MySQL Native驱动是基于PHP扩展框架实现的。源代码位于PHP源码目录的ext/mysqlnd下。 它没有向PHP程序员暴露接口
+
+http://php.net/manual/zh/ref.pdo-dblib.php
+PDO_DBLIB is a driver that implements the PHP Data Objects (PDO) interface 
+to enable access from PHP to Microsoft SQL Server and 
+Sybase databases through the FreeTDS library.
+This extension is not available anymore on Windows with PHP 5.3 or later.

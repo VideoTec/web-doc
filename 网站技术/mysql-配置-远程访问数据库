@@ -1,0 +1,17 @@
+http://wiki.ubuntu.org.cn/MySQL%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97
+
+如果你想进行远程访问或控制，那么你要做两件事：
+其一：
+mysql>GRANT ALL PRIVILEGES ON xoops.* TO xoops_root@"%" IDENTIFIED BY "654321";
+允许xoops_root用户可以从任意机器上登入MySQL。
+
+其二：
+$sudo gedit /etc/mysql/my.cnf
+
+老的版本中
+>skip-networking => # skip-networking
+
+新的版本中
+>bind-address=127.0.0.1 => bind-address= 你机器的IP
+
+这样就可以允许其他机器访问MySQL了。

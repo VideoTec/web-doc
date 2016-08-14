@@ -1,0 +1,11 @@
+http://www.jb51.net/article/27572.htm
+
+include_path的设置 
+
+第一种方法：  /usr/local/php/php.ini
+修改php.ini文件中的include_path项。 
+include_path = .:/usr/local/lib/php:./include 
+
+第二个方法： 
+使用ini_set方法。 
+ini_set("include_path", ".:../:./include:../include");　
