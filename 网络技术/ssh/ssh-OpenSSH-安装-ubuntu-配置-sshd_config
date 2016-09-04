@@ -1,0 +1,168 @@
+特别提醒： 
+sshd_config 配置服务器 
+ssh_config 配置客户端
+
+-----------------------------------------------------------------------------
+https://help.ubuntu.com/lts/serverguide/openssh-server.html
+-----------------------------------------------------------------------------
+
+您可以通过编辑 /etc/ssh/sshd_config 文件来配置 OpenSSH 服务器应用程序的缺省过程
+
+获取详细的配置说明：
+关于该文件中使用的配置语句信息，您可以在终端提示符后运行下列命令来查阅相应的手册页
+man sshd_config
+http://linux.die.net/man/5/sshd_config
+
+第一步：备份原始的配置文件
+在编辑配置文件之前，您应该生成一个原始文件的拷贝并对其写保护，
+以便您可以参考原始文件并在必要时重用它。
+
+拷贝 /etc/ssh/sshd_config 文件并对其写保护可以通过在终端提示符后运行下列命令：
+
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
+sudo chmod a-w /etc/ssh/sshd_config.original
+
+-rw-r--r-- 1 root root   1756 8月  24 22:34 ssh_config.bak
+-r--r--r-- 1 root root   1756 8月  24 22:34 ssh_config.bak
+
+第二步：
+以下是您可能更改配置语句的范例:
+
+1) 要设置您 OpenSSH 在 TCP 2222 端口而不是缺省的 TCP 20 端口监听，可以如下使用改变 Port 语句：
+Port 2222
+
+默认端口号是 22 吧？
+改了 ssh_config 中的端口号，没起作用（确认重启过服务了）
+原因：应该修改 sshd_config
+
+2) 要让 sshd 允许基于公钥登录证书，可以简单添加或修改该行语句：
+PubkeyAuthentication yes
+If the line is already present, then ensure it is not commented out.
+
+3) 要使您的 OpenSSH 服务器显示 /etc/issue.net 文件的内容以作为预登录 Banner，
+只需简单地将下行添加或修改：
+
+Banner /etc/issue.net
+
+在 /etc/ssh/sshd_config 文件中。
+
+banner[英][ˈbænə(r)] [美][ˈbænɚ]
+n.横幅；旗，旗帜；标语；大字标题
+
+第三步：重启服务
+
+在修改 /etc/ssh/sshd_config 文件之后，保存该文件并重启 sshd 服务器应用程序以使之生效。
+可以在终端提示符后使用下列命令：
+
+sudo systemctl restart sshd.service
+
+-------------------------------------------------------------------------
+http://www.live-in.org/archives/832.html
+-------------------------------------------------------------------------
+另外修改配置文件/etc/ssh/sshd_config，可以改ssh登录端口和禁止root登录。改端口可以防止被端口扫描。
+
+编辑配置文件：
+vim /etc/ssh/sshd_config
+
+找到#Port 22，去掉注释，修改成一个五位的端口：
+Port 12333
+
+找到#PermitRootLogin yes，去掉注释，修改为：
+PermitRootLogin no
+
+重启sshd服务：
+service sshd restart
+
+-------------------------------------------------------------------------
+/etc/ssh/sshd_config 示例
+-------------------------------------------------------------------------
+wangxiang@wangxiang-M68MT-S2P:/etc/ssh$ cat sshd_config
+# Package generated configuration file
+# See the sshd_config(5) manpage for details
+
+# What ports, IPs and protocols we listen for
+Port 22
+# Use these options to restrict which interfaces/protocols sshd will bind to
+#ListenAddress ::
+#ListenAddress 0.0.0.0
+Protocol 2
+# HostKeys for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+#Privilege Separation is turned on for security
+UsePrivilegeSeparation yes
+
+# Lifetime and size of ephemeral version 1 server key
+KeyRegenerationInterval 3600
+ServerKeyBits 1024
+
+# Logging
+SyslogFacility AUTH
+LogLevel INFO
+
+# Authentication:
+LoginGraceTime 120
+PermitRootLogin prohibit-password
+StrictModes yes
+
+RSAAuthentication yes
+PubkeyAuthentication yes
+#AuthorizedKeysFile	%h/.ssh/authorized_keys
+
+# Don't read the user's ~/.rhosts and ~/.shosts files
+IgnoreRhosts yes
+# For this to work you will also need host keys in /etc/ssh_known_hosts
+RhostsRSAAuthentication no
+# similar for protocol version 2
+HostbasedAuthentication no
+# Uncomment if you don't trust ~/.ssh/known_hosts for RhostsRSAAuthentication
+#IgnoreUserKnownHosts yes
+
+# To enable empty passwords, change to yes (NOT RECOMMENDED)
+PermitEmptyPasswords no
+
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication no
+
+# Change to no to disable tunnelled clear text passwords
+#PasswordAuthentication yes
+
+# Kerberos options
+#KerberosAuthentication no
+#KerberosGetAFSToken no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+
+# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+
+X11Forwarding yes
+X11DisplayOffset 10
+PrintMotd no
+PrintLastLog yes
+TCPKeepAlive yes
+#UseLogin no
+
+#MaxStartups 10:30:60
+#Banner /etc/issue.net
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the ChallengeResponseAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via ChallengeResponseAuthentication may bypass
+# the setting of "PermitRootLogin without-password".
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to 'no'.
+UsePAM yes
+

@@ -1,0 +1,87 @@
+https://help.ubuntu.com/lts/serverguide/openssh-server.html
+
+OpenSSH 服务器组组件 sshd 持续监听来自任何客户端工具的连接请求。
+当一个连接请求发生时，sshd 根据客户端连接的类型来设置当前连接。
+
+例如，
+如果远程计算机是通过 ssh 客户端应用程序来连接的话，OpenSSH 服务器将在认证之后设置一个远程控制会话。
+如果一个远程用户通过 scp 来连接 OpenSSH 服务器，OpenSSH 服务器将在认证之后开始服务器和客户机之间的安全文件拷贝。
+OpenSSH 可以支持多种认证模式，包括纯密码、公钥以及Kerberos 票据。
+
+OpenSSH 客户端及服务器应用程序的安装是简单的。
+要在您 Ubuntu 系统中安装 OpenSSH 客户端应用程序，可以在终端提示符后使用以下命令：
+
+sudo apt install openssh-client
+
+要安装 OpenSSH 服务器应用程序及相关的支持文件，可以在终端提示符后使用以下命令：
+
+sudo apt install openssh-server
+
+The openssh-server package can also be selected to install during the Server Edition installation process.
+
+-----------------------------------------------
+安装完后查看服务： 服务名 sshd 或者 ssh
+-----------------------------------------------
+
+wangxiang@wangxiang-M68MT-S2P:~$ service sshd status
+● ssh.service - OpenBSD Secure Shell server
+   Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enab
+   Active: active (running) since 三 2016-08-24 22:25:43 CST; 19min ago
+ Main PID: 6909 (sshd)
+   CGroup: /system.slice/ssh.service
+           └─6909 /usr/sbin/sshd -D
+
+8月 24 22:25:43 wangxiang-M68MT-S2P systemd[1]: Starting OpenBSD Secure Shell ser
+8月 24 22:25:43 wangxiang-M68MT-S2P sshd[6909]: Server listening on 0.0.0.0 port 
+8月 24 22:25:43 wangxiang-M68MT-S2P sshd[6909]: Server listening on :: port 22.
+8月 24 22:25:43 wangxiang-M68MT-S2P systemd[1]: Started OpenBSD Secure Shell serv
+8月 24 22:41:15 wangxiang-M68MT-S2P sshd[8748]: Accepted password for wangxiang f
+8月 24 22:41:15 wangxiang-M68MT-S2P sshd[8748]: pam_unix(sshd:session): session o
+
+wangxiang@wangxiang-M68MT-S2P:~$ service ssh status
+● ssh.service - OpenBSD Secure Shell server
+   Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enab
+   Active: active (running) since 三 2016-08-24 22:25:43 CST; 19min ago
+ Main PID: 6909 (sshd)
+   CGroup: /system.slice/ssh.service
+           └─6909 /usr/sbin/sshd -D
+
+8月 24 22:25:43 wangxiang-M68MT-S2P systemd[1]: Starting OpenBSD Secure Shell ser
+8月 24 22:25:43 wangxiang-M68MT-S2P sshd[6909]: Server listening on 0.0.0.0 port 
+8月 24 22:25:43 wangxiang-M68MT-S2P sshd[6909]: Server listening on :: port 22.
+8月 24 22:25:43 wangxiang-M68MT-S2P systemd[1]: Started OpenBSD Secure Shell serv
+8月 24 22:41:15 wangxiang-M68MT-S2P sshd[8748]: Accepted password for wangxiang f
+8月 24 22:41:15 wangxiang-M68MT-S2P sshd[8748]: pam_unix(sshd:session): session o
+
+
+-----------------------------------------------
+安装完后测试：
+-----------------------------------------------
+
+ssh 127.0.0.1
+
+The authenticity of host '127.0.0.1 (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:zaqCc5ieGrmJE+KxqK0sx8Bim++EwzC/NApdRKSlTxU.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '127.0.0.1' (ECDSA) to the list of known hosts.
+wangxiang@127.0.0.1's password: 
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-36-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+28 个可升级软件包。
+0 个安全更新。
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+这样就连接上了。
+下一步，需要设置允许登录的用户名。
+

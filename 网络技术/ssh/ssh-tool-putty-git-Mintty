@@ -1,0 +1,4 @@
+https://github.com/larryli/PuTTY
+
+建议 Windows 下用户使用 Git for Windows 下 Git Bash 提供的 SSH 工具。
+msysgit 内置有基于 PuTTY 6.0 改造的 Mintty 终端，并且提供有完整 Linux/Unix 环境

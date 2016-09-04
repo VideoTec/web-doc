@@ -1,0 +1,48 @@
+http://linux.die.net/man/5/sshd_config
+http://linux.die.net/man/5/ssh_config
+
+Name
+
+sshd_config - OpenSSH SSH daemon configuration file
+
+Synopsis
+
+/etc/ssh/sshd_config
+
+Description
+
+sshd(8) reads configuration data from /etc/ssh/sshd_config (or the file specified with -f on the command line). 
+The file contains keyword-argument pairs, one per line. 
+Lines starting with '#' and empty lines are interpreted as comments. 
+Arguments may optionally be enclosed in double quotes (") in order to represent arguments containing spaces.
+
+-----------------------------------------------
+GSSAPIAuthentication
+-----------------------------------------------
+
+Specifies whether user authentication based on GSSAPI is allowed. 
+The default is ''no''. Note that this option applies to protocol version 2 only.
+通用安全服务应用程序接口(GSSAPI) 是为了让程序能够访问安全服务的一个应用程序接口
+
+-----------------------------------------------
+SendEnv
+-----------------------------------------------
+Specifies what variables from the local environ(7) should be sent to the server. Note that environment passing is only supported for protocol 2. The server must also support it, and the server must be configured to accept these environment variables. Refer to AcceptEnv in sshd_config(5) for how to configure the server. Variables are specified by name, which may contain wildcard characters. Multiple environment variables may be separated by whitespace or spread across multiple SendEnv directives. The default is not to send any environment variables.
+
+-----------------------------------------------
+GSSAPIDelegateCredentials
+-----------------------------------------------
+Forward (delegate) credentials to the server. 
+The default is ''no''. 
+Note that this option applies to protocol version 2 connections using GSSAPI.
+
+-----------------------------------------------
+HashKnownHosts
+-----------------------------------------------
+Indicates that ssh(1) should hash host names and addresses 
+when they are added to ~/.ssh/known_hosts. 
+These hashed names may be used normally by ssh(1) and sshd(8), 
+but they do not reveal identifying information should the file's contents be disclosed. 
+The default is ''no''. 
+Note that existing names and addresses in known hosts files will not be converted automatically, 
+but may be manually hashed using ssh-keygen(1).

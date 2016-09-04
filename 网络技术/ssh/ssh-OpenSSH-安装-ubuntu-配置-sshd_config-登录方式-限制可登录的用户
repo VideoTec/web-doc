@@ -1,0 +1,45 @@
+vi /etc/ssh/sshd_config 
+
+http://blog.csdn.net/linghe301/article/details/8211305
+
+AllowUsers arcsde 
+
+arcsde是我操作系统的用户，如果没有用户可以手动添加AllowUsers
+这样的话，只能arcsde登录了
+
+http://bbs.chinaunix.net/thread-3629931-1-1.html
+
+如果要限制组，你可以用 AllowGroups 和 DenyGroups。
+这两个选项可以容许或不容许主组或補充组跟限制组相配的用户
+
+如果你要指定那些用户不能使用 SSH，你要用 DenyUsers 选项。
+
+AllowUsers 选项能指定那些用户能使用 SSH。
+你可以在这个选项以后加上用户列表，用空格来分开每个用户
+
+这两个选项都能在用户名中用通配符如'*'或'?'。
+但是不可以用户的数字ID。默认是容许所有用户使用 SSH
+
+-------------------------------------------
+禁止用户密码登录方式
+-------------------------------------------
+
+-------------------------------------------
+禁止登录 shell
+-------------------------------------------
+
+-------------------------------------------
+创建用户，及设置用户权限
+-------------------------------------------
+
+sudo useradd git  应该添加 -m 选项用来创建 home 目录
+
+passwd git 回车，设置密码 w..x..
+
+测试 ：
+ssh git@127.0.0.1
+
+Could not chdir to home directory /home/git: No such file or directory
+
+原因：没有创建 /home/wangxiang3 home 目录
+   -m, --create-home	创建用户的主目录

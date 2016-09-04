@@ -1,0 +1,22 @@
+wangxiang@wangxiang-PC MINGW64 /
+$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/wangxiang/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/wangxiang/.ssh/id_rsa.
+Your public key has been saved in /c/Users/wangxiang/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:bPU7UFye7A2AcF7henjMcxbkWNwe7f/iJ81q3sw7BNk wangxiang@wangxiang-PC
+The key's randomart image is:
++---[RSA 2048]----+
+|        ....+o+..|
+|         o.+ X.oo|
+|          o = Xo.|
+|       . . B + Eo|
+|        S + B = o|
+|       .   + = ..|
+|            o .o.|
+|             .+==|
+|             ++**|
++----[SHA256]-----+

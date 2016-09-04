@@ -1,0 +1,23 @@
+问题一：进入 ssh 交互界面后，退出， exit
+
+usage: ssh [-1246AaCfGgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]
+           [-D [bind_address:]port] [-E log_file] [-e escape_char]
+           [-F configfile] [-I pkcs11] [-i identity_file] [-L address]
+           [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
+           [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
+           [-w local_tun[:remote_tun]] [user@]hostname [command]
+
+http://www.live-in.org/archives/832.html 登录命令
+
+不指定用户：
+ssh 192.168.0.11
+
+指定用户：
+ssh -l root 192.168.0.11
+ssh root@192.168.0.11
+
+
+如果修改过ssh登录端口的可以：
+ssh -p 12333 192.168.0.11
+ssh -l root -p 12333 216.230.230.114
+ssh -p 12333 root@216.230.230.114

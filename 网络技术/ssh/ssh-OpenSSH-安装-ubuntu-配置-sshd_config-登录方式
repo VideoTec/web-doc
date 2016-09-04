@@ -1,0 +1,165 @@
+问题一：禁止用户，密码登录方式？参考 《ssh-登录方式-认证方式》
+
+--------------------------------------------
+1. 禁止 root 登录
+--------------------------------------------
+找到#PermitRootLogin yes，去掉注释，修改为：
+PermitRootLogin no
+
+http://linux.die.net/man/5/sshd_config
+PermitRootLogin
+
+Specifies whether root can log in using ssh(1). 
+The argument must be ''yes'', ''without-password'', ''forced-commands-only'', or ''no''. 
+
+The default is ''yes''.
+
+If this option is set to ''without-password'', 
+password authentication is disabled for root.
+
+If this option is set to ''forced-commands-only'', 
+root login with public key authentication will be allowed, 
+but only if the command option has been specified 
+(which may be useful for taking remote backups even if root login is normally not allowed). 
+All other authentication methods are disabled for root.
+
+If this option is set to ''no'', root is not allowed to log in.
+
+--------------------------------------------
+允许基于公钥登录证书
+--------------------------------------------
+要让 sshd 允许基于公钥登录证书，可以简单添加或修改该行语句：
+
+http://linux.die.net/man/5/ssh_config
+PubkeyAuthentication yes
+
+PubkeyAuthentication
+Specifies whether to try public key authentication. 
+The argument to this keyword must be ''yes'' or ''no''. The default is ''yes''. 
+This option applies to protocol version 2 only.
+
+--------------------------------------------
+# Logging
+--------------------------------------------
+SyslogFacility AUTH
+LogLevel INFO
+
+--------------------------------------------
+# Authentication:
+--------------------------------------------
+LoginGraceTime 120
+PermitRootLogin prohibit-password
+StrictModes yes
+
+PubkeyAuthentication yes
+#AuthorizedKeysFile	%h/.ssh/authorized_keys
+
+# Don't read the user's ~/.rhosts and ~/.shosts files
+IgnoreRhosts yes
+# For this to work you will also need host keys in /etc/ssh_known_hosts
+RhostsRSAAuthentication no
+# similar for protocol version 2
+HostbasedAuthentication no
+# Uncomment if you don't trust ~/.ssh/known_hosts for RhostsRSAAuthentication
+#IgnoreUserKnownHosts yes
+
+--------------------------------------------
+RSA authentication
+--------------------------------------------
+RSAAuthentication yes
+Specifies whether pure RSA authentication is allowed. 
+The default is ''yes''. This option applies to protocol version 1 only.
+
+https://www.ibm.com/developerworks/cn/linux/security/openssh/part1/
+
+什么是 RSA/DSA 认证？
+
+SSH，特别是 OpenSSH（完全免费的 SSH 的实现），是一个不可思议的工具。
+类似于 telnet 或 rsh，ssh 客户程序也可以用于登录到远程机器。
+所要求的只是该远程机器正在运行 sshd，即 ssh 服务器进程。
+但是，与 telnet 不同的是，ssh 协议非常安全。
+加密数据流，确保数据流的完整性，甚至安全可靠的进行认证它都使用了专门的算法。
+
+然而，虽然 ssh 的确很棒，但还是有一个 ssh 功能组件常常被忽略、被危险的误用或者简直就是被误解。
+这个组件就是 OpenSSH 的 RSA/DSA 密钥认证系统，
+它可以代替 OpenSSH 缺省使用的标准安全密码认证系统。
+
+OpenSSH 的 RSA 和 DSA 认证协议的基础是一对专门生成的密钥，分别叫做专用密钥和公用密钥。
+使用这些基于密钥的认证系统的优势在于：在许多情况下，有可能不必手工输入密码就能建立起安全的连接。
+
+要用 RSA 登录的时候，我们只要在 localbox 的控制台键入 ssh drobbins@remotebox，就象我们常做的一样。
+可这一次，ssh 告诉 remotebox 的 sshd 它想使用 RSA 认证协议。接下来发生的事情非常有趣。
+Remotebox 的 sshd 会生成一个随机数，并用我们先前拷贝过去的公用密钥对这个随机数进行加密。
+然后， sshd 把加密了的随机数发回给正在 localbox 上运行的 ssh。
+接下来，轮到我们的 ssh 用专用密钥对这个随机数进行解密后，再把它发回给 remotebox，实际上等于在说：
+“瞧，我确实有匹配的专用密钥；我能成功的对您的消息进行解密！”
+最后， sshd 得出结论，既然我们持有匹配的专用密钥，就应当允许我们登录。
+因此，我们有匹配的专用密钥这一事实授权我们访问 remotebox。
+
+http://czj4451.iteye.com/blog/1581843
+
+DSA 和 RSA 的区别
+RSA 算法的名字以发明者的名字命名：Ron Rivest, AdiShamir 和Leonard Adleman
+DSA = Digital Signature Algorithm. based on discrete logarithms computation
+
+DSA 用于签名，而 RSA 可用于签名和加密
+
+--------------------------------------------
+密码
+--------------------------------------------
+# To enable empty passwords, change to yes (NOT RECOMMENDED)
+PermitEmptyPasswords no
+
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication no
+
+# Change to no to disable tunnelled clear text passwords
+#PasswordAuthentication yes
+
+--------------------------------------------
+# GSSAPI options
+--------------------------------------------
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+
+--------------------------------------------
+# Kerberos options
+--------------------------------------------
+#KerberosAuthentication no
+#KerberosGetAFSToken no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+
+--------------------------------------------
+PAM authentication
+PAM是 插件式认证模块（Pluggable Authentication Modules）的缩写，
+是一个用在Linux，FreeBSD，Solaris及其它操作系统中的认证框架
+--------------------------------------------
+# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the ChallengeResponseAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via ChallengeResponseAuthentication may bypass
+# the setting of "PermitRootLogin without-password".
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to 'no'.
+UsePAM yes
+
+http://www.infoq.com/cn/articles/linux-pam-one
+Linux可插拔认证模块（PAM）的配置文件、工作原理与流程
+
+https://www.ibm.com/developerworks/cn/linux/l-pam/
+了解和配置 PAM
+
+http://spazzzz.blog.51cto.com/2707720/677799
+举个不是特别恰当的例子：PAM机制就相当于给一个房屋安装防盗门，也就是对要进入这间屋子的人进行控制，
+不让这间屋子处于一种任何人都可以随便进入的状态。
+1) 支持PAM验证呢，就是表示这屋子给安装防盗门预留了空位，
+2) 不支持PAM呢，就是说房子整个就是封闭的，人根本进不了，或者是房子基本没有墙，不需要对出入进行限制。
+3) 在PAM机制中，PAM模块就相当于是防盗门上可以安装的各种锁具，
+这些锁具各有不同的特点和功能，你可以按需要安装。
+4) 相同的，在PAM中，程序的配置文件就相当于这个防盗门的制作和安装方案，安在什么地方，
+在支持的各种锁具中选择合适的锁，然后是开这些锁的先后顺序等这些具体使用规范。
+
