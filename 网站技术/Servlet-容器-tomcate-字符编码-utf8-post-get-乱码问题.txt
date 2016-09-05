@@ -1,0 +1,14 @@
+http://blog.csdn.net/renfufei/article/details/11294917
+
+确定问题应该处在Tomcat的配置上，于是翻开两个conf/server.xml
+
+Linux 的配置缺少了URIEncoding的配置项，
+那么默认应该是"ISO8859-1",所以如果没有配置，则需要转码一次
+
+在Linux上的Tomcat 加上URIEncoding="UTF-8" 就好了
+<Connector port="8099" protocol="AJP/1.3" redirectPort="8443" URIEncoding="UTF-8" />  
+
+http://www.williamlong.info/archives/469.html
+
+http://huifeideyu.blog.51cto.com/6764601/1176432
+Tomcat解决中文乱码之道(GET/POST)
