@@ -1,0 +1,129 @@
+在那里找 configure 见 nginx 《nginx源码目录结构》
+
+-----------------------------------------------------------
+http://tengine.taobao.org/book/chapter_09.html
+详细讲解 configure 脚本
+-----------------------------------------------------------
+
+nginx的编译旅程将从configure开始，
+configure脚本将根据我们输入的选项、系统环境参与来生成所需的文件（包含源文件与Makefile文件）。
+configure会调用一系列auto脚本来实现编译环境的初始化。
+
+-----------------------------------------------------------
+https://nginx.org/en/docs/configure.html
+-----------------------------------------------------------
+
+Example of parameters usage (all of this needs to be typed in one line):
+
+./configure
+    --sbin-path=/usr/local/nginx/nginx
+    --conf-path=/usr/local/nginx/nginx.conf
+    --pid-path=/usr/local/nginx/nginx.pid
+    --with-http_ssl_module
+    --with-pcre=../pcre-8.39
+    --with-zlib=../zlib-1.2.8
+After configuration, nginx is compiled and installed using make.
+
+Building nginx from Sources
+
+The build is configured using the configure command. 
+It defines various aspects of the system, 
+including the methods nginx is allowed to use for connection processing. 
+At the end it creates a Makefile. 
+
+-----------------------------------------------------------
+The configure command supports the following parameters:
+-----------------------------------------------------------
+--prefix=path		/usr/local/nginx
+--sbin-path=path	prefix/sbin/nginx
+--conf-path=path	prefix/conf/nginx.conf
+--pid-path=path		prefix/logs/nginx.pid
+--error-log-path=path	prefix/logs/error.log
+--http-log-path=path	prefix/logs/access.log
+
+--user=name		The default user name is nobody
+--group=name		By default, a group name is set to the name of an unprivileged user
+
+--with-select_module
+--without-select_module
+
+--with-poll_module
+--without-poll_module
+
+--without-http_gzip_module      需要 zlib library
+--without-http_rewrite_module	需要 PCRE library
+--without-http_proxy_module
+
+--with-http_ssl_module
+
+--with-zlib=path	(version 1.1.3 — 1.2.8)
+--with-pcre=path	(version 4.4 — 8.39) 
+--with-pcre-jit		“just-in-time compilation” support
+
+--with-cc-opt=parameters
+--with-ld-opt=parameters
+
+---------------------------------------------------
+https://sourceforge.net/projects/pcre/files/pcre/
+---------------------------------------------------
+下载 pcre-8.39.tar.bz2 解压命令：tar -zxvf pcre-8.32.tar.gz 
+The Perl Compatible Regular Expressions (PCRE) library is a set of functions 
+that implement regular expression pattern matching using the same syntax and semantics as Perl 5. 
+PCRE has its own native API, in addition to a set of POSIX compatible wrapper functions.
+
+---------------------------------------------------
+http://www.zlib.net/
+---------------------------------------------------
+下载 zlib-1.2.8.tar.gz
+
+zlib是提供数据压缩用的函式库，由Jean-loup Gailly与Mark Adler所开发，初版0.9版在1995年5月1日发表。
+zlib使用DEFLATE算法，最初是为libpng函式库所写的，后来普遍为许多软件所使用。
+此函式库为自由软件，使用zlib授权。
+截至2007年3月，zlib是包含在Coverity的美国国土安全部赞助者选择继续审查的开源项目
+
+今天，zlib是一种事实上的业界标准，以至于在标准文档中，zlib和DEFLATE常常互换使用。
+数以千计的应用程序直接或间接依靠zlib压缩函式库
+
+---------------------------------------------------
+详细说明
+---------------------------------------------------
+
+--prefix=path — defines a directory that will keep server files. This same directory will also be used for all relative paths set by configure (except for paths to libraries sources) and in the nginx.conf configuration file. It is set to the /usr/local/nginx directory by default.
+
+--sbin-path=path — sets the name of an nginx executable file. This name is used only during installation. By default the file is named prefix/sbin/nginx.
+
+--conf-path=path — sets the name of an nginx.conf configuration file. If needs be, nginx can always be started with a different configuration file, by specifying it in the command-line parameter -c file. By default the file is named prefix/conf/nginx.conf.
+
+--pid-path=path — sets the name of an nginx.pid file that will store the process ID of the main process. After installation, the file name can always be changed in the nginx.conf configuration file using the pid directive. By default the file is named prefix/logs/nginx.pid.
+
+--error-log-path=path — sets the name of the primary error, warnings, and diagnostic file. After installation, the file name can always be changed in the nginx.conf configuration file using the error_log directive. By default the file is named prefix/logs/error.log.
+
+--http-log-path=path — sets the name of the primary request log file of the HTTP server. After installation, the file name can always be changed in the nginx.conf configuration file using the access_log directive. By default the file is named prefix/logs/access.log.
+
+--user=name — sets the name of an unprivileged user whose credentials will be used by worker processes. After installation, the name can always be changed in the nginx.conf configuration file using the user directive. The default user name is nobody.
+
+--group=name — sets the name of a group whose credentials will be used by worker processes. After installation, the name can always be changed in the nginx.conf configuration file using the user directive. By default, a group name is set to the name of an unprivileged user.
+
+--with-select_module
+--without-select_module — enables or disables building a module that allows the server to work with the select() method. This module is built automatically if the platform does not appear to support more appropriate methods such as kqueue, epoll, or /dev/poll.
+
+--with-poll_module
+--without-poll_module — enables or disables building a module that allows the server to work with the poll() method. This module is built automatically if the platform does not appear to support more appropriate methods such as kqueue, epoll, or /dev/poll.
+
+--without-http_gzip_module — disables building a module that compresses responses of an HTTP server. The zlib library is required to build and run this module.
+
+--without-http_rewrite_module — disables building a module that allows an HTTP server to redirect requests and change URI of requests. The PCRE library is required to build and run this module.
+
+--without-http_proxy_module — disables building an HTTP server proxying module.
+
+--with-http_ssl_module — enables building a module that adds the HTTPS protocol support to an HTTP server. This module is not built by default. The OpenSSL library is required to build and run this module.
+
+--with-pcre=path — sets the path to the sources of the PCRE library. The library distribution (version 4.4 — 8.39) needs to be downloaded from the PCRE site and extracted. The rest is done by nginx’s ./configure and make. The library is required for regular expressions support in the location directive and for the ngx_http_rewrite_module module.
+
+--with-pcre-jit — builds the PCRE library with “just-in-time compilation” support (1.1.12, the pcre_jit directive).
+
+--with-zlib=path — sets the path to the sources of the zlib library. The library distribution (version 1.1.3 — 1.2.8) needs to be downloaded from the zlib site and extracted. The rest is done by nginx’s ./configure and make. The library is required for the ngx_http_gzip_module module.
+
+--with-cc-opt=parameters — sets additional parameters that will be added to the CFLAGS variable. When using the system PCRE library under FreeBSD, --with-cc-opt="-I /usr/local/include" should be specified. If the number of files supported by select() needs to be increased it can also be specified here such as this: --with-cc-opt="-D FD_SETSIZE=2048".
+
+--with-ld-opt=parameters — sets additional parameters that will be used during linking. When using the system PCRE library under FreeBSD, --with-ld-opt="-L /usr/local/lib" should be specified.

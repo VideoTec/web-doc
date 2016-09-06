@@ -1,0 +1,7 @@
+http://tengine.taobao.org/book/chapter_09.html
+
+nginx的事件机制
+1）event框架及非阻塞模型
+2）定时器实现
+3）信号处理
+4）惊群问题

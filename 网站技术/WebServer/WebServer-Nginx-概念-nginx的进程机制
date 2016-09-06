@@ -1,0 +1,6 @@
+http://tengine.taobao.org/book/chapter_09.html
+
+nginx的进程机制
+1）master进程
+2）worker进程
+3）进程间通讯
