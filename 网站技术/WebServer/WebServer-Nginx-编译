@@ -31,6 +31,152 @@ It defines various aspects of the system,
 including the methods nginx is allowed to use for connection processing. 
 At the end it creates a Makefile. 
 
+2016.9.6 编译使用配置
+./configure --with-pcre=../pcre-8.39 --with-zlib=../zlib-1.2.8
+
+错误：
+zhaoqiangdeMac-mini:auto wangxiang$ ./configure --with-pcre=../pcre-8.39 --with-zlib=../zlib-1.2.8
+./configure: line 10: auto/options: No such file or directory --- 难道要把 configure 复制到 nginx 目录下？是的
+zhaoqiangdeMac-mini:auto wangxiang$ ls
+cc		have		install		nohave		summary
+configure	have_headers	lib		options		threads
+define		headers		make		os		types
+endianness	include		module		sources		unix
+feature		init		modules		stubs
+
+make
+
+错误：
+zhaoqiangdeMac-mini:nginx wangxiang$ make
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f objs/Makefile
+cd ../zlib-1.2.8 \
+	&& /Applications/Xcode.app/Contents/Developer/usr/bin/make distclean \
+	&& CFLAGS="-O2 -pipe " CC="cc" \
+		./configure \
+	&& /Applications/Xcode.app/Contents/Developer/usr/bin/make libz.a
+make -f Makefile.in distclean
+rm -f *.o *.lo *~ \
+	   example minigzip examplesh minigzipsh \
+	   example64 minigzip64 \
+	   infcover \
+	   libz.* foo.gz so_locations \
+	   _match.s maketree contrib/infback9/*.o
+rm -rf objs
+rm -f *.gcda *.gcno *.gcov
+rm -f contrib/infback9/*.gcda contrib/infback9/*.gcno contrib/infback9/*.gcov
+cp -p zconf.h.in zconf.h
+rm -f Makefile zlib.pc configure.log
+/bin/sh: ./configure: Permission denied
+make[1]: *** [../zlib-1.2.8/libz.a] Error 126
+make: *** [build] Error 2
+
+需要给 zlib-1.2.8/configure 增加可执行权限吗？
+-rw-r--r--   1 wangxiang  staff  26082 Sep  6 22:17 configure
+sudo chmod +x configure
+-rwxr-xr-x   1 wangxiang  staff  26082 Sep  6 22:17 configure
+
+make 后的目录
+
+zhaoqiangdeMac-mini:nginx wangxiang$ ls -l
+total 16
+-rw-r--r--   1 wangxiang  staff   376 Sep  6 23:03 Makefile
+drwxr-xr-x  26 wangxiang  staff   884 Aug 31 20:46 auto
+drwxr-xr-x  11 wangxiang  staff   374 Aug 31 20:46 conf
+-rwxr-xr-x   1 wangxiang  staff  2481 Sep  6 23:02 configure
+drwxr-xr-x   6 wangxiang  staff   204 Aug 31 20:46 contrib
+drwxr-xr-x  10 wangxiang  staff   340 Aug 31 20:46 docs
+drwxr-xr-x   4 wangxiang  staff   136 Aug 31 20:46 misc
+drwxr-xr-x  11 wangxiang  staff   374 Sep  6 23:15 objs
+drwxr-xr-x   9 wangxiang  staff   306 Aug 31 20:46 src
+
+zhaoqiangdeMac-mini:objs wangxiang$ ls -l
+total 2120
+-rw-r--r--  1 wangxiang  staff   39153 Sep  6 23:03 Makefile
+-rw-r--r--  1 wangxiang  staff   21241 Sep  6 23:03 autoconf.err
+-rwxr-xr-x  1 wangxiang  staff  963044 Sep  6 23:15 nginx
+-rw-r--r--  1 wangxiang  staff    5341 Sep  6 23:15 nginx.8
+-rw-r--r--  1 wangxiang  staff    5176 Sep  6 23:03 ngx_auto_config.h
+-rw-r--r--  1 wangxiang  staff     531 Sep  6 23:03 ngx_auto_headers.h
+-rw-r--r--  1 wangxiang  staff    5511 Sep  6 23:03 ngx_modules.c
+-rw-r--r--  1 wangxiang  staff   22360 Sep  6 23:06 ngx_modules.o
+drwxr-xr-x  9 wangxiang  staff     306 Sep  6 23:03 src
+
+sudo make install
+
+zhaoqiangdeMac-mini:nginx wangxiang$ sudo make install
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f objs/Makefile install
+test -d '/usr/local/nginx' || mkdir -p '/usr/local/nginx'
+test -d '/usr/local/nginx/sbin' \
+		|| mkdir -p '/usr/local/nginx/sbin'
+test ! -f '/usr/local/nginx/sbin/nginx' \
+		|| mv '/usr/local/nginx/sbin/nginx' \
+			'/usr/local/nginx/sbin/nginx.old'
+cp objs/nginx '/usr/local/nginx/sbin/nginx'
+test -d '/usr/local/nginx/conf' \
+		|| mkdir -p '/usr/local/nginx/conf'
+cp conf/koi-win '/usr/local/nginx/conf'
+cp conf/koi-utf '/usr/local/nginx/conf'
+cp conf/win-utf '/usr/local/nginx/conf'
+test -f '/usr/local/nginx/conf/mime.types' \
+		|| cp conf/mime.types '/usr/local/nginx/conf'
+cp conf/mime.types '/usr/local/nginx/conf/mime.types.default'
+test -f '/usr/local/nginx/conf/fastcgi_params' \
+		|| cp conf/fastcgi_params '/usr/local/nginx/conf'
+cp conf/fastcgi_params \
+		'/usr/local/nginx/conf/fastcgi_params.default'
+test -f '/usr/local/nginx/conf/fastcgi.conf' \
+		|| cp conf/fastcgi.conf '/usr/local/nginx/conf'
+cp conf/fastcgi.conf '/usr/local/nginx/conf/fastcgi.conf.default'
+test -f '/usr/local/nginx/conf/uwsgi_params' \
+		|| cp conf/uwsgi_params '/usr/local/nginx/conf'
+cp conf/uwsgi_params \
+		'/usr/local/nginx/conf/uwsgi_params.default'
+test -f '/usr/local/nginx/conf/scgi_params' \
+		|| cp conf/scgi_params '/usr/local/nginx/conf'
+cp conf/scgi_params \
+		'/usr/local/nginx/conf/scgi_params.default'
+test -f '/usr/local/nginx/conf/nginx.conf' \
+		|| cp conf/nginx.conf '/usr/local/nginx/conf/nginx.conf'
+cp conf/nginx.conf '/usr/local/nginx/conf/nginx.conf.default'
+test -d '/usr/local/nginx/logs' \
+		|| mkdir -p '/usr/local/nginx/logs'
+test -d '/usr/local/nginx/logs' \
+		|| mkdir -p '/usr/local/nginx/logs'
+test -d '/usr/local/nginx/html' \
+		|| cp -R docs/html '/usr/local/nginx'
+test -d '/usr/local/nginx/logs' \
+		|| mkdir -p '/usr/local/nginx/logs'
+
+安装完后，测试
+/usr/local/nginx/sbin/nginx -h 打印帮助文档
+zhaoqiangdeMac-mini:nginx wangxiang$ sbin/nginx -h
+nginx version: nginx/1.11.3
+Usage: nginx [-?hvVtTq] [-s signal] [-c filename] [-p prefix] [-g directives]
+
+Options:
+  -?,-h         : this help
+  -v            : show version and exit
+  -V            : show version and configure options then exit
+  -t            : test configuration and exit
+  -T            : test configuration, dump it and exit
+  -q            : suppress non-error messages during configuration testing
+  -s signal     : send signal to a master process: stop, quit, reopen, reload
+  -p prefix     : set prefix path (default: /usr/local/nginx/)
+  -c filename   : set configuration file (default: conf/nginx.conf)
+  -g directives : set global directives out of configuration file
+
+sudo /usr/local/nginx/sbin/nginx 启动 nginx 服务器
+zhaoqiangdeMac-mini:logs wangxiang$ ps -A | grep nginx 查看进程
+ 5983 ??         0:00.00 nginx: master process ./nginx
+ 5984 ??         0:00.00 nginx: worker process
+ 5990 ttys000    0:00.00 grep nginx
+
+zhaoqiangdeMac-mini:nginx wangxiang$ sudo sbin/nginx -s stop 停止服务
+zhaoqiangdeMac-mini:nginx wangxiang$ ps -A | grep nginx
+ 5997 ttys000    0:00.00 grep nginx
+
+
+
 -----------------------------------------------------------
 The configure command supports the following parameters:
 -----------------------------------------------------------
