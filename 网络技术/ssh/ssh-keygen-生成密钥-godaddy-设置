@@ -1,0 +1,25 @@
+SSH Access | Manage SSH Keys | Import Key
+
+导入公钥(导入时，指定文件名无效,还是会被保存到 .ssh/id_dsa 目录下) | 把认证状态改为 authorized
+If you authorize a key that is identical to other keys,
+those keys may also become authorized.
+
+注：今天生成一个 vive 密钥对，（y）已经上传到百度云保存起来了
+
+Key Descriptions
+
+The public and private key are similar to a puzzle. 
+They are created together to use during the login/authentication process. 
+The public key resides on the server (the remote location). 
+The private key resides locally on your computer/server. 
+When you attempt to login to a server, the public and private key are compared. 
+
+If they match, 
+then you will be allowed to login to the server location.
+
+** You can download the private/public keys here and import into PuTTy 
+(or other SSH clients) 
+if you prefer using something else for SSH connections. 
+Or, if you have been using PuTTY, 
+you can import the public/private keys by clicking on Import Key. 
+You can also download your key in PuTTY’s ppk format under View/Download.

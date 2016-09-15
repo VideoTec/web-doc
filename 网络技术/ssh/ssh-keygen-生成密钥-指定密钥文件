@@ -1,0 +1,30 @@
+ -f filename Filename of the key file.
+
+
+————————————————————————————
+mac-mini:~ wangxiang$ ssh-keygen -f vive
+
+生成的私钥文件名称是 vive
+生成的公钥的文件名称是 vive.pub
+路径是，当前路径
+————————————————————————————
+
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in vive.
+Your public key has been saved in vive.pub.
+The key fingerprint is:
+97:cf:16:66:2d:00:74:d6:5a:c3:a3:99:ff:8d:a6:25 wangxiang@mac-mini.local
+The key's randomart image is:
++--[ RSA 2048]----+
+|       .o oo     |
+|         +  *    |
+|          .* o   |
+|          =o .   |
+|        S o.= .  |
+|         . =.o   |
+|            E..o |
+|           . o+ .|
+|            .o   |
++-----------------+

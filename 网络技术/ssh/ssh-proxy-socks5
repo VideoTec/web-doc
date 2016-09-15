@@ -1,0 +1,110 @@
+启动 socks5 代理的命令： (注意不是 socket)
+
+ssh -i vive -D 8088 wangxiang@host
+
+本地8088代理，会走 ssh 代理到指定服务器。
+[-D [bind_address:]port]
+
+https://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/
+动态转发 - 应用服务端的端口号不是固定的，是动态变化的
+ssh -D <local port> <SSH Server>
+ssh -D 7001 <SSH Server>
+其实在这里 SSH 是创建了一个 SOCKS 代理服务
+此时 SSH 所包护的范围只包括从浏览器端（SSH Client 端）到 SSH Server 端的连接，
+并不包含从 SSH Server 端 到目标网站的连接
+
+ssh -f -N -D 1080 服务器名
+-f 让ssh在后台提供服务
+-N 不执行远程命令，因为只做代理，所以不需要启动shell
+-D 1080 启用转发，监听端口为 1080
+
+安装一个 http 代理服务器，可为其它设备代理 web 访问
+Polipo 是一个小而快速的缓存 web 代理程序(web 缓存, HTTP 代理, 代理服务器)
+https://blog.chou.it/2014/06/http-proxy-over-ssh-tunnelling/
+
+————————————————————————————
+https://zh.wikipedia.org/wiki/SOCKS
+————————————————————————————
+
+SOCKS是一种网络传输协议，主要用于客户端与外网服务器之间通讯的中间传递。
+SOCKS是"SOCKetS"的缩写
+
+当防火墙后的客户端要访问外部的服务器时，就跟SOCKS代理服务器连接。
+这个代理服务器控制客户端访问外网的资格，
+允许的话，就将客户端的请求发往外部的服务器。
+
+这个协议最初由David Koblas开发，
+而后由NEC的Ying-Da Lee将其扩展到版本4。
+最新协议是版本5，与前一版本相比，增加支持UDP、验证，以及IPv6。
+
+根据OSI模型，SOCKS是会话层的协议，位于表示层与传输层之间
+
+部分SOCKS服务器软件：
+Dante Socks Server，http://www.inet.no/dante
+Java Socks Server，http://jsocks.sourceforge.net
+Socks4 Server，http://www.alhem.net/project/socks4
+SS5 Socks Server，http://ss5.sourceforge.net
+TcpToute2，https://github.com/GameXG/TcpRoute2
+Shadowsocks
+
+SOCKS客户端[编辑]
+有不少客户端的socksify[2]软件，本地软件从而可以通过SOCKS来与外网相连。
+客户端	许可证	版本	发布日期	平台	支持协议
+Dante client	BSD/CMU	1.1.18	09/2005	Linux	v4, v5
+FreeCap	GPL	3.18	02/2005	Windows	-
+Hummingbird socks	-	-	-	Windows	-
+ProxyCap	-	2.03	-	Windows	-
+SocksCap	Non-Comercial home use	-	-	-	v5
+Super Socks5Cap	-	1.5.3	-	Windows	-
+tsocks	GPL	1.8	10/2002	-	-
+nylon	-	-	06/2003	OpenBSD	-
+
+————————————————————————————
+http://baike.baidu.com/view/490489.htm
+————————————————————————————
+
+SOCKS5 是一个代理协议，
+它在使用TCP/IP协议通讯的前端机器和服务器机器之间扮演一个中介角色，
+使得内部网中的前端机器变得能够访问Internet网中的服务器，或者使通讯更加安全。
+SOCKS5 服务器通过将前端发来的请求转发给真正的目标服务器， 模拟了一个前端的行为。
+在这里，前端和SOCKS5之间也是通过TCP/IP协议进行通讯，
+前端将原本要发送给真正服务器的请求发送给SOCKS5服务器，
+然后SOCKS5服务器将请求转发给真正的服务器。
+
+果您的机器具有一个合法的 Internet IP 地址， 
+或者您利用自己机器上的调制解调器拨号上网， 
+可以自由和 Internet 上任何主机沟通， 那么您通常不必关心 SOCKS5 协议。
+
+SOCKS5 协议对于处在内部网络中的机器， 
+需要透过网络中某些可以联通外部 Internet 的机器访问外部时，有用。
+SOCKS5服务器在将通讯请求发送给真正服务器的过程中，对于请求数据包本身不加任何改变。
+SOCKS5服务器接收到真正服务器的响应后，也原样转发给前端。
+因此，SOCKS5 协议是一种代理协议，对于各种基于 TCP/IP的应用层协议都能够适应，几乎是万能的。
+它虽然不能理解自己转发的数据的内部结构，
+但是它能够忠实地转发通讯包，完成协议本来要完成的功能。
+
+与SOCKS5协议不同，HTTP代理是通过HTTP协议进行的，
+HTTP代理服务器软件了解通讯包的内部结构，在转发过程中还要对通讯进行某种程序的修改和转换。
+
+和HTTP代理协议不同，SOCKS5实际上是一个传输层的代理协议。
+我们可以想象，如果每个具体的应用层协议都要设计对应的代理协议表达办法，
+一个特定的代理服务器无论如何也支持不过来那么多新出现的协议。
+因此，可以说SOCKS5的出现缓解了各种具体协议需要专门设计代理协议的困难局面。
+不过，并不是凡是使用基于TCP/IP协议的应用协议的软件，都可以无条件地透过SOCKS5服务器进行通讯，
+还要求前端软件本身具有SOCKS5的接口，才能利用SOCKS5代理服务器。
+
+SOCKS是一组由Internal工程工作小组（IETF）所开发出来的开放软件开放标准，用来处理网络安全的事宜。
+SOCKS象一堵墙被夹在 Internal服务器和客户端之间，
+对于出入企业网络的资讯提供流量和安全的管理。
+SOCKS这个名词并不是一组英文字头的缩写，而是一个和 TCP/IP的Socket端口有关的安全标准，
+
+一般防火墙系统通常是象网关（Gateway）一样是作用在OSI模型的第七层也就是应用层上，
+对 TCP/IP的高级协议，如Telnet、FTP、HTTP和SMTP加以管制，
+
+而SOCKS作用在OSI模型的第五层也就是会话层上，
+象一个代理一样对客户端到服务器端或服务器和服务器之间的数据联系提供安全上的服务。
+由于SOCKS作用在会话层上，
+因此它是一个提供会话层到会话层间安全服务的方案，不受高层应用程序变更的影响。 
+
+Socks代理只是简单地传递数据包，而不必关心是何种应用协议(比如FTP、HTTP和NNTP请求)，
+所以Socks代理服务器比应用层代理服务器要快。
