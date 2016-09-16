@@ -1,0 +1,10 @@
+https://help.ubuntu.com/community/SSH/OpenSSH/Keys
+
+SSH can use either 
+"RSA" (Rivest-Shamir-Adleman) or 
+"DSA" ("Digital Signature Algorithm") keys.
+
+Both of these were considered state-of-the-art algorithms when SSH was invented, 
+but DSA has come to be seen as less secure in recent years. 
+RSA is the only recommended choice for new keys, 
+so this guide uses "RSA key" and "SSH key" interchangeably.

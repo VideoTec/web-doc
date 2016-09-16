@@ -1,0 +1,18 @@
+http://superuser.com/questions/232373/how-to-tell-git-which-private-key-to-use
+
+In ~/.ssh/config, add:
+
+host github.com
+ HostName github.com
+ IdentityFile ~/.ssh/id_rsa_github
+ User git
+
+Now you can do git clone git@github.com:username/repo.git.
+
+NOTE: Verify that the permissions on IdentityFile are 400.SSH will reject, 
+in a not clearly explicit manner, SSH keys that are too readable. 
+It will just look like a credential rejection. The solution, in this case, is:
+
+chmod 400 ~/.ssh/id_rsa_github
+
+参考：ssh客户端配置文件的说明

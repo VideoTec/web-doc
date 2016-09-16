@@ -1,21 +1,6 @@
-usage: ssh [-1246AaCfgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]
-           [-D [bind_address:]port] [-e escape_char] [-F configfile]
-           [-I pkcs11] [-i identity_file]
-           [-L [bind_address:]port:host:hostport]
-           [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
-           [-R [bind_address:]port:host:hostport] [-S ctl_path]
-           [-W host:port] [-w local_tun[:remote_tun]]
-           [user@]hostname [command]
-
-例子：
-
-ssh -f -N -D 1080 服务器名
--f 让ssh在后台提供服务
--N 不执行远程命令，因为只做代理，所以不需要启动shell
--D 1080 启用转发，监听端口为 1080
-
 ssh -i vive -D 8088 wangxiang@host
 -i 指定私钥文件
+
 注意 私钥文件的权限要严格限制，否则无法连接
 -rw-rw-r--  1 wangxiang wangxiang   1766 9月  16 19:58 vive-y
 权限修改为： chmod 600 vive-y
@@ -30,4 +15,3 @@ It is required that your private key files are NOT accessible by others.
 This private key will be ignored.
 Load key "vive-y": bad permissions
 wangxiang@107.180.40.109's password: 
-

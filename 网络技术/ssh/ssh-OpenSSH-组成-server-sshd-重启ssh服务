@@ -1,0 +1,54 @@
+sshd 服务的进程：
+
+mac-mini:~ wangxiang$ ps -A | grep ssh
+  400 ??         0:00.06 sshd: wangxiang [priv] 
+  402 ??         0:00.02 sshd: wangxiang@ttys000 
+
+sshd 命令用法:
+
+mac-mini:~ wangxiang$ sshd -h
+sshd: option requires an argument -- h
+OpenSSH_6.2p2, OSSLShim 0.9.8r 8 Dec 2011
+usage: sshd [-46DdeiqTt] [-b bits] [-C connection_spec] [-c host_cert_file]
+            [-f config_file] [-g login_grace_time] [-h host_key_file]
+            [-k key_gen_time] [-o option] [-p port] [-u len]
+
+-----------------------------------------------------------------
+http://www.cyberciti.biz/faq/howto-restart-ssh/
+不同系统重启服务的方法
+-----------------------------------------------------------------
+
+CentOS / RHEL / Fedora / Redhat Linux Restart SSH
+# /etc/init.d/sshd restart
+或者
+# service sshd restart
+
+Debian / Ubuntu Linux Restart SSH
+# /etc/init.d/ssh restart
+或者
+# service ssh restart
+
+FreeBSD Restart SSH
+# /etc/rc.d/sshd restart
+
+UNIX Restart SSH
+# kill -HUP `cat /var/run/sshd.pid`
+
+mac 系统：- 没有重启访问
+
+/System/Library/LaunchDaemons/ssh.plist
+
+sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
+sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+
+that existing SSH sessions will be terminated, 
+so you need to run this independent of the current user session
+
+There is no reason to 'unload' the sshd service, 
+when instead you can just 'Stop' the sshd service. 
+It will restart on it's own.
+
+sudo launchctl stop com.openssh.sshd
+
+This no longer works in OS X Yosemite, attempting to stop sshd (as root) results in exit status of 3, 
+and the service continues running. 

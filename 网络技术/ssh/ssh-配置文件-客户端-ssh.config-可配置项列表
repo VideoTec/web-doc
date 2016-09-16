@@ -1,0 +1,100 @@
+示例：
+Host home
+    HostName example.com
+    User apollo
+    Port 4567
+
+关键字大小写不敏感，变量大小写敏感
+keywords are case-insensitive and 
+arguments are case-sensitive
+
+https://www.digitalocean.com/community/tutorials/how-to-configure-custom-connection-options-for-your-ssh-client
+
+man ssh_config
+
+SSH_CONFIG(5)                                   BSD File Formats Manual                                   SSH_CONFIG(5)
+
+NAME
+     ssh_config — OpenSSH SSH client configuration files
+
+SYNOPSIS
+     ~/.ssh/config
+     /etc/ssh/ssh_config
+
+DESCRIPTION
+     ssh(1) obtains configuration data from the following sources in the following order:
+
+           1.   command-line options
+           2.   user's configuration file (~/.ssh/config)
+           3.   system-wide configuration file (/etc/ssh/ssh_config)
+
+     For each parameter, the first obtained value will be used.  The configuration files contain sections separated by
+     “Host” specifications, and that section is only applied for hosts that match one of the patterns given in the
+     specification.  The matched host name is usually the one given on the command line (see the CanonicalizeHostname
+     option for exceptions.)
+
+     Note that the Debian openssh-client package sets several options as standard in /etc/ssh/ssh_config which are not
+     the default in ssh(1):
+
+           ·   SendEnv LANG LC_*
+           ·   HashKnownHosts yes
+           ·   GSSAPIAuthentication yes
+
+     The configuration file has the following format:
+
+     Empty lines and lines starting with ‘#’ are comments.  Otherwise a line is of the format “keyword arguments”.
+     Configuration options may be separated by whitespace or optional whitespace and exactly one ‘=’; the latter format
+     is useful to avoid the need to quote whitespace when specifying configuration options using the ssh, scp, and sftp
+     -o option.  Arguments may optionally be enclosed in double quotes (") in order to represent arguments containing
+     spaces.
+
+     The possible keywords and their meanings are as follows (note that keywords are case-insensitive and arguments are
+     case-sensitive):
+
+常用关键字：
+     Host    Restricts the following declarations (up to the next Host or Match keyword) to be only for those hosts
+             that match one of the patterns given after the keyword.  If more than one pattern is provided, they should
+             be separated by whitespace.  A single ‘*’ as a pattern can be used to provide global defaults for all
+             hosts.  The host is usually the hostname argument given on the command line (see the CanonicalizeHostname
+             option for exceptions.)
+
+             A pattern entry may be negated by prefixing it with an exclamation mark (‘!’).  If a negated entry is
+             matched, then the Host entry is ignored, regardless of whether any other patterns on the line match.
+             Negated matches are therefore useful to provide exceptions for wildcard matches.
+
+             See PATTERNS for more information on patterns.
+
+     HostName
+             Specifies the real host name to log into.  This can be used to specify nicknames or abbreviations for
+             hosts.  If the hostname contains the character sequence ‘%h’, then this will be replaced with the host
+             name specified on the command line (this is useful for manipulating unqualified names).  The character
+             sequence ‘%%’ will be replaced by a single ‘%’ character, which may be used when specifying IPv6 link-
+             local addresses.
+
+             The default is the name given on the command line.  Numeric IP addresses are also permitted (both on the
+             command line and in HostName specifications).
+
+     IdentityFile
+             Specifies a file from which the user's DSA, ECDSA, Ed25519 or RSA authentication identity is read.  The
+             default is ~/.ssh/identity for protocol version 1, and ~/.ssh/id_dsa, ~/.ssh/id_ecdsa, ~/.ssh/id_ed25519
+             and ~/.ssh/id_rsa for protocol version 2.  Additionally, any identities represented by the authentication
+             agent will be used for authentication unless IdentitiesOnly is set.  If no certificates have been explic‐
+             itly specified by CertificateFile, ssh(1) will try to load certificate information from the filename
+             obtained by appending -cert.pub to the path of a specified IdentityFile.
+
+             The file name may use the tilde syntax to refer to a user's home directory or one of the following escape
+             characters: ‘%d’ (local user's home directory), ‘%u’ (local user name), ‘%l’ (local host name), ‘%h’
+             (remote host name) or ‘%r’ (remote user name).
+
+             It is possible to have multiple identity files specified in configuration files; all these identities will
+             be tried in sequence.  Multiple IdentityFile directives will add to the list of identities tried (this be‐
+             haviour differs from that of other configuration directives).
+
+             IdentityFile may be used in conjunction with IdentitiesOnly to select which identities in an agent are
+             offered during authentication.  IdentityFile may also be used in conjunction with CertificateFile in order
+             to provide any certificate also needed for authentication with the identity.
+
+     User    Specifies the user to log in as.  This can be useful when a different user name is used on different
+             machines.  This saves the trouble of having to remember to give the user name on the command line.
+
+

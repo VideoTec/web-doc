@@ -1,0 +1,148 @@
+https://help.ubuntu.com/community/SSH/OpenSSH/Keys
+
+The private key is kept on the computer you log in from, while 
+the public key is stored on the .ssh/authorized_keys file on all the computers you want to log in to.
+路径应该是 用户的HOME目录
+
+Different SSH programs generate public keys in different ways, 
+but they all generate public keys in a similar format:
+公有 key 的格式
+<ssh-rsa or ssh-dss> <really long string of nonsense> <username>@<host>
+
+当私钥被盗后，需要立即更换服务器上的公钥
+An SSH key passphrase is a secondary form of security 
+that gives you a little time when your keys are stolen. 
+If your RSA key has a strong passphrase, 
+it might take your attacker a few hours to guess by brute force. 
+That extra time should be enough to log in to any computers you have an account on, 
+delete your old key from the .ssh/authorized_keys file, and add a new key.
+
+---------------------------------------------------------
+/etc/ssh/sshd_config  -  开启密钥认证
+注意: 是 sshd_config(服务器的配置文件) 不是 ssh_config(客户端的配置文件)
+注意: MAC系统这个文件在， /etc/sshd_config
+---------------------------------------------------------
+
+PubkeyAuthentication yes
+RSAAuthentication yes
+
+# The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
+# but this is overridden so installations will only check .ssh/authorized_keys
+AuthorizedKeysFile	.ssh/authorized_keys
+
+禁止，password authentication
+https://help.ubuntu.com/community/SSH/OpenSSH/Configuring#disable-password-authentication
+
+To disable password authentication, look for the following line in your sshd_config file:
+
+#PasswordAuthentication yes
+replace it with a line that looks like this:
+PasswordAuthentication no
+
+MAC-MINI机器上的相关配置：
+
+# To disable tunneled clear text passwords both PasswordAuthentication and 
+# ChallengeResponseAuthentication must be set to "no". 
+#PasswordAuthentication no 
+#PermitEmptyPasswords no 
+ 
+# Change to no to disable s/key passwords 
+#ChallengeResponseAuthentication yes 
+
+Once you have saved the file and restarted your SSH server, 
+重启 ssh 服务 - mac 修改配置文件，禁止密码访问，不用重启，就生效了。
+you shouldn't even be asked for a password when you log in.
+
+----------------------------------------------------------------------
+先理解 ： Key-Based SSH Logins - password authentication
+----------------------------------------------------------------------
+Key-based authentication is the most secure 
+of several modes of authentication usable with OpenSSH, 
+such as plain password and Kerberos tickets. 
+
+Key-based authentication has several advantages over password authentication, 
+for example the key values 
+are significantly more difficult to brute-force, or guess than plain passwords, 
+provided an ample key length. 
+Other authentication methods are only used in very specific situations.
+
+Key-based authentication uses two keys, 
+one "public" key that anyone is allowed to see, 
+and another "private" key that only the owner is allowed to see. 
+To securely communicate using key-based authentication, 
+one needs to create a key pair, 
+securely store the private key on the computer one wants to log in from, 
+and store the public key on the computer one wants to log in to.
+
+Using key based logins with ssh is generally considered more secure 
+than using plain password logins. 
+This section of the guide will explain the process of 
+generating a set of public/private RSA keys, and 
+using them for logging into your Ubuntu computer(s) via OpenSSH.
+
+----------------------------------------------------------------------
+Transfer Client Key to Host 保存公钥到服务器，
+注意一：保存好新的公钥后，不需要重启ssh服务，就可连接
+----------------------------------------------------------------------
+
+The key you need to transfer to the host is the public one. If you can log in to a computer over SSH using a password, you can transfer your RSA key by doing the following from your own computer:
+
+
+ssh-copy-id <username>@<host>
+
+Where <username> and <host> should be replaced by your username and the name of the computer you're transferring your key to.
+
+(i) Due to this bug, you cannot specify a port other than the standard port 22. You can work around this by issuing the command like this: ssh-copy-id "<username>@<host> -p <port_nr>". If you are using the standard port 22, you can ignore this tip.
+
+Another alternative is to copy the public key file to the server and concatenate it onto the authorized_keys file manually. It is wise to back that up first:
+
+cp authorized_keys authorized_keys_Backup
+cat id_rsa.pub >> authorized_keys
+
+You can make sure this worked by doing:
+
+ssh <username>@<host>
+
+You should be prompted for the passphrase for your key:
+
+Enter passphrase for key '/home/<user>/.ssh/id_rsa':
+
+Enter your passphrase, and provided host is configured to allow key-based logins, 
+you should then be logged in as usual.
+
+----------------------------------------------------------------
+附 ssh-copy-id 的用法
+wangxiang@wangxiang-M68MT-S2P:~$ ssh-copy-id
+----------------------------------------------------------------
+
+Usage: /usr/bin/ssh-copy-id [-h|-?|-f|-n] [-i [identity_file]] [-p port] [[-o <ssh -o options>] ...] [user@]hostname
+	-f: force mode -- copy keys without trying to check if they are already installed
+	-n: dry run    -- no keys are actually copied
+	-h|-?: print this help
+
+端口号问题：
+ssh-copy-id "-p 22000 nameB@machineB"
+
+ssh-copy-id是一个普普通通的脚本文件：
+wangxiang@wangxiang-M68MT-S2P:~/.ssh$ which ssh-copy-id
+/usr/bin/ssh-copy-id
+只有短短50行，不过里面却有不少shell编程技巧可以学习
+Shell script to install your public key(s) on a remote machine
+
+例子：
+
+ssh -i local-c.pub wangxiang@mac.mini 
+运行后，服务器上， wangxiang-home 目录里没有生 authorized_keys
+需要先在服务器上，创建这个文件，~/.ssh/authorized_keys 再执行这个命令：
+
+wangxiang@wangxiang-M68MT-S2P:~$ ssh-copy-id -i local-c.pub wangxiang@mac.mini
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "local-c.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'wangxiang@mac.mini'"
+and check to make sure that only the key(s) you wanted were added.
+
