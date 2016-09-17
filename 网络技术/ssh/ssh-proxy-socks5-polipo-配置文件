@@ -1,0 +1,34 @@
+查看当前所有的配置列表：
+polipo -v
+
+指定配置文件
+polipo -c file
+
+配置，代理服务器端口号
+proxyPort = 8306
+
+配置，允许访问连接的 ip 地址
+allowedClients = 127.0.0.1, 192.168.3.0/24 - 注意 ： 192.168.0.0/24 这样写是错误的
+
+配置，父代理，SOCKS
+socksParentProxy = "127.0.0.1:8088"
+socksProxyType = socks5
+
+配置，后台运行：
+daemonise = true 
+daemon[英][ˈdi:mən] [美]['dimən][计]守护进程
+后台运行，会写日志文件，默认的日志文件地址是：/var/log/polipo
+-rw-r-----   1 root             wheel                  91  9 17 19:12 polipo
+只有 root 权限的用户才能读。下面是记录内容：
+mac-mini:log wangxiang$ ls -l | grep polipo
+-rw-r-----   1 root             wheel                  91  9 17 19:12 polipo
+mac-mini:log wangxiang$ sudo cat polipo
+Password:
+Disabling local tree: No such file or directory
+Established listening socket on port 8306.
+mac-mini:log wangxiang$ pwd
+/var/log
+
+指定日志文件：
+logFile atom (none) Log file (stderr if empty and logSyslog is unset, /var/log/polipo if empty and daemonise is true).
+

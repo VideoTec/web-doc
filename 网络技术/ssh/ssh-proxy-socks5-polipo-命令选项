@@ -1,0 +1,12 @@
+./polipo -c config -v
+
+-c 指定配置文件
+-v 列出所有的配置
+
+mac-mini:polipo wangxiang$ ./polipo --help
+./polipo [ -h ] [ -v ] [ -x ] [ -c filename ] [ -- ] [ var=val... ]
+  -h: display this message.
+  -v: display the list of configuration variables.
+  -x: perform expiry on the disk cache.
+  -c: specify the configuration file to use.
+
