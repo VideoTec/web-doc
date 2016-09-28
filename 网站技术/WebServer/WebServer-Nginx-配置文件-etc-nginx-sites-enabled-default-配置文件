@@ -18,6 +18,49 @@ These directories are used to define configurations for your websites.
 Files are generally created in the "sites-available" directory, 
 and then symbolically linked to the "sites-enabled" directory when they are ready to go live.
 
+
+-----------------------------------------------
+HEAD detached at release-1.11.3 从源码编译安装，后
+-----------------------------------------------
+/usr/local/nginx/conf/nginx.conf
+
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html; 指定的是 /usr/local/nginx 目录下的 html 目录
+            index  index.html index.htm;
+        }
+
+这里 指定目录是：
+/usr/local/nginx/html 
+问题，在哪里指定的？
+
+修改root目录到
+root   /Users/wangxiang/sharedir/www;
+重新加载配置文件
+sudo /usr/local/nginx/sbin/nginx -s reload
+再访问服务器，出错：
+403 Forbidden
+查看，指定的目录的权限信息：
+drwxr-xr-x  3 wangxiang  staff  102  9 29 00:17 www
+其上级目录的权限是：
+drwx------   5 wangxiang  staff         170  9 29 00:12 sharedir
+修改成 704 不行
+drwx---r--   5 wangxiang  staff         170  9 29 00:12 sharedir
+修改成 705 就可以了
+drwx---r-x   5 wangxiang  staff         170  9 29 00:12 sharedir
+
+nginx 进程，所属的用户
+mac-mini:~ wangxiang$ ps aux | grep nginx
+nobody            739   0.0  0.0  2453496   1252   ??  S    12:32上午   0:00.01 nginx: worker process
+root              738   0.0  0.0  2444052    388   ??  Ss   12:32上午   0:00.00 nginx: master process /usr/local/nginx/sbin/nginx
+
 -----------------------------------------------
 以下是默认配置文件类型：
 -----------------------------------------------

@@ -1,3 +1,20 @@
+问题：源码目录里没有 configure 脚本文件  —— buildconf 脚本文件，用于生成 config 脚本
+查看 buildconf 文件，知道 源码分发布版和开发版 —- 从网站下载的源码压缩包，里包含 configure 脚本。
+"You should not run buildconf in a release package."
+http://php.net/manual/zh/install.pecl.static.php
+要运行“buildconf”脚本，需要 autoconf 2.13 和 automake 1.4+
+（更新版本的 autoconf 也许能工作，但不被支持）
+
+autoconf
+git clone git://git.savannah.gnu.org/autoconf.git
+
+automake
+git clone git://git.savannah.gnu.org/automake.git
+
+http://php.net/manual/zh/install.pecl.static.php
+将 PECL 扩展库静态编译入 PHP 
+强制 PHP 重新生成配置脚本 即 configure 脚本，然后正常编译 PHP
+
 http://php.net/manual/zh/install.unix.nginx.php
 
 下载源码：
@@ -119,4 +136,7 @@ group = www-data
 
 然后启动 php-fpm 服务： 需要使用 sudo
 /usr/local/bin/php-fpm
+
+查看进程，所属的用户
+mac-mini:~ wangxiang$ ps aux | grep nginx
 
