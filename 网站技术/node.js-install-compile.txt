@@ -1,0 +1,28 @@
+下载 执行文件压缩包
+https://nodejs.org/dist/v4.6.0/node-v4.6.0-darwin-x64.tar.gz
+
+node 执行时指定，模块目录
+
+export NODE_PATH='yourdir'/node_modules
+mac下使用的
+set NODE_PATH=XXX
+
+http://stackoverflow.com/questions/26293049/specify-path-to-node-modules-in-package-json
+
+If the NODE_PATH environment variable 
+is set to a colon-delimited list of absolute paths, 
+then node will search those paths for modules if they are not found elsewhere. 
+(Note: On Windows, NODE_PATH is delimited by semicolons instead of colons.)
+
+Additionally, node will search in the following locations:
+
+1: $HOME/.node_module
+2: $HOME/.node_libraries
+3: $PREFIX/lib/node
+
+Where $HOME is the user's home directory, 
+and $PREFIX is node's configured node_prefix.
+
+These are mostly for historic reasons. 
+You are highly encouraged to place your dependencies locally in node_modules folders. 
+They will be loaded faster, and more reliably.

@@ -1,0 +1,27 @@
+http://expressjs.com/
+
+https://cnodejs.org/topic/5059ce39fd37ea6b2f07e1a3
+
+使用NodeJS几乎是必装express框架
+npm install express -gd
+
+http://expressjs.jser.us/
+Express 是一个简洁而灵活的 node.js Web应用框架, 提供一系列强大特性帮助你创建各种Web应用
+丰富的HTTP工具以及来自Connect框架的中间件随取随用，创建强健、友好的API变得快速又简单
+Express 不对 node.js 已有的特性进行二次抽象，我们只是在它之上扩展了Web应用所需的功能
+
+http://javascript.ruanyifeng.com/nodejs/express.html
+
+Express是目前最流行的基于Node.js的Web开发框架，可以快速地搭建一个完整功能的网站
+
+http://www.runoob.com/nodejs/nodejs-express-framework.html
+
+Express 是一个简洁而灵活的 node.js Web应用框架, 
+提供了一系列强大特性帮助你创建各种 Web 应用，和丰富的 HTTP 工具。
+
+使用 Express 可以快速地搭建一个完整功能的网站。
+Express 框架核心特性：
+
+可以设置中间件来响应 HTTP 请求。
+定义了路由表用于执行不同的 HTTP 请求动作。
+可以通过向模板传递参数来动态渲染 HTML 页面。

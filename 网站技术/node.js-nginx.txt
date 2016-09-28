@@ -1,0 +1,34 @@
+http://ourjs.com/detail/nodejs-on-nginx-%E4%BD%BF%E7%94%A8nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%A4%84%E7%90%86%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2
+
+最近OurJS后台已经从纯node.js迁移到了Nginx+NodeJS上来了，感觉性能提升了不少，特与大家分享。
+
+尽管Node.JS的性能不错，但处理静态事务确实不是他的专长，
+如：gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理及多站点代理等，
+都可以通过nginx来完成，
+从而减小node.js的负载，并通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。
+
+虽然node.js也有一些如http-proxy的代理模块可以实现一台服务器上面架设多个网站
+（每个域名映射到不同nodejs进程的端口），
+但这种基础性的工作，其实更应该交给ngnix来完成。
+
+https://cnodejs.org/topic/5059ce39fd37ea6b2f07e1a3
+
+阿里云主机Nginx下配置NodeJS、Express和Forever
+
+Nginx使用了80端口，NodeJS使用8080端口。
+我们利用Nginx的“proxy_pass”将对80端口NodeJS站点的访问导向8080端口
+
+使用NodeJS几乎是必装express框架
+npm install express -gd
+
+我们不可能直接通过node命令来管理远程站点，
+这样无法保证网站的可持续运行。
+我们用Forever来解决这个问题，它可以将NodeJS应用以后台守护进程的方式运行，
+我们还可以将NodeJS应用设成随系统启动而自动运行
+npm install forever -gd
+
+注释：http://blog.fens.me/nodejs-server-forever/
+forever是一个简单的命令式nodejs的守护进程，能够启动，停止，重启App应用。
+forever完全基于命令行操作，在forever进程之下，创建node的子进程，
+通过monitor监控node子进程的运行情况，
+一旦文件更新，或者进程挂掉，forever会自动重启node服务器，确保应用正常运行。
