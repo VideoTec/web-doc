@@ -150,3 +150,20 @@ mysql.connect_timeout = 60
 ; SQL-Errors will be displayed.
 ; http://php.net/mysql.trace-mode
 mysql.trace_mode = Off
+
+
+---------------------------------------------
+第四个问题 ：数据库密码用户名 地址和端口号 配置好后
+---------------------------------------------
+[Fri Sep 30 14:28:17 2016] [2016-09-30 06:28:17] ERROR 2: mysqli::close(): Couldn't fetch mysqli at [E:\php-lib\libphutil\src\aphront\storage\connection\mysql\AphrontMySQLiDatConnection.php:27]
+[Fri Sep 30 14:28:17 2016] arcanist(head=master, ref.master=483e985d08d2), phabricator(head=stable, ref.master=aa248a6b2068, ref.stable=921aab604ec7), phutil(head=master, ref.r=19ef6e504d26)
+[Fri Sep 30 14:28:17 2016]   #0 mysqli::close() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontMySQLiDatabaseConnection.php:27]
+[Fri Sep 30 14:28:17 2016]   #1 AphrontMySQLiDatabaseConnection::closeConnection() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontBaseMySQLDatabaseConnection.9]
+[Fri Sep 30 14:28:17 2016]   #2 AphrontBaseMySQLDatabaseConnection::close() called at [<phutil>\src\aphront\storage\connection\AphrontDatabaseConnection.php:28]
+[Fri Sep 30 14:28:17 2016]   #3 AphrontDatabaseConnection::__destruct()
+
+[Fri Sep 30 14:28:16 2016] [2016-09-30 06:28:16] ERROR 2: mysqli::set_charset(): invalid object or resource mysqli at [E:\php-lib\libphutil\src\aphront\storage\connection\mysql\AphrontMySQLiDatabaseConnection.php:81]
+[Fri Sep 30 14:28:16 2016] arcanist(head=master, ref.master=483e985d08d2), phabricator(head=stable, ref.master=aa248a6b2068, ref.stable=921aab604ec7), phutil(head=master, rr=19ef6e504d26)
+[Fri Sep 30 14:28:16 2016]   #0 mysqli::set_charset(string) called at [<phutil>\src\aphront\storage\connection\mysql\AphrontMySQLiDatabaseConnection.php:81]
+[Fri Sep 30 14:28:16 2016]   #1 AphrontMySQLiDatabaseConnection::connect() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontBaseMySQLDatabaseConnection.php:1
+[Fri Sep 30 14:28:16 2016]   #2 AphrontBaseMySQLDatabaseConnection::establishConnection() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontBaseMySQLDatabaseCn.php:124]
