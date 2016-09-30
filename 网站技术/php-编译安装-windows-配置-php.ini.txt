@@ -1,0 +1,16 @@
+查看 php.ini 目录
+有些 web 服务器会搞混，
+因为其并不一定使用和 PHP 可执行文件处于同一目录下的 php.ini 文件。
+要搞清楚具体使用了哪一个 php.ini 文件，在 phpinfo() 的输出中查看：
+如：
+Configuration File (php.ini) Path	C:\Windows
+Loaded Configuration File	E:\php-5.6.26-Win32-VC11-x64\php.ini
+
+http://php.net/manual/zh/install.windows.manual.php
+
+php.ini 文件决定 PHP 如何配置自身以及如何在其工作环境下运行。
+以下 php.ini 文件中的配置指令有助于使 PHP 更好地运行于 Windows 之中。
+有一些是可选项。还有很多其它指令也可能与用户环境有关
+
+必须的指令：
+可选指令：

@@ -1,0 +1,98 @@
+下载地址：
+http://windows.php.net/download#php-5.6
+VC11 x64 Thread Safe (2016-Sep-16 07:20:00)
+http://windows.php.net/downloads/releases/php-5.6.26-Win32-VC11-x64.zip
+
+http://php.net/manual/en/features.commandline.webserver.php
+
+Built-in web server
+As of PHP 5.4.0, the CLI SAPI provides a built-in web server.
+
+URI requests are served from the current working directory where PHP was started, 
+unless the -t option is used to specify an explicit document root.
+
+Example #1 Starting the web server
+$ cd ~/public_html
+$ php -S localhost:8000  运行失败 msvcr110.dll
+MSVCR110.dll is the Microsoft Visual C++ Redistributable dll 
+that is needed for projects built with Visual Studio 2011
+Visual C++ Redistributable for Visual Studio 2012 Update 4
+https://www.microsoft.com/en-us/download/details.aspx?id=30679#
+vcredist_x64.exe
+
+启动 PHP-WEB 服务：
+
+php.exe 【对应的 php.ini 要放在 php.exe 所在路径】
+
+常用命令：
+-S <addr>:<port> Run with built-in web server.
+-t <docroot>     Specify document root <docroot> for built-in web server.
+
+C:\Users\wangxiangfx>E:\php-5.6.26-Win32-VC11-x64\php.exe -S 127.0.0.1:8899
+PHP 5.6.26 Development Server started at Thu Sep 29 18:07:15 2016
+Listening on http://127.0.0.1:8899
+Document root is C:\Users\wangxiangfx
+Press Ctrl-C to quit.
+[Thu Sep 29 18:07:31 2016] 127.0.0.1:53639 [404]: / - No such file or directory
+[Thu Sep 29 18:07:31 2016] 127.0.0.1:53640 [404]: /favicon.ico - No such file or directory
+
+php-cgi.exe
+PHP 5 中，CGI 版本被改名为 php-cgi.exe（以前是 php.exe）
+
+phpdbg.exe
+
+php-win.exe
+PHP 5 中引进了一种新模式：php-win.exe。这和 CLI 版本相同，
+只除了 php-win 不输出任何内容，
+因此不会提供控制台（屏幕上不会闪过“dos 窗口”）。此行为类似 php-gtk
+
+http://php.net/manual/zh/install.windows.manual.php
+手工安装步骤 
+解压缩 PHP 的包之后，将 php.ini-production 拷贝为 同一目录下的 php.ini
+
+--------------------------------
+php.exe 命令帮助
+--------------------------------
+
+C:\Users\wangxiangfx>E:\php-5.6.26-Win32-VC11-x64\php.exe -help
+Usage: php [options] [-f] <file> [--] [args...]
+   php [options] -r <code> [--] [args...]
+   php [options] [-B <begin_code>] -R <code> [-E <end_code>] [--] [args...]
+   php [options] [-B <begin_code>] -F <file> [-E <end_code>] [--] [args...]
+   php [options] -S <addr>:<port> [-t docroot]
+   php [options] -- [args...]
+   php [options] -a
+
+  -a               Run interactively
+  -c <path>|<file> Look for php.ini file in this directory
+  -n               No php.ini file will be used
+  -d foo[=bar]     Define INI entry foo with value 'bar'
+  -e               Generate extended information for debugger/profiler
+  -f <file>        Parse and execute <file>.
+  -h               This help
+  -i               PHP information
+  -l               Syntax check only (lint)
+  -m               Show compiled in modules
+  -r <code>        Run PHP <code> without using script tags <?..?>
+  -B <begin_code>  Run PHP <begin_code> before processing input lines
+  -R <code>        Run PHP <code> for every input line
+  -F <file>        Parse and execute <file> for every input line
+  -E <end_code>    Run PHP <end_code> after processing all input lines
+  -H               Hide any passed arguments from external tools.
+  -S <addr>:<port> Run with built-in web server.
+  -t <docroot>     Specify document root <docroot> for built-in web server.
+  -s               Output HTML syntax highlighted source.
+  -v               Version number
+  -w               Output source with stripped comments and whitespace.
+  -z <file>        Load Zend extension <file>.
+
+  args...          Arguments passed to script. Use -- args when first argument
+                   starts with - or script is read from stdin
+
+  --ini            Show configuration file names
+
+  --rf <name>      Show information about function <name>.
+  --rc <name>      Show information about class <name>.
+  --re <name>      Show information about extension <name>.
+  --rz <name>      Show information about Zend extension <name>.
+  --ri <name>      Show configuration for extension <name>.

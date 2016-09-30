@@ -1,0 +1,152 @@
+C:\Users\wangxiangfx>E:\php-5.6.26-Win32-VC11-x64\php.exe -S 127.0.0.1:8899 -t e:\ph-src\webroot
+PHP 5.6.26 Development Server started at Thu Sep 29 18:11:12 2016
+Listening on http://127.0.0.1:8899
+Document root is E:\ph-src\webroot
+
+---------------------------------------------
+第一个问题 ：
+---------------------------------------------
+
+Unable to load libphutil. 
+Put libphutil/ next to phabricator/, 
+or update your PHP 'include_path' to include the parent directory of libphutil/.
+
+解决方法：修改 php.ini
+include_path = "e:\php-lib" php-lib 目录下有两个子目录 libphutil 和 arcanist
+
+---------------------------------------------
+第二个问题 ：
+---------------------------------------------
+
+Required PHP extensions are not installed.
+
+openssl
+mbstring
+curl
+mysqli or mysql
+
+http://php.net/manual/zh/install.pecl.windows.php
+在 Windows 上安装 PHP 扩展 
+在 Windows 上有两种加载 PHP 扩展的方式：把扩展编译进 PHP，或者加载 DLL。
+加载预编译的扩展是更简单更被推荐的方式
+
+PHP 扩展库通常称为“php_*.dll”（其中星号代表具体某扩展的名字），
+位于“PHP\ext”目录下（在 PHP 4 中位于“PHP\extensions”目录下）。
+
+载入一个扩展
+最常见的方式是在 php.ini 配置文件里包含一个 PHP 扩展。
+请注意很多扩展已经在 php.ini 里了，仅需要移除分号来激活它们。
+
+extension=php_extname.dll
+
+出错：因为没有设置正确的扩展路径
+[Thu Sep 29 18:53:03 2016] PHP Warning:  
+PHP Startup: Unable to load dynamic library 'C:\php\ext\php_curl.dll' - �Ҳ���ָ����ģ�顣 in Unknown on line 0
+
+原因是， Directory in which the loadable extensions (modules) reside.
+; extension_dir = "ext"
+extension_dir = "E:\php-5.6.26-Win32-VC11-x64\ext"
+
+---------------------------------------------
+第三个问题 ：
+---------------------------------------------
+参考：
+E:\doc\lang\软件工程\软件开发管理系统\代码审核工具-phabricator-安装-配置数据库
+
+Can Not Connect to MySQL
+
+To update these 4 value(s), run these command(s) from the command line:
+phabricator/ $ ./bin/config set mysql.host value
+phabricator/ $ ./bin/config set mysql.port value
+phabricator/ $ ./bin/config set mysql.user value
+phabricator/ $ ./bin/config set mysql.pass value
+
+这个命令 ./bin/config 怎么运行的？它只是引用一个php文件
+../scripts/setup/manage_config.php
+
+he current Phabricator configuration has these 4 value(s):
+mysql.host	"localhost"
+mysql.port	null
+mysql.user	"root"
+mysql.pass	hidden
+
+注意，这个是 php 与 mysql 的连接问题。
+设置 php.ini
+
+https://liuzhichao.com/p/1981.html
+Phabricator 实践之数据库配置和初始化
+Phabricator 从下面几处读取配置信息，并且优先级从高到低
+
+1) Database: 
+储存在数据库中的配置只能通过administrators在Phabricator后台进行修改，
+他们拥有最高的优先级，在其他地方的配置都会被覆盖。
+
+2) Local: 
+储存在 conf/local/config.json 
+中的配置可以通过 bin/config 进行设置
+
+3) Config Files: 
+我们可以在 conf/ 目录下新建配置文件，
+然后写入到 conf/local/ENVIRONMENT, 或设置PHABRICATOR_ENV环境变量.
+
+4) Defaults: 
+一些默认的配置硬编码在 Phabricator 的源文件中, 是不能直接修改的，
+它们拥有最低的优先级，上面任何一处的配置都可以覆盖这些默认值.
+
+[MySQL]
+; Allow accessing, from PHP's perspective, local files with LOAD DATA statements
+; http://php.net/mysql.allow_local_infile
+mysql.allow_local_infile = On
+
+; Allow or prevent persistent links.
+; http://php.net/mysql.allow-persistent
+mysql.allow_persistent = On
+
+; If mysqlnd is used: Number of cache slots for the internal result set cache
+; http://php.net/mysql.cache_size
+mysql.cache_size = 2000
+
+; Maximum number of persistent links.  -1 means no limit.
+; http://php.net/mysql.max-persistent
+mysql.max_persistent = -1
+
+; Maximum number of links (persistent + non-persistent).  -1 means no limit.
+; http://php.net/mysql.max-links
+mysql.max_links = -1
+
+; Default port number for mysql_connect().  If unset, mysql_connect() will use
+; the $MYSQL_TCP_PORT or the mysql-tcp entry in /etc/services or the
+; compile-time value defined MYSQL_PORT (in that order).  Win32 will only look
+; at MYSQL_PORT.
+; http://php.net/mysql.default-port
+mysql.default_port =
+
+; Default socket name for local MySQL connects.  If empty, uses the built-in
+; MySQL defaults.
+; http://php.net/mysql.default-socket
+mysql.default_socket =
+
+; Default host for mysql_connect() (doesn't apply in safe mode).
+; http://php.net/mysql.default-host
+mysql.default_host =
+
+; Default user for mysql_connect() (doesn't apply in safe mode).
+; http://php.net/mysql.default-user
+mysql.default_user =
+
+; Default password for mysql_connect() (doesn't apply in safe mode).
+; Note that this is generally a *bad* idea to store passwords in this file.
+; *Any* user with PHP access can run 'echo get_cfg_var("mysql.default_password")
+; and reveal this password!  And of course, any users with read access to this
+; file will be able to reveal the password as well.
+; http://php.net/mysql.default-password
+mysql.default_password =
+
+; Maximum time (in seconds) for connect timeout. -1 means no limit
+; http://php.net/mysql.connect-timeout
+mysql.connect_timeout = 60
+
+; Trace mode. When trace_mode is active (=On), warnings for table/index scans and
+; SQL-Errors will be displayed.
+; http://php.net/mysql.trace-mode
+mysql.trace_mode = Off
