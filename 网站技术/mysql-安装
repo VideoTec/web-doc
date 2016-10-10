@@ -4,6 +4,7 @@
 -----------------------------------------------------------------------------
 mysql --help
 
+默认端口号 3306
 
 -----------------------------------------------------------------------------
 http://wiki.ubuntu.org.cn/MySQL%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97
@@ -11,7 +12,7 @@ http://wiki.ubuntu.org.cn/MySQL%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97
 
 sudo apt-get install mysql-server
 
-安装过程：需要设置 root 用户密码
+安装过程：需要设置 root 用户密码 mysqlkey123
 
 正在设定 mysql-server-5.7
 

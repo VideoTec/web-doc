@@ -1,0 +1,7 @@
+查看 php.ini 目录
+有些 web 服务器会搞混，
+因为其并不一定使用和 PHP 可执行文件处于同一目录下的 php.ini 文件。
+要搞清楚具体使用了哪一个 php.ini 文件，在 phpinfo() 的输出中查看：
+如：
+Configuration File (php.ini) Path	C:\Windows
+Loaded Configuration File	E:\php-5.6.26-Win32-VC11-x64\php.ini

@@ -1,0 +1,11 @@
+常用命令：
+-S <addr>:<port> Run with built-in web server.
+-t <docroot>     Specify document root <docroot> for built-in web server.
+
+C:\Users\wangxiangfx>E:\php-5.6.26-Win32-VC11-x64\php.exe -S 127.0.0.1:8899
+PHP 5.6.26 Development Server started at Thu Sep 29 18:07:15 2016
+Listening on http://127.0.0.1:8899
+Document root is C:\Users\wangxiangfx
+Press Ctrl-C to quit.
+[Thu Sep 29 18:07:31 2016] 127.0.0.1:53639 [404]: / - No such file or directory
+[Thu Sep 29 18:07:31 2016] 127.0.0.1:53640 [404]: /favicon.ico - No such file or directory

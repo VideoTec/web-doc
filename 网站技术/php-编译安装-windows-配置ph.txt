@@ -3,6 +3,19 @@ PHP 5.6.26 Development Server started at Thu Sep 29 18:11:12 2016
 Listening on http://127.0.0.1:8899
 Document root is E:\ph-src\webroot
 
+注意： 不支持 windows 系统上安装
+
+https://secure.phabricator.com/book/phabricator/article/installation_guide/
+Phabricator is a LAMP (Linux, Apache, MySQL, PHP) application. 
+To install Phabricator, you will need:
+a normal computer to install it on (shared hosts and unusual environments are not supported) 
+running some flavor of Linux or a similar OS;
+
+To install the Phabricator server software, you will need an operating system on your normal computer which is not Windows. 
+Note that the command line interface does work on Windows, 
+and you can use Phabricator from any operating system with a web browser. 
+However, the server software does not run on Windows.
+
 ---------------------------------------------
 第一个问题 ：
 ---------------------------------------------
@@ -70,8 +83,19 @@ mysql.port	null
 mysql.user	"root"
 mysql.pass	hidden
 
+最终发现这个错误是，由于，数据库参数配置错误造成的：
+应该写成下面的样子：
+E:\ph-src\conf\local\local.json
+{
+  "mysql.port": "3306",
+  "mysql.pass": "mysqlkey123",
+  "mysql.user": "root",
+  "mysql.host": "127.0.0.1"
+}
+如果带上单引号，会出现在下面的 第四个问题
+
 注意，这个是 php 与 mysql 的连接问题。
-设置 php.ini
+设置 php.ini 和这个没关系
 
 https://liuzhichao.com/p/1981.html
 Phabricator 实践之数据库配置和初始化
@@ -155,6 +179,27 @@ mysql.trace_mode = Off
 ---------------------------------------------
 第四个问题 ：数据库密码用户名 地址和端口号 配置好后
 ---------------------------------------------
+执行下面的脚本，出错
+E:\ph-src>php scripts/sql/manage_storage.php
+
+最终发现这个错误是，由于，数据库参数配置错误造成的：
+应该写成下面的样子：
+E:\ph-src\conf\local\local.json
+{
+  "mysql.port": "3306",
+  "mysql.pass": "mysqlkey123",
+  "mysql.user": "root",
+  "mysql.host": "127.0.0.1"
+}
+
+E:\ph-src>php scripts/sql/manage_storage.php
+[2016-10-10 03:39:51] ERROR 2: mysqli::set_charset(): invalid object or resource mysqli
+ at [E:\php-lib\libphutil\src\aphront\storage\connection\mysql\AphrontMySQLiDatabaseConnection.php:81]
+arcanist(head=stable, ref.master=483e985d08d2, ref.stable=71132dbee0e2), phabricator(head=stable, ref.master=aa248a6b2068, ref.stable=c9cc3832912f), phutil(head=stable, ref.19ef6e504d26, ref.stable=dd02a0817366)
+  #0 mysqli::set_charset(string) called at [<phutil>\src\aphront\storage\connection\mysql\AphrontMySQLiDatabaseConnection.php:81]
+  #1 AphrontMySQLiDatabaseConnection::connect() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontBaseMySQLDatabaseConnection.php:101]
+  #2 AphrontBaseMySQLDatabaseConnection::establishConnection() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontBaseMySQLDatabaseConnection.php:124]
+
 [Fri Sep 30 14:28:17 2016] [2016-09-30 06:28:17] ERROR 2: mysqli::close(): Couldn't fetch mysqli at [E:\php-lib\libphutil\src\aphront\storage\connection\mysql\AphrontMySQLiDatConnection.php:27]
 [Fri Sep 30 14:28:17 2016] arcanist(head=master, ref.master=483e985d08d2), phabricator(head=stable, ref.master=aa248a6b2068, ref.stable=921aab604ec7), phutil(head=master, ref.r=19ef6e504d26)
 [Fri Sep 30 14:28:17 2016]   #0 mysqli::close() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontMySQLiDatabaseConnection.php:27]
@@ -167,3 +212,24 @@ mysql.trace_mode = Off
 [Fri Sep 30 14:28:16 2016]   #0 mysqli::set_charset(string) called at [<phutil>\src\aphront\storage\connection\mysql\AphrontMySQLiDatabaseConnection.php:81]
 [Fri Sep 30 14:28:16 2016]   #1 AphrontMySQLiDatabaseConnection::connect() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontBaseMySQLDatabaseConnection.php:1
 [Fri Sep 30 14:28:16 2016]   #2 AphrontBaseMySQLDatabaseConnection::establishConnection() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontBaseMySQLDatabaseCn.php:124]
+
+
+---------------------------------------------
+第五个问题 ：找不到 css js 资料文件
+---------------------------------------------
+[Mon Oct 10 13:55:45 2016] 127.0.0.1:49809 [302]: /
+[Mon Oct 10 13:55:46 2016] 127.0.0.1:49820 [200]: /auth/register/
+[Mon Oct 10 13:55:46 2016] 127.0.0.1:49826 [404]: /res/defaultX/phabricator/de918edf/core.pkg.css - No such file or directory
+[Mon Oct 10 13:55:46 2016] 127.0.0.1:49827 [404]: /res/defaultX/phabricator/4601645d/conpherence.pkg.css - No such file or directory
+[Mon Oct 10 13:55:46 2016] 127.0.0.1:49828 [404]: /res/defaultX/phabricator/3010e992/rsrc/externals/javelin/core/init.js - No such file or directory
+[Mon Oct 10 13:55:46 2016] 127.0.0.1:49829 [404]: /res/defaultX/phabricator/30185d95/core.pkg.js - No such file or directory
+[Mon Oct 10 13:55:46 2016] 127.0.0.1:49830 [404]: /res/defaultX/phabricator/30185d95/core.pkg.js - No such file or directory
+
+参考：
+https://secure.phabricator.com/T5106
+https://secure.phabricator.com/Q498
+When looking to the cloned files I see that the CSS files reside under phabricator/webroot/rscs, 
+there is no "res" directory. 
+I see no rewrite rule matching "^/res" anywhere in the installation and/or configuration guide 
+and "LogLevel alert rewrite:trace3" in the Apache config reveals 
+that no rewrite occured. What am I missing?

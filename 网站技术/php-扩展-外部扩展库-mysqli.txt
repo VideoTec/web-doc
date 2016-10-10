@@ -1,0 +1,15 @@
+https://zh.wikipedia.org/wiki/MySQLi
+
+MySQLi名称是取自MySQL Improved的缩写，
+它是MySQL针对PHP所设计的一个扩充模组。
+
+虽然PHP原本就有能够存取MySQL的函式库，
+但是在MySQL 4.1.3版之后，PHP官方强烈推荐使用MySQLi。
+
+根据PHP官方文件[1]，MySQLi至少有下列的好处:
+面向对象的界面
+支援多重语句/指令
+增强除错功能
+
+http://php.net/manual/zh/book.mysqli.php
+文档：

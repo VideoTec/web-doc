@@ -1,0 +1,68 @@
+代码：
+E:\php-lib\libphutil\src\aphront\storage\connection\mysql\AphrontMySQLiDatabaseConnection.php
+
+  protected function connect() {
+    if (!class_exists('mysqli', false)) {
+      throw new Exception(pht(
+        'About to call new %s, but the PHP MySQLi extension is not available!',
+        'mysqli()'));
+    }
+
+    $user = $this->getConfiguration('user');
+    $host = $this->getConfiguration('host');
+    $port = $this->getConfiguration('port');
+    $database = $this->getConfiguration('database');
+
+    $pass = $this->getConfiguration('pass');
+    if ($pass instanceof PhutilOpaqueEnvelope) {
+      $pass = $pass->openEnvelope();
+    }
+
+    // If the host is "localhost", the port is ignored and mysqli attempts to
+    // connect over a socket.
+    if ($port) {
+      if ($host === 'localhost' || $host === null) {
+        $host = '127.0.0.1';
+      }
+    }
+
+    $conn = mysqli_init();
+
+    $timeout = $this->getConfiguration('timeout');
+    if ($timeout) {
+      $conn->options(MYSQLI_OPT_CONNECT_TIMEOUT, $timeout);
+    }
+
+    if ($this->getPersistent()) {
+      $host = 'p:'.$host;
+    }
+
+    @$conn->real_connect(  -- 可能的原因，这里出错了，最后一个 port 传递了个字符串，需要整形
+      $host,
+      $user,
+      $pass,
+      $database,
+      $port);
+
+    $errno = $conn->connect_errno;
+    if ($errno) {
+      $error = $conn->connect_error;
+      $this->throwConnectionException($errno, $error, $user, $host);
+    }
+
+    $ok = @$conn->set_charset('utf8mb4');
+    if (!$ok) {
+      $ok = $conn->set_charset('binary');  这里产生异常 ， 是因为  conn  没有建立
+    }
+
+    return $conn;
+  }
+  
+异常信息：
+E:\ph-src>php scripts/sql/manage_storage.php
+[2016-10-10 03:39:51] ERROR 2: mysqli::set_charset(): invalid object or resource mysqli
+ at [E:\php-lib\libphutil\src\aphront\storage\connection\mysql\AphrontMySQLiDatabaseConnection.php:81]
+arcanist(head=stable, ref.master=483e985d08d2, ref.stable=71132dbee0e2), phabricator(head=stable, ref.master=aa248a6b2068, ref.stable=c9cc3832912f), phutil(head=stable, ref.19ef6e504d26, ref.stable=dd02a0817366)
+  #0 mysqli::set_charset(string) called at [<phutil>\src\aphront\storage\connection\mysql\AphrontMySQLiDatabaseConnection.php:81]
+  #1 AphrontMySQLiDatabaseConnection::connect() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontBaseMySQLDatabaseConnection.php:101]
+  #2 AphrontBaseMySQLDatabaseConnection::establishConnection() called at [<phutil>\src\aphront\storage\connection\mysql\AphrontBaseMySQLDatabaseConnection.php:124]

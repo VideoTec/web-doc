@@ -1,0 +1,30 @@
+http://php.net/manual/zh/features.commandline.php
+
+PHP 的命令行模式
+CLI SAPI（Server Application Programming Interface，服务端应用编程端口）支持，
+名为 CLI，意为 Command Line Interface，即命令行接口
+
+CLI SAPI 模块有以下三种不同的方法来获取要运行的 PHP 代码：
+
+一、让 PHP 运行指定文件
+php my_script.php
+php -f my_script.php
+
+二、在命令行直接运行 PHP 代码
+php -r 'print_r(get_defined_constants());'
+
+三、通过标准输入（stdin）提供需要运行的 PHP 代码。
+
+http://php.net/manual/zh/install.windows.commandline.php
+
+PHP 在 Microsoft Windows 下的命令行方式
+
+C:\PHP5\php.exe -f "C:\PHP Scripts\script.php" -- -arg1 -arg2 -arg3
+
+在 PHP 4.2.0 到 PHP 4.2.3 之间的 Windows 发行包中，
+CLI 的文件名为 php-cli.exe，相同文件夹下的 php.exe 为 CGI。
+从 PHP 4.3.0 版本开始，Windows 的发行包中 CLI 的执行文件为 php.exe，
+被放置在一个单独的名为 cli 的文件夹下，即 cli/php.exe。
+在 PHP 5 中，
+CLI 存在于主文件夹中，名为 php.exe，而 
+CGI 版本名为 php-cgi.exe。
