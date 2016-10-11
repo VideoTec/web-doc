@@ -1,0 +1,38 @@
+http://blog.neten.de/posts/2014/01/27/install-mysql-using-homebrew/
+
+$ brew install mysql
+
+安装完后的提示：
+We've installed your MySQL database without a root password. To secure it run:
+    mysql_secure_installation
+
+To connect run:
+    mysql -uroot
+
+To have launchd start mysql now and restart at login:
+  brew services start mysql
+Or, if you don't want/need a background service you can just run:
+  mysql.server start
+==> Summary
+🍺  /usr/local/Cellar/mysql/5.7.15: 13,510 files, 447M
+
+安装完后，登录：
+mac-mini:ph wangxiang$ sudo mysql -uroot
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+
+安装完后：
+$ unset TMPDIR
+$ mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+
+提示：
+mac-mini:ph wangxiang$ mysql_install_db --verbose --user=root --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql
+2016-10-12 00:46:08 [WARNING] mysql_install_db is deprecated. Please consider switching to mysqld --initialize
+2016-10-12 00:46:08 [ERROR]   The data directory '/usr/local/var/mysql' already exist and is not empty.
+
+
+
+mysql.server start
+
+https://segmentfault.com/a/1190000000438233
+
+mysql_install_db --verbose --user=root --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp

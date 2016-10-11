@@ -28,3 +28,32 @@ sudo /usr/local/nginx/sbin/nginx
 
 通过以上步骤的配置，
 Nginx 服务器现在可以以 SAPI 模块的方式支持 PHP 应用了
+
+-----------------------------------------------------------------
+创建配置文件，并将其复制到正确的位置。
+-----------------------------------------------------------------
+
+cp php.ini-development /usr/local/php/php.ini  --- php-fpm -i 输出信息，可知，没有加载这个配置文件，
+应该在： Configuration File (php.ini) Path	/usr/local/lib
+注意 ： mac os x 系统自带 php php-fpm ，他们的 php.ini 的默认路径是 /etc
+
+cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf     ----  make install 安装在 Installing PHP FPM config:        /usr/local/etc/
+cp sapi/fpm/php-fpm /usr/local/bin    ----  make install 安装在 PHP FPM binary:        /usr/local/sbin/
+
+启动 php-fpm 时：
+mac-mini:bin wangxiang$ php-fpm
+[11-Oct-2016 22:11:15] ERROR: failed to open configuration file '/private/etc/php-fpm.conf': No such file or directory (2)
+[11-Oct-2016 22:11:15] ERROR: failed to load configuration file '/private/etc/php-fpm.conf'
+[11-Oct-2016 22:11:15] ERROR: FPM initialization failed
+这里运行的是 mac-os-x 系统自带的 php-fpm
+Mac OS X 10.9已经自带有php-fpm
+mac-mini:php-5.6.26 wangxiang$ which php-fpm
+/usr/sbin/php-fpm
+
+mac-mini:bin wangxiang$ sudo lsof -nP -iTCP
+启动nginx服务后，再次查看
+php-fpm   39895      root    7u  IPv4 0x116ed50af6b0be23      0t0  TCP 127.0.0.1:9000 (LISTEN)
+php-fpm   39896    nobody    0u  IPv4 0x116ed50af6b0be23      0t0  TCP 127.0.0.1:9000 (LISTEN)
+php-fpm   39897    nobody    0u  IPv4 0x116ed50af6b0be23      0t0  TCP 127.0.0.1:9000 (LISTEN)
+nginx     39951      root    6u  IPv4 0x116ed50aec44c943      0t0  TCP *:80 (LISTEN)
+nginx     39952    nobody    6u  IPv4 0x116ed50aec44c943      0t0  TCP *:80 (LISTEN)

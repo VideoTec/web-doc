@@ -20,6 +20,8 @@ http://php.net/manual/zh/install.unix.nginx.php
 下载源码：
 http://php.net/downloads.php
 http://php.net/get/php-5.6.24.tar.gz/from/a/mirror
+解压文件：
+
 
 配置并构建 PHP。在此步骤您可以使用很多选项自定义 PHP，例如启用某些扩展等。 
 运行 ./configure --help 命令来获得完整的可用选项清单。 
@@ -62,10 +64,37 @@ sudo apt-get install libcurl4-openssl-dev
 apt-get install libssl-dev libsslcommon2-dev
 Yes, you are right. It is libssl-dev  应该使用这个
 
+MAC-OS  libssl-dev
+brew install openssl
+    LDFLAGS:  -L/usr/local/opt/openssl/lib
+    CPPFLAGS: -I/usr/local/opt/openssl/include
+php-configure 配置路径
+--with-openssl=DIR      Include OpenSSL support (requires OpenSSL >= 0.9.6) 使用这个
+--with-openssl-dir=DIR  SNMP: openssl install prefix
+
+mac-os libcurl
+sudo brew install curl
+    LDFLAGS:  -L/usr/local/opt/curl/lib
+    CPPFLAGS: -I/usr/local/opt/curl/include
+--with-curl=DIR         Include cURL support
+
+mac-os libiconv
+checking for iconv support... yes
+checking for iconv... no
+checking for libiconv... no
+configure: error: Please specify the install prefix of iconv with --with-iconv=<DIR>
+sudo brew install homebrew/dupes/libiconv
+    LDFLAGS:  -L/usr/local/opt/libiconv/lib
+    CPPFLAGS: -I/usr/local/opt/libiconv/include
+
+mac-os-x configure 语句：
+./configure --enable-fpm --with-mysql --with-openssl --enable-mbstring --with-libmbfl --with-curl --with-openssl=/usr/local/opt/openssl --with-curl=/usr/local/opt/curl --with-iconv=/usr/local/opt/libiconv
+
+
 -----------------------------------------------------------------
 安装 phabricator 时需要 configure 选项
 -----------------------------------------------------------------
-./configure --enable-fpm --with-mysql --with-openssl --enable-mbstring --with-libmbfl -with-curl
+./configure --enable-fpm --with-mysql --with-openssl --enable-mbstring --with-libmbfl --with-curl
 
 重新编译后，需要重新复制
 cp sapi/fpm/php-fpm /usr/local/bin
@@ -114,9 +143,11 @@ Phar 归档的概念来自 Java™ 技术的 JAR 归档，
 创建配置文件，并将其复制到正确的位置。
 -----------------------------------------------------------------
 
-cp php.ini-development /usr/local/php/php.ini
-cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf
-cp sapi/fpm/php-fpm /usr/local/bin
+cp php.ini-development /usr/local/php/php.ini  --- php-fpm -i 输出信息，可知，没有加载这个配置文件，
+应该在： Configuration File (php.ini) Path	/usr/local/lib
+
+cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf     ----  make install 安装在 Installing PHP FPM config:        /usr/local/etc/
+cp sapi/fpm/php-fpm /usr/local/bin    ----  make install 安装在 PHP FPM binary:        /usr/local/sbin/
 
 -----------------------------------------------------------------
 重要的设置
@@ -134,11 +165,15 @@ vim /usr/local/php/php.ini
 cgi.fix_pathinfo=0
 
 在启动服务之前，需要修改 php-fpm.conf 配置文件，
-确保 php-fpm 模块使用 www-data 用户和 www-data 用户组的身份运行。
+确保 php-fpm 模块使用 www-data 用户和 www-data 用户组的身份运行。[指定进程的用户]
 
 vim /usr/local/etc/php-fpm.conf
 
 找到以下内容并修改：
+
+mandatory[英][ˈmændətəri] [美][ˈmændətɔri]
+adj.强制的；命令的；受委托的
+n.受托者
 
 ; Unix user/group of processes
 ; Note: The user is mandatory. If the group is not set, the default user's group
