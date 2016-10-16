@@ -2,6 +2,12 @@ http://blog.neten.de/posts/2014/01/27/install-mysql-using-homebrew/
 
 $ brew install mysql
 
+第一次安装，（没有 /usr/local/var/mysql 路径时）
+mysqld --initialize-insecure
+       --user=root
+       --basedir=/usr/local/Cellar/mysql/5.7.16
+       --tmpdir=/tmp
+
 安装完后的提示：
 We've installed your MySQL database without a root password. To secure it run:
     mysql_secure_installation
@@ -16,9 +22,32 @@ Or, if you don't want/need a background service you can just run:
 ==> Summary
 🍺  /usr/local/Cellar/mysql/5.7.15: 13,510 files, 447M
 
+启动服务： brew services start mysql
+关闭服务： brew services stop mysql
+
+运行 mysql -uroot 会启动mysql服务：
+
+mysqld_safe --bind-address=127.0.0.1
+            --datadir=/usr/local/var/mysql
+
+mysqld --basedir=/usr/local/Cellar/mysql/5.7.16
+       --datadir=/usr/local/var/mysql
+       --plugin-dir=/usr/local/Cellar/mysql/5.7.16/lib/plugin
+       --user=mysql
+       --bind-address=127.0.0.1
+       --log-error=/usr/local/var/mysql/mac-mini.local.err
+       --pid-file=/usr/local/var/mysql/mac-mini.local.pid
+
 安装完后，登录：
 mac-mini:ph wangxiang$ sudo mysql -uroot
 ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+
+这个错误的原因是：
+--data-dir 指定的路径，owner，是 root 不是 mysql 造成的。解决方法：
+chown -R mysql:mysql /usr/local/var/mysql
+
+设置 root 用户密码：
+使用 mysql_secure_installation 工具。
 
 安装完后：
 $ unset TMPDIR

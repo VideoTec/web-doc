@@ -1,0 +1,18 @@
+mysql_secure_installation 
+
+securing the MySQL server depolyment.
+
+错误：
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+
+这个错误的原因是：
+--data-dir 指定的路径，owner，是 root 不是 mysql 造成的。解决方法：
+chown -R mysql:mysql /usr/local/var/mysql
+
+1）提示安装 VALIDATE PASSWORD PLUGIN， 不安装
+2）设置 root 用户密码 mysqlkey123
+3）Remove anonymouse users
+4）Disallow root login remotely ，即使允许，也没用。
+5）Remove test Database and access to it.
+6）Remove privileges on test database.
+7）Reloading the privilege tables.
