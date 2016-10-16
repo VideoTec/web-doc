@@ -88,13 +88,92 @@ sudo brew install homebrew/dupes/libiconv
     CPPFLAGS: -I/usr/local/opt/libiconv/include
 
 mac-os-x configure 语句：
-./configure --enable-fpm --with-mysql --with-openssl --enable-mbstring --with-libmbfl --with-curl --with-openssl=/usr/local/opt/openssl --with-curl=/usr/local/opt/curl --with-iconv=/usr/local/opt/libiconv
+./configure --enable-fpm --with-mysql --enable-mbstring --with-libmbfl -with-openssl=/usr/local/opt/openssl --with-curl=/usr/local/opt/curl --with-iconv=/usr/local/opt/libiconv --with-gd=/usr/local/opt/gd --with-zlib-dir=/usr/local/opt/zlib
 
+http://ccvita.com/401.html
+让Mac OS X中的PHP支持GD
+.务必确认你的Mac OS X是64位还是32位，我折腾了两天就是应该按照64位的方法安装，却按照32位安装了
+http://stackoverflow.com/questions/26493762/yosemite-el-capitan-php-gd-mcrypt-installation
+
+--with-gd=/usr/local/opt/gd 需要：
+configure: error: PNG support requires ZLIB. Use --with-zlib-dir=<DIR>
+
+configure: error: Don't know how to define struct flock on this system, set --enable-opcache=no
+http://php.net/manual/zh/intro.opcache.php
+OPcache 通过将 PHP 脚本预编译的字节码存储到共享内存中来提升 PHP 的性能， 
+存储预编译字节码的好处就是 省去了每次加载和解析 PHP 脚本的开销
+
+brew install php
+https://github.com/Homebrew/homebrew-php
+
+brew install php56 --with-enchant --with-gmp --with-homebrew-curl --with-homebrew-libressl --with-homebrew-libxml2 --with-homebrew-libxslt --with-imap --with-libmysql --with-mssql --with-pdo-oci --with-pear --with-phpdbg --with-postgresql --with-thread-safety
+
+mac-mini:php-5.6.26 wangxiang$ brew options php56
+--with-apache
+	Enable building of shared Apache 2.4 Handler module
+--with-apache22
+	Enable building of shared Apache 2.2 Handler module
+--with-cgi
+	Enable building of the CGI executable (implies --without-fpm)
+--with-debug
+	Compile with debugging symbols
+--with-enchant
+	Build with enchant support
+--with-gmp
+	Build with gmp support
+--with-homebrew-curl
+	Include Curl support via Homebrew
+--with-homebrew-libressl
+	Include LibreSSL instead of OpenSSL via Homebrew
+--with-homebrew-libxml2
+	Include Libxml2 support via Homebrew
+--with-homebrew-libxslt
+	Include LibXSLT support via Homebrew
+--with-imap
+	Include IMAP extension
+--with-libmysql
+	Include (old-style) libmysql support instead of mysqlnd
+--with-mssql
+	Include MSSQL-DB support
+--with-pdo-oci
+	Include Oracle databases (requries ORACLE_HOME be set)
+--with-pear
+	Build with PEAR
+--with-phpdbg
+	Enable building of the phpdbg SAPI executable
+--with-postgresql
+	Build with postgresql support
+--with-thread-safety
+	Build with thread safety
+
+--without-bz2
+	Build without bz2 support
+--without-fpm
+	Disable building of the fpm SAPI executable
+--without-ldap
+	Build without LDAP support
+--without-legacy-mysql
+	Do not include the deprecated mysql_ functions
+--without-mysql
+	Remove MySQL/MariaDB support
+--without-pcntl
+	Build without Process Control support
+--without-unixodbc
+	Build without unixODBC support
+--HEAD
+	Install HEAD version
+
+To launch php-fpm on startup:
+    mkdir -p ~/Library/LaunchAgents
+    cp /usr/local/opt/php56/homebrew.mxcl.php56.plist ~/Library/LaunchAgents/
+    launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.php56.plist
+
+The control script is located at /usr/local/opt/php56/sbin/php56-fpm
 
 -----------------------------------------------------------------
 安装 phabricator 时需要 configure 选项
 -----------------------------------------------------------------
-./configure --enable-fpm --with-mysql --with-openssl --enable-mbstring --with-libmbfl --with-curl
+./configure --enable-fpm --with-mysql --with-openssl --enable-mbstring --with-libmbfl --with-curl --with-gd
 
 重新编译后，需要重新复制
 cp sapi/fpm/php-fpm /usr/local/bin
